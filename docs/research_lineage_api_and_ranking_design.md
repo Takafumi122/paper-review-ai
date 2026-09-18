@@ -1,3 +1,10 @@
+# Deprecated / superseded
+
+2026-09-19: この文書は旧案・履歴資料です。現行仕様は [research-lineage.md](research-lineage.md)、[scoring-lineage.md](scoring-lineage.md) を参照してください。
+旧本文を以下にそのまま保存しています。旧本文の重み、API構成、入力範囲、未決事項は現行仕様ではありません。
+
+---
+
 # Research Lineage 論文選定方針・外部API設計メモ
 
 ## 1. 目的
