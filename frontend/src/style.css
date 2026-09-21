@@ -1,0 +1,7 @@
+:root { font-family: system-ui, sans-serif; color: #18232e; background: #f4f6f8; }
+main { max-width: 44rem; margin: 4rem auto; padding: 1.5rem; }
+form { display: grid; gap: 1rem; }
+input, button { font: inherit; padding: .75rem; }
+button { cursor: pointer; }
+button:disabled { cursor: default; }
+[role="alert"] { color: #9b2020; }
