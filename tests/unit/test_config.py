@@ -8,6 +8,8 @@ from paper_review.llm.provider import ROUTING
 
 
 def test_defaults_and_explicit_environment(monkeypatch):
+    monkeypatch.delenv("PAPER_REVIEW_DATABASE_PATH", raising=False)
+    monkeypatch.delenv("PAPER_REVIEW_PROVIDER", raising=False)
     monkeypatch.setenv("PAPER_REVIEW_LEASE_SECONDS", "10")
     monkeypatch.setenv("PAPER_REVIEW_INITIAL_BUDGET_USD", "0.5")
     settings = Settings.from_environment()
@@ -15,6 +17,9 @@ def test_defaults_and_explicit_environment(monkeypatch):
     assert settings.initial_budget_usd == 0.5
     assert settings.provider == "fake"
     assert settings.database_path == ROOT / "paper-review.db"
+    path = ROOT / ".work/config-test.db"
+    monkeypatch.setenv("PAPER_REVIEW_DATABASE_PATH", str(path))
+    assert Settings.from_environment().database_path == path
 
 
 @pytest.mark.parametrize(
