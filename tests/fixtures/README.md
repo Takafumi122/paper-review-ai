@@ -4,6 +4,11 @@ These fixtures let a fresh checkout run the same tests without API keys or a
 developer database. They do not establish live provider readiness or independent
 scientific ground truth.
 
+Recorded snapshots and tokenizer assets preserve their original bytes through
+`.gitattributes` (no line-ending conversion). GitHub groups these generated assets
+separately so application code remains reviewable; the files remain available in
+the repository for inspection and reproducible tests.
+
 - `recorded-context.json.gz`: the two recorded source packs and parsed sections
   used by citation/page-boundary regressions; minimal source-job records;
   estimated cost/reservation summaries; the accepted LoRA relevance output; and
