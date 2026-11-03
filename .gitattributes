@@ -1,0 +1,5 @@
+# Keep generated regression data separate from application review on GitHub.
+tests/fixtures/**/*.json linguist-generated=true
+tests/fixtures/*.json.gz linguist-generated=true
+frontend/src/data/demo.json linguist-generated=true
+src/paper_review/llm/data/* linguist-vendored=true
