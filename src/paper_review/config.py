@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -17,7 +18,13 @@ class Settings(BaseModel):
     poll_seconds: float = Field(default=1, gt=0, allow_inf_nan=False)
     initial_budget_usd: float = Field(default=1, gt=0, allow_inf_nan=False)
     detail_budget_usd: float = Field(default=0.1, gt=0, allow_inf_nan=False)
-    provider: str = "fake"
+    provider: Literal["fake", "openai"] = "fake"
+    pipeline_mode: Literal["phase0_fake", "phase1", "full"] = "phase0_fake"
+    adjustment_policy: Literal["identity-v1"] = "identity-v1"
+    specter2_verified: bool = False
+    stage1_audited: bool = False
+    max_queued_jobs: int = Field(default=10, ge=1, le=50)
+    max_daily_jobs: int = Field(default=25, ge=1, le=1000)
 
     @field_validator("database_path")
     @classmethod
@@ -29,13 +36,6 @@ class Settings(BaseModel):
             raise ValueError("database must have a .db suffix")
         return path
 
-    @field_validator("provider")
-    @classmethod
-    def fake_only(cls, value: str) -> str:
-        if value != "fake":
-            raise ValueError("Phase 0 supports only the fake provider")
-        return value
-
     @classmethod
     def from_environment(cls) -> Settings:
         names = {
@@ -45,6 +45,12 @@ class Settings(BaseModel):
             "PAPER_REVIEW_INITIAL_BUDGET_USD": "initial_budget_usd",
             "PAPER_REVIEW_DETAIL_BUDGET_USD": "detail_budget_usd",
             "PAPER_REVIEW_PROVIDER": "provider",
+            "PAPER_REVIEW_PIPELINE_MODE": "pipeline_mode",
+            "PAPER_REVIEW_ADJUSTMENT_POLICY": "adjustment_policy",
+            "PAPER_REVIEW_SPECTER2_VERIFIED": "specter2_verified",
+            "PAPER_REVIEW_STAGE1_AUDITED": "stage1_audited",
+            "PAPER_REVIEW_MAX_QUEUED_JOBS": "max_queued_jobs",
+            "PAPER_REVIEW_MAX_DAILY_JOBS": "max_daily_jobs",
         }
         return cls.model_validate(
             {field: os.environ[key] for key, field in names.items() if key in os.environ}

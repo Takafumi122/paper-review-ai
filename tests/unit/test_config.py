@@ -24,7 +24,7 @@ def test_defaults_and_explicit_environment(monkeypatch):
         {"poll_seconds": -1},
         {"initial_budget_usd": float("nan")},
         {"detail_budget_usd": float("inf")},
-        {"provider": "openai"},
+        {"provider": "unknown"},
         {"database_path": Path("/tmp/outside.db")},
         {"database_path": ROOT / ".env"},
     ],
@@ -35,9 +35,19 @@ def test_invalid_config(values):
 
 
 def test_model_routing():
-    assert ROUTING["reasoning"].model == "gpt-5.6-luna"
+    assert ROUTING["reasoning"].model == "gpt-6.1-sol"
     assert ROUTING["contribution_relevance"].model == "gpt-5.6-luna"
-    assert ROUTING["concept_necessity"].model == "gpt-5-nano"
-    assert ROUTING["knowledge_detail"].model == "gpt-5-nano"
+    assert ROUTING["concept_necessity"].model == "gpt-6.1-sol"
+    assert ROUTING["knowledge_detail"].model == "gpt-6.1-terra"
+    assert ROUTING["knowledge_detail_review"].model == "gpt-6.1-sol"
     assert ROUTING["reasoning"].max_output_tokens == 8000
     assert ROUTING["reasoning"].timeout == 90
+
+
+def test_real_provider_and_gates_are_explicit(monkeypatch):
+    monkeypatch.setenv("PAPER_REVIEW_PROVIDER", "openai")
+    monkeypatch.setenv("PAPER_REVIEW_PIPELINE_MODE", "full")
+    value = Settings.from_environment()
+    assert value.provider == "openai" and value.pipeline_mode == "full"
+    assert not value.specter2_verified and not value.stage1_audited
+    assert value.adjustment_policy == "identity-v1"
