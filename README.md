@@ -71,6 +71,7 @@ UV_NO_ENV_FILE=1 UV_CACHE_DIR=.work/uv-cache uv sync --locked
 UV_CACHE_DIR=.work/uv-cache uv run --no-env-file pytest -q
 UV_CACHE_DIR=.work/uv-cache uv run --no-env-file ruff check src tests scripts main.py migrations
 UV_CACHE_DIR=.work/uv-cache uv run --no-env-file pyright
+mkdir -p .work
 PAPER_REVIEW_DATABASE_PATH="$PWD/.work/validation.db" uv run --no-env-file alembic upgrade head
 PAPER_REVIEW_DATABASE_PATH="$PWD/.work/validation.db" uv run --no-env-file alembic check
 npm --prefix frontend test
