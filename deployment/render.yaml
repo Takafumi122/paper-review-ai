@@ -1,0 +1,32 @@
+# Draft: no service has been provisioned. Deploy manually after cost approval.
+services:
+  - type: web
+    name: paper-review-ai-demo
+    runtime: docker
+    plan: 1c-2g
+    region: singapore
+    numInstances: 1
+    autoDeployTrigger: "off"
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: python deployment/start_demo.py
+    healthCheckPath: /health
+    disk:
+      name: paper-review-data
+      mountPath: /app/.work
+      sizeGB: 1
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SEMANTIC_SCHOLAR_API_KEY
+        sync: false
+      - key: PAPER_REVIEW_ACCESS_TOKEN
+        sync: false
+      - key: PAPER_REVIEW_DATABASE_PATH
+        value: /app/.work/app.db
+      - key: PAPER_REVIEW_ENABLE_PROVIDER_CHECKS
+        value: "0"
+      - key: PAPER_REVIEW_SPECTER2_VERIFIED
+        value: "false"
+      - key: PAPER_REVIEW_STAGE1_AUDITED
+        value: "false"

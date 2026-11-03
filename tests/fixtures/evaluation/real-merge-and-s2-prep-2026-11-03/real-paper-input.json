@@ -1,0 +1,300 @@
+{
+  "scope": "agent_curated_real_source_positive_candidate_not_independent_gold_or_end_to_end",
+  "annotation_author": "Codex agent",
+  "annotated_on": "2026-11-03",
+  "revision": "arxiv:2005.11401:v4",
+  "target": {
+    "id": "arxiv:2005.11401",
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "published_at": "2020-05-22",
+    "published_date_precision": "day",
+    "published_date_source": "arxiv_first_submitted",
+    "external_ids": {
+      "arxiv": "2005.11401",
+      "doi": null,
+      "semantic_scholar": null,
+      "openalex": null
+    }
+  },
+  "candidates": [
+    {
+      "paper_id": "arxiv:2004.04906",
+      "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+      "authors": [
+        "Vladimir Karpukhin"
+      ],
+      "year": 2020,
+      "publication_date": "2020-04-10",
+      "date_provenance": {
+        "kind": "arxiv_first_submitted",
+        "value": "2020-04-10",
+        "precision": "day",
+        "source_id": "https://arxiv.org/abs/2004.04906"
+      },
+      "external_ids": {
+        "arxiv": "2004.04906"
+      },
+      "source_references": [
+        {
+          "id": "arxiv:2005.11401:v4:ref:26",
+          "revision_id": "arxiv:2005.11401:v4",
+          "paper_id": "arxiv:2005.11401",
+          "ref_order": 26,
+          "raw_text": "Vladimir Karpukhin, Barlas Oguz, Sewon Min, Ledell Wu, Sergey Edunov, Danqi Chen, and Wen-tau Yih. Dense passage retrieval for open-domain question answering. arXiv preprint arXiv:2004.04906, 2020. URL https://arxiv.org/abs/2004.04906.",
+          "citation_key": "[26]",
+          "matched_paper_id": null,
+          "matched_arxiv_id": null,
+          "matched_doi": null,
+          "resolution_status": "unresolved",
+          "created_at": 1793583578.635942
+        }
+      ],
+      "eligibility_status": "eligible",
+      "temporal_status": "eligible",
+      "resolution_status": "resolved",
+      "resolution_method": "evaluation_primary_source_manual",
+      "metadata_provenance": {
+        "source": "https://arxiv.org/abs/2004.04906",
+        "verified_on": "2026-11-03",
+        "scope": "evaluation_only_not_production_inventory"
+      }
+    },
+    {
+      "paper_id": "arxiv:1910.13461",
+      "title": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+      "authors": [
+        "Mike Lewis"
+      ],
+      "year": 2019,
+      "publication_date": "2019-10-29",
+      "date_provenance": {
+        "kind": "arxiv_first_submitted",
+        "value": "2019-10-29",
+        "precision": "day",
+        "source_id": "https://arxiv.org/abs/1910.13461"
+      },
+      "external_ids": {
+        "arxiv": "1910.13461"
+      },
+      "source_references": [
+        {
+          "id": "arxiv:2005.11401:v4:ref:32",
+          "revision_id": "arxiv:2005.11401:v4",
+          "paper_id": "arxiv:2005.11401",
+          "ref_order": 32,
+          "raw_text": "Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Veselin Stoyanov, and Luke Zettlemoyer. BART: Denoising sequence-to-sequence pre-training for natural language generation, translation, and comprehension. arXiv preprint arXiv:1910.13461, 2019. URL https://arxiv.org/abs/1910.13461.",
+          "citation_key": "[32]",
+          "matched_paper_id": null,
+          "matched_arxiv_id": null,
+          "matched_doi": null,
+          "resolution_status": "unresolved",
+          "created_at": 1793583578.635953
+        }
+      ],
+      "eligibility_status": "eligible",
+      "temporal_status": "eligible",
+      "resolution_status": "resolved",
+      "resolution_method": "evaluation_primary_source_manual",
+      "metadata_provenance": {
+        "source": "https://arxiv.org/abs/1910.13461",
+        "verified_on": "2026-11-03",
+        "scope": "evaluation_only_not_production_inventory"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "span_id": "arxiv:2005.11401:v4:sec:2:evaluation:2417-3302",
+      "paper_id": "arxiv:2005.11401",
+      "revision": "arxiv:2005.11401:v4",
+      "section_id": "arxiv:2005.11401:v4:sec:2",
+      "section": "1 Introduction",
+      "start_offset": "2417",
+      "end_offset": "3302",
+      "page": "2",
+      "text": "We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the\nnon-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural\nretriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The\nretriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on\nthe input, and the seq2seq model (BART [32]) then conditions on these latent documents together with\nthe input to generate the output. We marginalize the latent documents with a top-K approximation,\neither on a per-output basis (assuming the same document is responsible for all tokens) or a per-token\nbasis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG\ncan be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned.\n",
+      "source_kind": "evaluation_selected_original",
+      "section_sha256": "a79978f93017a9e54fc2c7cedd7b9af8eef0ab487e8f4cafdbf779c101a50b5d"
+    },
+    {
+      "span_id": "arxiv:2005.11401:v4:sec:4:evaluation:0-444",
+      "paper_id": "arxiv:2005.11401",
+      "revision": "arxiv:2005.11401:v4",
+      "section_id": "arxiv:2005.11401:v4:sec:4",
+      "section": "2.1 Models",
+      "start_offset": "0",
+      "end_offset": "444",
+      "page": "3",
+      "text": "RAG-Sequence Model The RAG-Sequence model uses the same retrieved document to generate\nthe complete sequence. Technically, it treats the retrieved document as a single latent variable that\nis marginalized to get the seq2seq probability p(y|x) via a top-K approximation. Concretely, the\ntop K documents are retrieved using the retriever, and the generator produces the output sequence\nprobability for each document, which are then marginalized,\n",
+      "source_kind": "evaluation_selected_original",
+      "section_sha256": "02d6d5e79d77b59ce490abf59313df98dd73e65e9e4972e53951fc3a23cce2bd"
+    },
+    {
+      "span_id": "arxiv:2005.11401:v4:sec:4:evaluation:590-1074",
+      "paper_id": "arxiv:2005.11401",
+      "revision": "arxiv:2005.11401:v4",
+      "section_id": "arxiv:2005.11401:v4:sec:4",
+      "section": "2.1 Models",
+      "start_offset": "590",
+      "end_offset": "1074",
+      "page": "3",
+      "text": "RAG-Token Model In the RAG-Token model we can draw a different latent document for each\ntarget token and marginalize accordingly. This allows the generator to choose content from several\ndocuments when producing an answer. Concretely, the top K documents are retrieved using the\nretriever, and then the generator produces a distribution for the next output token for each document,\nbefore marginalizing, and repeating the process with the following output token, Formally, we define:\n",
+      "source_kind": "evaluation_selected_original",
+      "section_sha256": "02d6d5e79d77b59ce490abf59313df98dd73e65e9e4972e53951fc3a23cce2bd"
+    },
+    {
+      "span_id": "arxiv:2005.11401:v4:sec:5:evaluation:0-860",
+      "paper_id": "arxiv:2005.11401",
+      "revision": "arxiv:2005.11401:v4",
+      "section_id": "arxiv:2005.11401:v4:sec:5",
+      "section": "2.2 Retriever: DPR",
+      "start_offset": "0",
+      "end_offset": "860",
+      "page": "3",
+      "text": "The retrieval component p (z|x) is based on DPR [26]. DPR follows a bi-encoder architecture:\nη\np (z|x) ∝ exp (cid:0) d(z)(cid:62)q(x) (cid:1) d(z) = BERT (z), q(x) = BERT (x)\nη d q\nwhere d(z) is a dense representation of a document produced by a BERT document encoder [8],\nBASE\nand q(x) a query representation produced by a query encoder, also based on BERT . Calculating\nBASE\ntop-k(p (·|x)), the list of k documents z with highest prior probability p (z|x), is a Maximum Inner\nη η\nProduct Search (MIPS) problem, which can be approximately solved in sub-linear time [23]. We use\na pre-trained bi-encoder from DPR to initialize our retriever and to build the document index. This\nretriever was trained to retrieve documents which contain answers to TriviaQA [24] questions and\nNatural Questions [29]. We refer to the document index as the non-parametric memory.",
+      "source_kind": "evaluation_selected_original",
+      "section_sha256": "2fc79acf0071bb11084c1675cd3950f60c38212a4b7fb11a358a2930218fe01f"
+    },
+    {
+      "span_id": "arxiv:2005.11401:v4:sec:6:evaluation:0-589",
+      "paper_id": "arxiv:2005.11401",
+      "revision": "arxiv:2005.11401:v4",
+      "section_id": "arxiv:2005.11401:v4:sec:6",
+      "section": "2.3 Generator: BART",
+      "start_offset": "0",
+      "end_offset": "589",
+      "page": "3",
+      "text": "The generator component p (y |x, z, y ) could be modelled using any encoder-decoder. We use\nθ i 1:i−1\nBART-large [32], a pre-trained seq2seq transformer [58] with 400M parameters. To combine the input\nx with the retrieved content z when generating from BART, we simply concatenate them. BART was\npre-trained using a denoising objective and a variety of different noising functions. It has obtained\nstate-of-the-art results on a diverse set of generation tasks and outperforms comparably-sized T5\nmodels [32]. We refer to the BART generator parameters θ as the parametric memory henceforth.",
+      "source_kind": "evaluation_selected_original",
+      "section_sha256": "e1db5232ad06511217f231dec7e11a2890c42a78dd5026e3580e0a031f7f6b81"
+    },
+    {
+      "span_id": "arxiv:2005.11401:v4:sec:1:evaluation:178-647",
+      "paper_id": "arxiv:2005.11401",
+      "revision": "arxiv:2005.11401:v4",
+      "section_id": "arxiv:2005.11401:v4:sec:1",
+      "section": "Abstract",
+      "start_offset": "178",
+      "end_offset": "647",
+      "page": "1",
+      "text": "However, their ability to access and precisely manipulate knowl-\nedge is still limited, and hence on knowledge-intensive tasks, their performance\nlags behind task-specific architectures. Additionally, providing provenance for their\ndecisions and updating their world knowledge remain open research problems. Pre-\ntrained models with a differentiable access mechanism to explicit non-parametric\nmemory have so far been only investigated for extractive downstream tasks. ",
+      "source_kind": "evaluation_selected_original",
+      "section_sha256": "85194065b1dcb5eab0dfce80e7709ed1b792433f83193be369e3827639b886ca"
+    }
+  ],
+  "contributions": {
+    "problem": "事前学習モデルでは知識へのアクセス・操作や知識の更新、判断の出典提示に制約がある。",
+    "problem_evidence": [
+      {
+        "span_id": "arxiv:2005.11401:v4:sec:1:evaluation:178-647",
+        "quote": "However, their ability to access and precisely manipulate knowl-\nedge is still limited, and hence on knowledge-intensive tasks, their performance\nlags behind task-specific architectures. Additionally, providing provenance for their\ndecisions and updating their world knowledge remain open research problems. Pre-\ntrained models with a differentiable access mechanism to explicit non-parametric\nmemory have so far been only investigated for extractive downstream tasks. "
+      }
+    ],
+    "contributions": [
+      {
+        "id": "C1",
+        "description": "RAG-Sequenceは同じ検索文書に条件付けて系列全体の生成確率を求め、文書を潜在変数として周辺化する。",
+        "evidence": [
+          {
+            "span_id": "arxiv:2005.11401:v4:sec:4:evaluation:0-444",
+            "quote": "RAG-Sequence Model The RAG-Sequence model uses the same retrieved document to generate\nthe complete sequence. Technically, it treats the retrieved document as a single latent variable that\nis marginalized to get the seq2seq probability p(y|x) via a top-K approximation. Concretely, the\ntop K documents are retrieved using the retriever, and the generator produces the output sequence\nprobability for each document, which are then marginalized,\n"
+          }
+        ]
+      },
+      {
+        "id": "C2",
+        "description": "RAG-Tokenは出力トークンごとに異なる潜在文書を許し、複数文書の内容を利用して生成する。",
+        "evidence": [
+          {
+            "span_id": "arxiv:2005.11401:v4:sec:4:evaluation:590-1074",
+            "quote": "RAG-Token Model In the RAG-Token model we can draw a different latent document for each\ntarget token and marginalize accordingly. This allows the generator to choose content from several\ndocuments when producing an answer. Concretely, the top K documents are retrieved using the\nretriever, and then the generator produces a distribution for the next output token for each document,\nbefore marginalizing, and repeating the process with the following output token, Formally, we define:\n"
+          }
+        ]
+      }
+    ]
+  },
+  "proposal": {
+    "predecessor_ids": [
+      "arxiv:2004.04906",
+      "arxiv:1910.13461"
+    ],
+    "edges": [
+      {
+        "from_paper_id": "arxiv:2004.04906",
+        "to_paper_id": "arxiv:2005.11401",
+        "relationship": "DPRを検索器の初期化と文書索引に利用し、系列単位で文書を周辺化する生成に組み込む。",
+        "relationship_score": 4,
+        "evidence_confidence": 1,
+        "evidence": [
+          {
+            "span_id": "arxiv:2005.11401:v4:sec:2:evaluation:2417-3302",
+            "quote": "We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the\nnon-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural\nretriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The\nretriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on\nthe input, and the seq2seq model (BART [32]) then conditions on these latent documents together with\nthe input to generate the output. We marginalize the latent documents with a top-K approximation,\neither on a per-output basis (assuming the same document is responsible for all tokens) or a per-token\nbasis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG\ncan be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned.\n"
+          },
+          {
+            "span_id": "arxiv:2005.11401:v4:sec:5:evaluation:0-860",
+            "quote": "The retrieval component p (z|x) is based on DPR [26]. DPR follows a bi-encoder architecture:\nη\np (z|x) ∝ exp (cid:0) d(z)(cid:62)q(x) (cid:1) d(z) = BERT (z), q(x) = BERT (x)\nη d q\nwhere d(z) is a dense representation of a document produced by a BERT document encoder [8],\nBASE\nand q(x) a query representation produced by a query encoder, also based on BERT . Calculating\nBASE\ntop-k(p (·|x)), the list of k documents z with highest prior probability p (z|x), is a Maximum Inner\nη η\nProduct Search (MIPS) problem, which can be approximately solved in sub-linear time [23]. We use\na pre-trained bi-encoder from DPR to initialize our retriever and to build the document index. This\nretriever was trained to retrieve documents which contain answers to TriviaQA [24] questions and\nNatural Questions [29]. We refer to the document index as the non-parametric memory."
+          }
+        ]
+      },
+      {
+        "from_paper_id": "arxiv:1910.13461",
+        "to_paper_id": "arxiv:2005.11401",
+        "relationship": "BARTを生成器に利用し、検索文書と入力を連結してトークン単位の生成に組み込む。",
+        "relationship_score": 4,
+        "evidence_confidence": 1,
+        "evidence": [
+          {
+            "span_id": "arxiv:2005.11401:v4:sec:2:evaluation:2417-3302",
+            "quote": "We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the\nnon-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural\nretriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The\nretriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on\nthe input, and the seq2seq model (BART [32]) then conditions on these latent documents together with\nthe input to generate the output. We marginalize the latent documents with a top-K approximation,\neither on a per-output basis (assuming the same document is responsible for all tokens) or a per-token\nbasis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG\ncan be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned.\n"
+          },
+          {
+            "span_id": "arxiv:2005.11401:v4:sec:6:evaluation:0-589",
+            "quote": "The generator component p (y |x, z, y ) could be modelled using any encoder-decoder. We use\nθ i 1:i−1\nBART-large [32], a pre-trained seq2seq transformer [58] with 400M parameters. To combine the input\nx with the retrieved content z when generating from BART, we simply concatenate them. BART was\npre-trained using a denoising objective and a variety of different noising functions. It has obtained\nstate-of-the-art results on a diverse set of generation tasks and outperforms comparably-sized T5\nmodels [32]. We refer to the BART generator parameters θ as the parametric memory henceforth."
+          }
+        ]
+      }
+    ],
+    "merge_reason": "DPRの非パラメトリック検索とBARTのパラメトリック生成を統合し、系列単位とトークン単位の2方式で潜在文書を周辺化する。",
+    "missing_reason": null,
+    "merge_support": {
+      "node_id": "arxiv:2005.11401",
+      "branches": [
+        {
+          "from_paper_id": "arxiv:2004.04906",
+          "contribution_id": "C1",
+          "evidence": [
+            {
+              "span_id": "arxiv:2005.11401:v4:sec:2:evaluation:2417-3302",
+              "quote": "We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the\nnon-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural\nretriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The\nretriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on\nthe input, and the seq2seq model (BART [32]) then conditions on these latent documents together with\nthe input to generate the output. We marginalize the latent documents with a top-K approximation,\neither on a per-output basis (assuming the same document is responsible for all tokens) or a per-token\nbasis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG\ncan be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned.\n"
+            },
+            {
+              "span_id": "arxiv:2005.11401:v4:sec:5:evaluation:0-860",
+              "quote": "The retrieval component p (z|x) is based on DPR [26]. DPR follows a bi-encoder architecture:\nη\np (z|x) ∝ exp (cid:0) d(z)(cid:62)q(x) (cid:1) d(z) = BERT (z), q(x) = BERT (x)\nη d q\nwhere d(z) is a dense representation of a document produced by a BERT document encoder [8],\nBASE\nand q(x) a query representation produced by a query encoder, also based on BERT . Calculating\nBASE\ntop-k(p (·|x)), the list of k documents z with highest prior probability p (z|x), is a Maximum Inner\nη η\nProduct Search (MIPS) problem, which can be approximately solved in sub-linear time [23]. We use\na pre-trained bi-encoder from DPR to initialize our retriever and to build the document index. This\nretriever was trained to retrieve documents which contain answers to TriviaQA [24] questions and\nNatural Questions [29]. We refer to the document index as the non-parametric memory."
+            }
+          ]
+        },
+        {
+          "from_paper_id": "arxiv:1910.13461",
+          "contribution_id": "C2",
+          "evidence": [
+            {
+              "span_id": "arxiv:2005.11401:v4:sec:2:evaluation:2417-3302",
+              "quote": "We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the\nnon-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural\nretriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The\nretriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on\nthe input, and the seq2seq model (BART [32]) then conditions on these latent documents together with\nthe input to generate the output. We marginalize the latent documents with a top-K approximation,\neither on a per-output basis (assuming the same document is responsible for all tokens) or a per-token\nbasis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG\ncan be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned.\n"
+            },
+            {
+              "span_id": "arxiv:2005.11401:v4:sec:6:evaluation:0-589",
+              "quote": "The generator component p (y |x, z, y ) could be modelled using any encoder-decoder. We use\nθ i 1:i−1\nBART-large [32], a pre-trained seq2seq transformer [58] with 400M parameters. To combine the input\nx with the retrieved content z when generating from BART, we simply concatenate them. BART was\npre-trained using a denoising objective and a variety of different noising functions. It has obtained\nstate-of-the-art results on a diverse set of generation tasks and outperforms comparably-sized T5\nmodels [32]. We refer to the BART generator parameters θ as the parametric memory henceforth."
+            }
+          ]
+        }
+      ],
+      "integration_evidence": [
+        {
+          "span_id": "arxiv:2005.11401:v4:sec:2:evaluation:2417-3302",
+          "quote": "We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the\nnon-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural\nretriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The\nretriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on\nthe input, and the seq2seq model (BART [32]) then conditions on these latent documents together with\nthe input to generate the output. We marginalize the latent documents with a top-K approximation,\neither on a per-output basis (assuming the same document is responsible for all tokens) or a per-token\nbasis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG\ncan be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned.\n"
+        }
+      ]
+    }
+  },
+  "branch_assignment_note": "Both predecessors underpin both formulations. Assigning DPR to C1 and BART to C2 is representative, not exclusive influence. Distinctness concerns sequence versus token marginalization, not a retrieval versus generation claim invented as separate contributions."
+}

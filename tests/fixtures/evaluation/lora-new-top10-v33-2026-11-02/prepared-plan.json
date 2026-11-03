@@ -1,0 +1,800 @@
+{
+  "version": "lora-new-top10-v33",
+  "cumulative_ceiling_usd": 1.6,
+  "prior_used_or_reserved_usd": 0.9096909600000002,
+  "max_additional_reservation_usd": 0.048,
+  "max_logical_calls": 2,
+  "max_attempts": 6,
+  "new_s2_calls": 0,
+  "production_gates_changed": false,
+  "selection_policy_version": "lower-bound-v1",
+  "task_policies": {
+    "contribution_relevance": {
+      "model": "gpt-5.6-luna",
+      "max_input_tokens": 16000,
+      "max_output_tokens": 4000,
+      "timeout": 60,
+      "deadline": 150
+    },
+    "lineage": {
+      "model": "gpt-5.6-luna",
+      "max_input_tokens": 16000,
+      "max_output_tokens": 4000,
+      "timeout": 60,
+      "deadline": 150
+    }
+  },
+  "source_preview": {
+    "candidates": [
+      {
+        "candidate_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+        "title": "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning",
+        "rank": 1,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:6:p4:c0"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:6:p4:c0",
+          "arxiv:2106.09685:v2:sec:2:p2:c800",
+          "arxiv:2106.09685:v2:sec:6:p4:c400"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2020-12-22",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9781566825708261,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9287626730283305,
+          "selection_lower_bound": 0.9287626730283305,
+          "selection_upper_bound": 0.9287626730283305,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9781566825708261,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:2:p2:c0",
+                "arxiv:2106.09685:v2:sec:2:p2:c400",
+                "arxiv:2106.09685:v2:sec:6:p4:c0",
+                "arxiv:2106.09685:v2:sec:6:p4:c400"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+        "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+        "rank": 2,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p1:c400",
+          "arxiv:2106.09685:v2:sec:8:p5:c0",
+          "arxiv:2106.09685:v2:sec:10:p7:c0",
+          "arxiv:2106.09685:v2:sec:24:p18:c0"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p1:c400",
+          "arxiv:2106.09685:v2:sec:8:p5:c0",
+          "arxiv:2106.09685:v2:sec:10:p7:c0",
+          "arxiv:2106.09685:v2:sec:24:p18:c0",
+          "arxiv:2106.09685:v2:sec:10:p7:c400",
+          "arxiv:2106.09685:v2:sec:24:p18:c400",
+          "arxiv:2106.09685:v2:sec:2:p1:c0",
+          "arxiv:2106.09685:v2:sec:2:p1:c800",
+          "arxiv:2106.09685:v2:sec:8:p5:c400"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2019-07-26",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9712871295971102,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.926014851838844,
+          "selection_lower_bound": 0.926014851838844,
+          "selection_upper_bound": 0.926014851838844,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9712871295971102,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:2:p1:c0",
+                "arxiv:2106.09685:v2:sec:2:p1:c400",
+                "arxiv:2106.09685:v2:sec:2:p1:c800"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+        "title": "Language Models are Few-Shot Learners",
+        "rank": 3,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p1:c400",
+          "arxiv:2106.09685:v2:sec:8:p5:c0",
+          "arxiv:2106.09685:v2:sec:2:p2:c2400",
+          "arxiv:2106.09685:v2:sec:14:p9:c0",
+          "arxiv:2106.09685:v2:sec:14:p9:c400",
+          "arxiv:2106.09685:v2:sec:20:p16:c400",
+          "arxiv:2106.09685:v2:sec:20:p17:c0"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p1:c400",
+          "arxiv:2106.09685:v2:sec:8:p5:c0",
+          "arxiv:2106.09685:v2:sec:2:p2:c2400",
+          "arxiv:2106.09685:v2:sec:14:p9:c0",
+          "arxiv:2106.09685:v2:sec:14:p9:c400",
+          "arxiv:2106.09685:v2:sec:20:p16:c400",
+          "arxiv:2106.09685:v2:sec:20:p17:c0",
+          "arxiv:2106.09685:v2:sec:2:p1:c0",
+          "arxiv:2106.09685:v2:sec:2:p1:c800",
+          "arxiv:2106.09685:v2:sec:8:p5:c400",
+          "arxiv:2106.09685:v2:sec:2:p2:c2000"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2020-05-28",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9697479994442304,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9253991997776921,
+          "selection_lower_bound": 0.9253991997776921,
+          "selection_upper_bound": 0.9253991997776921,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9697479994442304,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "90abbc2cf38462b954ae1b772fac9532e2ccd8b0"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "90abbc2cf38462b954ae1b772fac9532e2ccd8b0"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:2:p1:c400",
+                "arxiv:2106.09685:v2:sec:2:p1:c800"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "title": "Parameter-Efficient Transfer Learning for NLP",
+        "rank": 4,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:9:p6:c1600",
+          "arxiv:2106.09685:v2:sec:14:p9:c1200",
+          "arxiv:2106.09685:v2:sec:9:p6:c2800",
+          "arxiv:2106.09685:v2:sec:21:p17:c800",
+          "arxiv:2106.09685:v2:sec:10:p7:c400",
+          "arxiv:2106.09685:v2:sec:24:p18:c400"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:9:p6:c3200",
+          "arxiv:2106.09685:v2:sec:10:p7:c0",
+          "arxiv:2106.09685:v2:sec:9:p6:c1600",
+          "arxiv:2106.09685:v2:sec:14:p9:c1200",
+          "arxiv:2106.09685:v2:sec:24:p18:c0",
+          "arxiv:2106.09685:v2:sec:9:p6:c2800",
+          "arxiv:2106.09685:v2:sec:21:p17:c800",
+          "arxiv:2106.09685:v2:sec:10:p7:c400",
+          "arxiv:2106.09685:v2:sec:24:p18:c400",
+          "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+          "arxiv:2106.09685:v2:sec:4:p3:c1200"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2019-02-02",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9661923783035662,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9239769513214264,
+          "selection_lower_bound": 0.9239769513214264,
+          "selection_upper_bound": 0.9239769513214264,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9661923783035662,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+                "arxiv:2106.09685:v2:sec:2:p1:c1200",
+                "arxiv:2106.09685:v2:sec:2:p2:c0",
+                "arxiv:2106.09685:v2:sec:4:p3:c0",
+                "arxiv:2106.09685:v2:sec:4:p3:c400"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+        "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+        "rank": 5,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+          "arxiv:2106.09685:v2:sec:4:p3:c0"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2021-04-18",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9660192742373519,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9239077096949407,
+          "selection_lower_bound": 0.9239077096949407,
+          "selection_upper_bound": 0.9239077096949407,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9660192742373519,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+                "arxiv:2106.09685:v2:sec:2:p1:c1200",
+                "arxiv:2106.09685:v2:sec:2:p2:c0",
+                "arxiv:2106.09685:v2:sec:4:p3:c0",
+                "arxiv:2106.09685:v2:sec:4:p3:c400"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+        "title": "WARP: Word-level Adversarial ReProgramming",
+        "rank": 6,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:14:p9:c2400"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:14:p9:c2400",
+          "arxiv:2106.09685:v2:sec:4:p3:c0",
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:14:p9:c2000"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2021-01-01",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9648267955711007,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9234307182284403,
+          "selection_lower_bound": 0.9234307182284403,
+          "selection_upper_bound": 0.9234307182284403,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9648267955711007,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:14:p9:c2000",
+                "arxiv:2106.09685:v2:sec:14:p9:c2400",
+                "arxiv:2106.09685:v2:sec:4:p3:c0",
+                "arxiv:2106.09685:v2:sec:4:p3:c400"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "1187c70c4011f935642084e84186284ac0add3d0",
+        "title": "Exploring Versatile Generative Language Model Via Parameter-Efficient Transfer Learning",
+        "rank": 7,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:9:p6:c3200",
+          "arxiv:2106.09685:v2:sec:14:p9:c1200",
+          "arxiv:2106.09685:v2:sec:21:p17:c800"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:9:p6:c3200",
+          "arxiv:2106.09685:v2:sec:14:p9:c1200",
+          "arxiv:2106.09685:v2:sec:9:p6:c2800",
+          "arxiv:2106.09685:v2:sec:21:p17:c800",
+          "arxiv:2106.09685:v2:sec:4:p3:c1200"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2020-04-01",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9639406928208061,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9230762771283224,
+          "selection_lower_bound": 0.9230762771283224,
+          "selection_upper_bound": 0.9230762771283224,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9639406928208061,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "1187c70c4011f935642084e84186284ac0add3d0"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "1187c70c4011f935642084e84186284ac0add3d0"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:4:p3:c1200",
+                "arxiv:2106.09685:v2:sec:4:p3:c800"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+        "title": "Low-rank plus diagonal adaptation for deep neural networks",
+        "rank": 8,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c3200"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c3200",
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:14:p9:c3600"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2016-03-20",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9637769660723366,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9230107864289346,
+          "selection_lower_bound": 0.9230107864289346,
+          "selection_upper_bound": 0.9230107864289346,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9637769660723366,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "33aa588c89401cbc22a2f4d2fb121d10909a6f18"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "33aa588c89401cbc22a2f4d2fb121d10909a6f18"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:14:p9:c2800",
+                "arxiv:2106.09685:v2:sec:14:p9:c3200"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+        "title": "GPT Understands, Too",
+        "rank": 9,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:14:p9:c2400"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:14:p9:c2400",
+          "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+          "arxiv:2106.09685:v2:sec:4:p3:c0",
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:14:p9:c2000"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2021-03-18",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9618911829253917,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9222564731701567,
+          "selection_lower_bound": 0.9222564731701567,
+          "selection_upper_bound": 0.9222564731701567,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9618911829253917,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "bc37c6bdb8f39929a58b30464f72d6aa46cddc17"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "bc37c6bdb8f39929a58b30464f72d6aa46cddc17"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+                "arxiv:2106.09685:v2:sec:2:p1:c1200",
+                "arxiv:2106.09685:v2:sec:2:p2:c0",
+                "arxiv:2106.09685:v2:sec:4:p3:c0",
+                "arxiv:2106.09685:v2:sec:4:p3:c400"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      },
+      {
+        "candidate_id": "5cea23330c76994cb626df20bed31cc2588033df",
+        "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets",
+        "rank": 10,
+        "direct_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c3200"
+        ],
+        "support_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c3200",
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:14:p9:c3600"
+        ],
+        "date": {
+          "kind": "publication_date",
+          "value": "2013-05-26",
+          "precision": "day",
+          "source_id": "semantic_scholar"
+        },
+        "stage1_score": {
+          "semantic_similarity": 0.9617917060757801,
+          "citation_relation": 1.0,
+          "citation_importance": 0.75,
+          "initial_score": 0.9222166824303121,
+          "selection_lower_bound": 0.9222166824303121,
+          "selection_upper_bound": 0.9222166824303121,
+          "coverage": 1.0,
+          "status": "complete",
+          "missing_components": [],
+          "missing_reasons": {},
+          "component_details": {
+            "semantic_similarity": {
+              "value": 0.9617917060757801,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685",
+                "5cea23330c76994cb626df20bed31cc2588033df"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "specter2"
+            },
+            "citation_relation": {
+              "value": 1.0,
+              "missing_reason": null,
+              "source_ids": [
+                "5cea23330c76994cb626df20bed31cc2588033df"
+              ],
+              "normalization_version": "2",
+              "calculation_source": null
+            },
+            "citation_importance": {
+              "value": 0.75,
+              "missing_reason": null,
+              "source_ids": [
+                "arxiv:2106.09685:v2:sec:14:p9:c2800",
+                "arxiv:2106.09685:v2:sec:14:p9:c3200"
+              ],
+              "normalization_version": "2",
+              "calculation_source": "page-boundary-v31"
+            }
+          },
+          "scoring_version": "2"
+        }
+      }
+    ],
+    "transmitted_source_ids": [
+      "arxiv:2106.09685:v2:sec:2:p2:c400",
+      "arxiv:2106.09685:v2:sec:2:p1:c400",
+      "arxiv:2106.09685:v2:sec:2:p2:c0",
+      "arxiv:2106.09685:v2:sec:4:p3:c400",
+      "arxiv:2106.09685:v2:sec:4:p3:c800",
+      "arxiv:2106.09685:v2:sec:14:p9:c3200",
+      "arxiv:2106.09685:v2:sec:6:p4:c0",
+      "arxiv:2106.09685:v2:sec:8:p5:c0",
+      "arxiv:2106.09685:v2:sec:2:p2:c2400",
+      "arxiv:2106.09685:v2:sec:14:p9:c2400",
+      "arxiv:2106.09685:v2:sec:9:p6:c3200",
+      "arxiv:2106.09685:v2:sec:10:p7:c0",
+      "arxiv:2106.09685:v2:sec:9:p6:c1600",
+      "arxiv:2106.09685:v2:sec:14:p9:c1200",
+      "arxiv:2106.09685:v2:sec:24:p18:c0",
+      "arxiv:2106.09685:v2:sec:14:p9:c0",
+      "arxiv:2106.09685:v2:sec:9:p6:c2800",
+      "arxiv:2106.09685:v2:sec:21:p17:c800",
+      "arxiv:2106.09685:v2:sec:14:p9:c400",
+      "arxiv:2106.09685:v2:sec:10:p7:c400",
+      "arxiv:2106.09685:v2:sec:20:p16:c400",
+      "arxiv:2106.09685:v2:sec:20:p17:c0",
+      "arxiv:2106.09685:v2:sec:24:p18:c400",
+      "arxiv:2106.09685:v2:sec:2:p1:c0",
+      "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+      "arxiv:2106.09685:v2:sec:4:p3:c0",
+      "arxiv:2106.09685:v2:sec:14:p9:c2800",
+      "arxiv:2106.09685:v2:sec:2:p2:c800",
+      "arxiv:2106.09685:v2:sec:2:p1:c800",
+      "arxiv:2106.09685:v2:sec:4:p3:c1200",
+      "arxiv:2106.09685:v2:sec:14:p9:c3600",
+      "arxiv:2106.09685:v2:sec:6:p4:c400",
+      "arxiv:2106.09685:v2:sec:8:p5:c400",
+      "arxiv:2106.09685:v2:sec:2:p2:c2000",
+      "arxiv:2106.09685:v2:sec:14:p9:c2000"
+    ],
+    "prepared_source_count": 49,
+    "transmitted_source_count": 35,
+    "input_token_estimate": 15881,
+    "request_contract_sha256": "a7b232959e2ecef9881bc36b9bf081b1564d2b0ffd66c0105da7a408c352557e",
+    "contributions_validated_against_current_sources": true
+  },
+  "original_sources_sha256": "f7e841588ca8d171911203090533070e5efd1602638820ea67842bb1e3d85ef6",
+  "contribution_checkpoint_sha256": "982b8464f98050f6bbd836a78e75bb6ea62f9439350a81d02bc960173882c27e",
+  "code_and_artifact_sha256": {
+    ".work/s2-rate-limited.json": "9f3117e92df1c672427662cb93d7ff1159ece16049dd7e4df2367daf4dbef029",
+    ".work/s2-http-gate.json": "83231d970d097fde542cbe4e9c3d88e1cc094c66e85bfdf2d50734b66e4047de",
+    "evaluation/reports/identity-selection-v27-2026-11-02/results.json": "7a6214ede1f643a8c47166fc1545e07df0813ffa815e3580272f82875f94fa26",
+    "evaluation/reports/page-boundary-v31-2026-11-02/results.json": "0dd266f45f9c48d14d689bff3dfdac53b857800e79134ce77034683999147e80",
+    "src/paper_review/application/lora_stage2_verification.py": "10490a5f459f6c46aa6e0dcc1a5b1080f60bcadd30d0b8b88cf4c033c5e30365",
+    "src/paper_review/application/roadmap_verification.py": "22ea1ee957b28244eb91dbfc3b5def1aed8a63f64c3c76a4796bedd253264ad2",
+    "src/paper_review/application/full_analysis.py": "f63e6d719c0604cc65aab79f7e5f184281475d5268ef8537b958a5f22bd6599f",
+    "src/paper_review/application/lineage_evidence.py": "4f628abf5829e4e7ed9c3408d87ad9ecc6eb974c64f6f98290c50c68b79065b3",
+    "src/paper_review/domain/understanding.py": "4cadb20e6dcaf1fa61c54c60c404f2a6c0f60098577daeb437aa4813307f01dc",
+    "src/paper_review/domain/stage1_scoring.py": "440113a0d8d1afc9137ecf1ff7554bb3db96e6730be74b9e61dc6559c55c8fc4"
+  },
+  "graph_gate": "exact original and candidate identity; source-bound agent review of all nonnull relevance/contribution links; at least one causal predecessor with verified earlier date; no readiness or formal gold claim"
+}

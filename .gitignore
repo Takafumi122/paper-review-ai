@@ -1,0 +1,18 @@
+.env
+.env.*
+.venv/
+.work/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+*.db
+*.db-shm
+*.db-wal
+frontend/node_modules/
+frontend/dist/
+
+OVERNIGHT_CODEX.log
+
+# Local operator runs; only curated regression fixtures belong in Git.
+evaluation/reports/

@@ -1,0 +1,288 @@
+[
+  {
+    "target": "1706.03762",
+    "probe": "Bahdanau attention",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 26,
+    "identifiers": {
+      "arxiv": "1409.0473",
+      "semantic_scholar": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 34,
+    "top10": false,
+    "lexical_rank": 11,
+    "source_references": [
+      2
+    ]
+  },
+  {
+    "target": "1706.03762",
+    "probe": "Sequence to Sequence Learning",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 6,
+    "identifiers": {
+      "arxiv": "1409.3215",
+      "semantic_scholar": "cea967b59209c6be22829699f05b8b1ac4dc092d"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "exact_title",
+    "eligibility": "eligible",
+    "canonical_rank": 26,
+    "top10": false,
+    "lexical_rank": 7,
+    "source_references": [
+      35
+    ]
+  },
+  {
+    "target": "1706.03762",
+    "probe": "Effective Approaches to Attention-based NMT",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 8,
+    "identifiers": {
+      "arxiv": "1508.04025",
+      "doi": "10.18653/v1/D15-1166",
+      "semantic_scholar": "93499a7c7f699b6630a86fad964536f9423bb6d0"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 21,
+    "top10": false,
+    "lexical_rank": 12,
+    "source_references": [
+      24
+    ]
+  },
+  {
+    "target": "1706.03762",
+    "probe": "Convolutional Sequence to Sequence Learning",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 18,
+    "identifiers": {
+      "arxiv": "1705.03122",
+      "semantic_scholar": "43428880d75b3a14257c3ee9bda054e61eb869c0"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 28,
+    "top10": false,
+    "lexical_rank": 4,
+    "source_references": [
+      9
+    ]
+  },
+  {
+    "target": "1706.03762",
+    "probe": "RNN Encoder-Decoder",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 34,
+    "identifiers": {
+      "arxiv": "1406.1078",
+      "doi": "10.3115/v1/D14-1179",
+      "semantic_scholar": "0b544dfe355a5070b60986319a3f51fb45d1348e"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 2,
+    "top10": true,
+    "lexical_rank": 6,
+    "source_references": [
+      5
+    ]
+  },
+  {
+    "target": "2106.09685",
+    "probe": "Intrinsic Dimensionality",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 1,
+    "identifiers": {
+      "arxiv": "2012.13255",
+      "doi": "10.18653/v1/2021.acl-long.568",
+      "semantic_scholar": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 25,
+    "top10": false,
+    "lexical_rank": 1,
+    "source_references": [
+      1
+    ]
+  },
+  {
+    "target": "2106.09685",
+    "probe": "Adapters",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 15,
+    "identifiers": {
+      "arxiv": "1902.00751",
+      "semantic_scholar": "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 28,
+    "top10": false,
+    "lexical_rank": 2,
+    "source_references": [
+      22
+    ]
+  },
+  {
+    "target": "2106.09685",
+    "probe": "Prefix-Tuning",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 11,
+    "identifiers": {
+      "arxiv": "2101.00190",
+      "doi": "10.18653/v1/2021.acl-long.353",
+      "semantic_scholar": "53d8b356551a2361020a948f64454a6d599af69f"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "uncertain",
+    "canonical_rank": null,
+    "top10": false,
+    "lexical_rank": null,
+    "source_references": [
+      29
+    ]
+  },
+  {
+    "target": "2106.09685",
+    "probe": "Measuring Intrinsic Dimension",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": null,
+    "identifiers": {
+      "arxiv": "1804.08838",
+      "semantic_scholar": "d55d1d035e91220335edff0fe8f5d249d8c4a00b"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 22,
+    "top10": false,
+    "lexical_rank": 11,
+    "source_references": [
+      28
+    ]
+  },
+  {
+    "target": "2210.03629",
+    "probe": "Chain-of-Thought",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 8,
+    "identifiers": {
+      "arxiv": "2201.11903",
+      "doi": "10.52202/068431-1800",
+      "semantic_scholar": "1b6e810ce0afd0dd093f789d2b2742d047e316d5"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 22,
+    "top10": false,
+    "lexical_rank": 5,
+    "source_references": [
+      29
+    ]
+  },
+  {
+    "target": "2210.03629",
+    "probe": "Scratchpads",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 2,
+    "identifiers": {
+      "arxiv": "2112.00114",
+      "semantic_scholar": "92173d081b15824d22a9ef070e118744ceee8052"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 12,
+    "top10": false,
+    "lexical_rank": 24,
+    "source_references": [
+      20
+    ]
+  },
+  {
+    "target": "2210.03629",
+    "probe": "SayCan",
+    "independent_before": true,
+    "independent_after": true,
+    "old_lexical_rank": 11,
+    "identifiers": {
+      "arxiv": "2204.01691",
+      "semantic_scholar": "cb5e3f085caefd1f3d5e08637ab55d39e61234fc"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 16,
+    "top10": false,
+    "lexical_rank": 15,
+    "source_references": [
+      2
+    ]
+  },
+  {
+    "target": "2210.03629",
+    "probe": "WebGPT",
+    "independent_before": false,
+    "independent_after": true,
+    "old_lexical_rank": null,
+    "identifiers": {
+      "arxiv": "2112.09332",
+      "semantic_scholar": "2f3efe44083af91cef562c1a3451eee2f8601d22"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "arxiv_id",
+    "eligibility": "eligible",
+    "canonical_rank": 23,
+    "top10": false,
+    "lexical_rank": 19,
+    "source_references": [
+      19
+    ]
+  },
+  {
+    "target": "2210.03629",
+    "probe": "Keep CALM and Explore",
+    "independent_before": false,
+    "independent_after": true,
+    "old_lexical_rank": null,
+    "identifiers": {
+      "arxiv": "2010.02903",
+      "doi": "10.18653/v1/2020.emnlp-main.704",
+      "semantic_scholar": "8aed57b61457655e8354f1b68b34ed1cc0a222ef"
+    },
+    "resolution_status": "resolved",
+    "resolution_method": "doi",
+    "eligibility": "eligible",
+    "canonical_rank": 11,
+    "top10": false,
+    "lexical_rank": 9,
+    "source_references": [
+      31
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+# Keep generated regression data separate from application review on GitHub.
+tests/fixtures/evaluation/** binary linguist-generated=true
+tests/fixtures/*.json.gz binary linguist-generated=true
+frontend/src/data/demo.json linguist-generated=true
+src/paper_review/llm/data/* linguist-vendored=true
+src/paper_review/llm/data/*.tiktoken binary

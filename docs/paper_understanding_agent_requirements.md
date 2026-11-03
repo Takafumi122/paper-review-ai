@@ -1,3 +1,10 @@
+# Deprecated / superseded
+
+2026-09-19: この文書は旧案・履歴資料です。現行仕様は [requirements.md](requirements.md)、[architecture.md](architecture.md)、[evaluation.md](evaluation.md) を参照してください。
+旧本文を以下にそのまま保存しています。旧本文の重み、API構成、入力範囲、未決事項は現行仕様ではありません。
+
+---
+
 # 論文理解支援AIエージェント 簡易要件定義書
 
 ## 1. 文書概要

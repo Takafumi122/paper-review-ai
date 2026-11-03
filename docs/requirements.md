@@ -1,5 +1,14 @@
 # Paper Understanding Agent - Requirements Specification
 
+Status: Canonical MVP requirements. Updated: 2026-09-19.
+
+2026-09-19のユーザーDecisionを反映した要件の正本。
+詳細仕様は [Architecture](architecture.md)、[Research Lineage](research-lineage.md)、
+[Scoring](scoring-lineage.md)、[LLM Execution](llm-execution-spec.md)、
+[Evaluation](evaluation.md)、[Evaluation Papers](thesis-choosing.md) を参照する。
+承認済みDecisionと実装上の初期設定・未決事項の区別は
+[ADR-0001](../ADR/0001-mvp-decisions.md) に記録する。
+
 ## 1. Document Purpose
 
 This document defines the MVP requirements for a paper-understanding support system focused on LLM/NLP research papers.
@@ -76,12 +85,17 @@ Examples:
 
 ## 4.2 Supported Papers
 
-A paper must satisfy all of the following:
+A Target Paper must satisfy all of the following:
 
 1. written in English,
 2. available on arXiv,
 3. full text can be retrieved,
 4. primarily empirical or systems-oriented rather than theory-heavy.
+
+Target input is an arXiv URL. Related/predecessor papers need not be on arXiv.
+A related paper without sufficient accessible body text or reliable evidence
+must not produce a `supported` Lineage Edge. Private/restricted manuscripts
+are not uploaded or sent to the LLM.
 
 ---
 
@@ -180,8 +194,12 @@ MVP constraints:
 
 ```text
 max_depth = 3
-max_papers = 5
+max_predecessor_papers = 5
 ```
+
+The Target Paper is excluded from the five-paper limit. Depth is the maximum
+number of edges on any path to the Target Paper, not the number of paper nodes.
+Shorten the lineage when sufficient evidence is unavailable.
 
 The system may stop earlier if a shorter lineage sufficiently explains the target contribution.
 
@@ -209,9 +227,13 @@ Acting ┘
 MVP constraints:
 
 ```text
-max_branches = 2
-branch_depth = 1
+max_branch_points = 1
+max_incoming_lineages = 2
 ```
+
+The expected shape is two research lines merging, principally at the Target
+Paper. Branching/merging must be justified by the Target's major contribution.
+Graph constraints and edge direction are defined in [Research Lineage](research-lineage.md).
 
 Branching must not be used merely because multiple related papers exist.
 
@@ -246,10 +268,15 @@ They may appear as contextual references or evaluation context.
 Determine temporal precedence using the following priority:
 
 ```text
-1. publication_date
-2. arXiv submitted date
-3. publication_year
+1. earliest verifiable public release date
+2. arXiv first submitted date
+3. publication date
+4. publication year
 ```
+
+Prefer the first date on which the research became publicly available.
+Retain date precision and provenance; do not substitute a revised submission
+date for first submission. Apply temporal checks to each predecessor edge.
 
 A paper is treated as a predecessor only if it can be confirmed to have appeared before the Target Paper.
 
@@ -312,7 +339,7 @@ Candidate Ranking
     ↓
 Contribution Relevance Evaluation
     ↓
-Top 3–5 Papers
+Up to 5 Predecessor Papers (Target excluded)
     ↓
 Lineage Construction
 ```
@@ -321,6 +348,46 @@ MVP candidate sources:
 
 - Target Paper references
 - Semantic Scholar recommendations
+
+Candidate pool target: 30–50 papers; fewer are allowed when retrieval is incomplete.
+Extract at most three main Target Contributions. Stage 1 selects at most Top 10:
+
+```text
+InitialScore = 0.40 × SemanticSimilarity
+             + 0.35 × CitationRelation
+             + 0.25 × CitationImportance
+
+FinalScore = 0.40 × AdjustedContributionRelevance
+           + 0.25 × SemanticSimilarity
+           + 0.20 × CitationRelation
+           + 0.15 × CitationImportance
+```
+
+All metrics are normalized to [0, 1]. Missing values remain `value=null` with
+`missing_reason`, never zero. OpenAlex and NormalizedImpact are excluded from MVP.
+Normalization, missing-value aggregation, and the unresolved adjustment policy
+are specified in [Scoring](scoring-lineage.md). FinalScore is not EdgeConfidence.
+
+On 2026-11-02 the user approved Stage 1 selection policy `lower-bound-v1`:
+select at most Top 10 by the fixed-weight lower bound, then coverage, then canonical ID.
+Keep InitialScore, nullable metrics, missing reasons, provenance and the upper bound separately.
+All-missing candidates remain unranked. Stage 2 scoring and tie-breaks are unchanged;
+the new selection policy does not establish quality acceptance or live readiness.
+
+GPT-5.6 Luna evaluates Contribution Relevance using an integer rubric:
+
+| Score | Meaning |
+|---:|---|
+| 0 | Target Contributionとほぼ無関係 |
+| 1 | 同一研究領域だがLineage上の直接関係は弱い |
+| 2 | Target Paperの前提となる関連研究 |
+| 3 | Target Paperが解こうとした問題・制約を直接含む重要な先行研究 |
+| 4 | Target Contributionの成立に直接つながる中核的先行研究 |
+
+`ContributionRelevance = score / 4`.
+`AdjustedContributionRelevance` is a separate field. On 2026-10-30 the user approved
+`identity-v1`: it equals `ContributionRelevance` in the initial release. FinalScore
+weights remain unchanged; live-contract and quality verification are still required.
 
 Later extension:
 
@@ -333,7 +400,7 @@ Later extension:
 
 Each lineage edge receives a confidence value.
 
-Initial MVP formula:
+Confirmed MVP formula:
 
 ```text
 EdgeConfidence
@@ -346,10 +413,24 @@ EdgeConfidence
 Classification:
 
 ```text
-0.80–1.00 → supported
-0.50–0.79 → uncertain
-0.00–0.49 → insufficient_evidence
+0.80 <= score <= 1.00 → supported
+0.50 <= score < 0.80  → uncertain
+0.00 <= score < 0.50  → insufficient_evidence
 ```
+
+Use the unrounded score for classification. Evidence Confidence rubric:
+
+| Score | Meaning |
+|---:|---|
+| 1.00 | 論文本文に直接的なEvidenceがある |
+| 0.75 | Introduction / Related Work等から強く裏付けられる |
+| 0.50 | 間接的なEvidenceのみ |
+| 0.00 | Evidenceを確認できない |
+
+Classify by support for the specific relationship, not by section title alone.
+ContributionRelationshipScore evaluates the specific from/to edge, rather than
+reusing the candidate's relevance to Target for every edge. Its operational rubric
+is defined in [Scoring](scoring-lineage.md).
 
 Hard rule:
 
@@ -380,7 +461,8 @@ Example edge:
   "from_paper_id": "paper_a",
   "to_paper_id": "paper_b",
   "relationship": "paper_b addresses a limitation of paper_a",
-  "confidence": 0.86,
+  "confidence": 0.0,
+  "status": "insufficient_evidence",
   "evidence": []
 }
 ```
@@ -661,14 +743,17 @@ Example:
 Use the following priority order:
 
 ```text
-1. Paper body
-2. Author official page / project page
-3. Academic API metadata
-4. Reliable external academic / technical sources
-5. Other web sources
+1. Target Paper
+2. Related Paper
+3. Author / Project official source
+4. Reliable Academic / Technical source
 ```
 
-Higher-priority evidence should be preferred when available.
+This is the MVP Background Knowledge source priority. Prefer higher-priority
+sources when they support the claim. Academic API metadata remains authoritative
+for bibliographic fields, but is not sufficient evidence for a causal relationship.
+No unlimited Web Search is implemented. Bounded source retrieval is specified in
+[Architecture](architecture.md).
 
 ---
 
@@ -825,7 +910,8 @@ Concept Extraction             LLM
 Knowledge Generation           LLM
 ```
 
-The project may perform agentic search, but it is **not** a fully autonomous agent architecture.
+Candidate/source retrieval is bounded and controlled by application code.
+The project is **not** a fully autonomous agent architecture.
 
 ---
 
@@ -860,7 +946,7 @@ High-level decisions:
 
 Use for:
 
-- metadata extraction,
+- extraction from retrieved text where needed (API metadata is never guessed),
 - contribution candidate extraction,
 - research problem extraction,
 - concept extraction,
@@ -957,9 +1043,11 @@ Reuse existing analysis when all of the following match:
 
 ```text
 Paper
+Paper revision / content hash / parser version
 Pipeline Version
-Prompt Version
-Model
+Prompt Version / prompt hash / schema version
+Provider / Model / generation settings
+Input source hashes / scoring policy version
 ```
 
 A change to any relevant execution version allows re-analysis.
@@ -1124,6 +1212,10 @@ docs/thesis-choosing.md
 
 # 38. UI Requirements
 
+UI and generated explanations are Japanese. Original Evidence quotes are English
+and remain verbatim. Preserve proper names, titles, and bibliographic metadata.
+English examples in this specification describe structure, not UI copy.
+
 ## 38.1 Primary Result View
 
 Show:
@@ -1200,13 +1292,15 @@ This is a soft target to measure and improve, not a hard SLA.
 
 ## 40.2 LLM Cost
 
-Per-paper target:
+Initial-analysis target per paper:
 
 ```text
 LLM cost <= USD 1.00
 ```
 
-Cost must be measurable per analysis job.
+Cost must be measurable per analysis job. User-requested detailed JIT Knowledge
+generation is recorded separately from initial analysis. Also retain cumulative
+paper-level cost across all analyses, retries and on-demand generations.
 
 ---
 
@@ -1258,7 +1352,7 @@ Required examples:
 
 # 41. Security and Data Retention
 
-MVP supports only publicly available arXiv papers.
+Target input supports publicly available arXiv papers. Related papers may be non-arXiv.
 
 Rules:
 
@@ -1268,6 +1362,15 @@ Rules:
 4. Only necessary text sections should be sent to the external LLM.
 5. Raw paper body text should not be stored in application logs.
 6. Metadata and derived structured outputs may be persisted.
+7. PaperSection (section, page, text) extracted from public arXiv papers may be
+   persisted in the DB for evidence revalidation, Reasoning regeneration,
+   prompt-version reruns and on-demand JIT Knowledge.
+8. Store revision/content hash and span locations so evidence stays reproducible.
+9. Do not interpret this permission as blanket permanent full-text storage of
+   non-arXiv sources; default to necessary evidence excerpts and metadata there.
+10. Clean temporary PDFs on both success and failure; recover orphaned temporary
+    files after crashes. Do not put body text, prompts containing it, or raw
+    provider responses into application/error logs.
 
 ---
 
@@ -1384,9 +1487,9 @@ The MVP is complete when all of the following are possible.
 - [ ] Extract Target Paper contributions
 - [ ] Retrieve candidate predecessor papers
 - [ ] Rank candidates
-- [ ] Select up to 5 lineage papers
-- [ ] Support up to 3 generations
-- [ ] Support at most one meaningful branch
+- [ ] Select up to 5 predecessor papers, excluding Target
+- [ ] Support paths of at most 3 edges to Target; allow shorter paths
+- [ ] Support at most one contribution-justified merge of two incoming lineages
 - [ ] Separate contemporary work from predecessors
 - [ ] Store LineageEdge evidence
 - [ ] Return confidence state
@@ -1420,6 +1523,9 @@ The MVP is complete when all of the following are possible.
 - [ ] `partial_completed` is supported
 - [ ] Cache can reuse identical analysis configurations
 - [ ] LLM usage and cost are measurable
+- [ ] Initial and on-demand costs are separate; cumulative paper cost is available
+- [ ] UI/explanations are Japanese and original Evidence is English
+- [ ] Public arXiv section text is reusable in DB; temporary PDFs are deleted
 
 ## Evaluation
 
@@ -1433,27 +1539,28 @@ The MVP is complete when all of the following are possible.
 
 # 47. Deferred Decisions
 
-The following do **not** block implementation and may be decided during system architecture / implementation:
+Phase 0 technical defaults are documented in [Architecture](architecture.md).
+The following do **not** block Phase 0 and may be finalized during their implementation phases:
 
 - database technology,
 - queue implementation,
-- Redis usage,
 - frontend framework,
 - backend framework,
 - PDF parsing library,
 - graph visualization library,
 - deployment environment,
-- OpenAlex integration,
-- Crossref integration,
-- vector database usage.
+- quality thresholds and annotation procedure before final evaluation.
 
-These are implementation choices rather than unresolved product requirements.
+Redis, Vector DB and Agent Framework are not needed in the initial architecture.
+OpenAlex/Crossref integration is outside MVP. Remaining specification gates,
+including AdjustedContributionRelevance, are tracked in [ADR-0001](../ADR/0001-mvp-decisions.md).
 
 ---
 
 # 48. Next Phase
 
-Requirements definition is considered sufficiently complete for MVP implementation.
+Requirements definition is sufficiently complete to begin Phase 0 infrastructure.
+This does not imply that Stage 2 ranking or quality acceptance is fully settled.
 
 The next phase should proceed in this order:
 

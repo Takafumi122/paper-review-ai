@@ -1,0 +1,3222 @@
+{
+  "status": "passed",
+  "pipeline_version": "full-v32",
+  "cases": [
+    {
+      "aid": "1706.03762",
+      "selection_policy_version": "lower-bound-v1",
+      "weights": {
+        "semantic_similarity": 0.4,
+        "citation_relation": 0.35,
+        "citation_importance": 0.25
+      },
+      "top_k": 10,
+      "ranked": [
+        {
+          "id": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+          "title": "Convolutional Sequence to Sequence Learning",
+          "rank": 1,
+          "score": {
+            "semantic_similarity": 0.9781482734652307,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9287593093860923,
+            "selection_lower_bound": 0.9287593093860923,
+            "selection_upper_bound": 0.9287593093860923,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9781482734652307,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "43428880d75b3a14257c3ee9bda054e61eb869c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "43428880d75b3a14257c3ee9bda054e61eb869c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:3:p2:c0",
+                  "arxiv:1706.03762:v7:sec:3:p2:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "98445f4172659ec5e891e031d8202c102135c644",
+          "title": "Neural Machine Translation in Linear Time",
+          "rank": 2,
+          "score": {
+            "semantic_similarity": 0.9756699595299441,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9277679838119777,
+            "selection_lower_bound": 0.9277679838119777,
+            "selection_upper_bound": 0.9277679838119777,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9756699595299441,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "98445f4172659ec5e891e031d8202c102135c644"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "98445f4172659ec5e891e031d8202c102135c644"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:3:p2:c0",
+                  "arxiv:1706.03762:v7:sec:3:p2:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+          "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+          "rank": 3,
+          "score": {
+            "semantic_similarity": 0.9723705826742544,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9264482330697017,
+            "selection_lower_bound": 0.9264482330697017,
+            "selection_upper_bound": 0.9264482330697017,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9723705826742544,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "510e26733aaff585d65701b9f1be7ca9d5afc586"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "510e26733aaff585d65701b9f1be7ca9d5afc586"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c400",
+                  "arxiv:1706.03762:v7:sec:2:p2:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "4550a4c714920ef57d19878e31c9ebae37b049b2",
+          "title": "Massive Exploration of Neural Machine Translation Architectures",
+          "rank": 4,
+          "score": {
+            "semantic_similarity": 0.9687157450099063,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9249862980039625,
+            "selection_lower_bound": 0.9249862980039625,
+            "selection_upper_bound": 0.9249862980039625,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9687157450099063,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "4550a4c714920ef57d19878e31c9ebae37b049b2"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "4550a4c714920ef57d19878e31c9ebae37b049b2"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:7:p4:c1200",
+                  "arxiv:1706.03762:v7:sec:7:p4:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+          "title": "Can Active Memory Replace Attention?",
+          "rank": 5,
+          "score": {
+            "semantic_similarity": 0.9675813063175704,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9245325225270282,
+            "selection_lower_bound": 0.9245325225270282,
+            "selection_upper_bound": 0.9245325225270282,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9675813063175704,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "735d547fc75e0772d2a78c46a1cc5fad7da1474c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "735d547fc75e0772d2a78c46a1cc5fad7da1474c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:3:p2:c0",
+                  "arxiv:1706.03762:v7:sec:3:p2:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "13d9323a8716131911bfda048a40e2cde1a76a46",
+          "title": "Structured Attention Networks",
+          "rank": 6,
+          "score": {
+            "semantic_similarity": 0.9640511641576939,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9231204656630776,
+            "selection_lower_bound": 0.9231204656630776,
+            "selection_upper_bound": 0.9231204656630776,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9640511641576939,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "13d9323a8716131911bfda048a40e2cde1a76a46"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "13d9323a8716131911bfda048a40e2cde1a76a46"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c1200",
+                  "arxiv:1706.03762:v7:sec:2:p2:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "79baf48bd560060549998d7b61751286de062e2a",
+          "title": "Factorization tricks for LSTM networks",
+          "rank": 7,
+          "score": {
+            "semantic_similarity": 0.957232482640193,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9203929930560772,
+            "selection_lower_bound": 0.9203929930560772,
+            "selection_upper_bound": 0.9203929930560772,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.957232482640193,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "79baf48bd560060549998d7b61751286de062e2a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "79baf48bd560060549998d7b61751286de062e2a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c400",
+                  "arxiv:1706.03762:v7:sec:2:p2:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+          "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies",
+          "rank": 8,
+          "score": {
+            "semantic_similarity": 0.9557323466727805,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9197929386691122,
+            "selection_lower_bound": 0.9197929386691122,
+            "selection_upper_bound": 0.9197929386691122,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9557323466727805,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:13:p6:c800",
+                  "arxiv:1706.03762:v7:sec:3:p2:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "b60abe57bc195616063be10638c6437358c81d1e",
+          "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation",
+          "rank": 9,
+          "score": {
+            "semantic_similarity": 0.9763147347243892,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.8655258938897556,
+            "selection_lower_bound": 0.8655258938897556,
+            "selection_upper_bound": 0.8655258938897556,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9763147347243892,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "b60abe57bc195616063be10638c6437358c81d1e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "b60abe57bc195616063be10638c6437358c81d1e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:18:p8:c0",
+                  "arxiv:1706.03762:v7:sec:18:p8:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+          "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+          "rank": 10,
+          "score": {
+            "semantic_similarity": 0.9745798628732628,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.8648319451493052,
+            "selection_lower_bound": 0.8648319451493052,
+            "selection_upper_bound": 0.8648319451493052,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9745798628732628,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "c6850869aa5e78a107c378d2e8bfa39633158c0c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "c6850869aa5e78a107c378d2e8bfa39633158c0c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:18:p8:c0",
+                  "arxiv:1706.03762:v7:sec:18:p8:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+          "title": "Multi-task Sequence to Sequence Learning",
+          "rank": 11,
+          "score": {
+            "semantic_similarity": 0.9742149289161195,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.8646859715664478,
+            "selection_lower_bound": 0.8646859715664478,
+            "selection_upper_bound": 0.8646859715664478,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9742149289161195,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "d76c07211479e233f7c6a6f32d5346c983c5598f"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "d76c07211479e233f7c6a6f32d5346c983c5598f"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:22:p10:c0",
+                  "arxiv:1706.03762:v7:sec:22:p10:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "7345843e87c81e24e42264859b214d26042f8d51",
+          "title": "Recurrent Neural Network Grammars",
+          "rank": 12,
+          "score": {
+            "semantic_similarity": 0.973393218773527,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.8643572875094108,
+            "selection_lower_bound": 0.8643572875094108,
+            "selection_upper_bound": 0.8643572875094108,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.973393218773527,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "7345843e87c81e24e42264859b214d26042f8d51"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "7345843e87c81e24e42264859b214d26042f8d51"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:22:p10:c0",
+                  "arxiv:1706.03762:v7:sec:22:p10:c400",
+                  "arxiv:1706.03762:v7:sec:22:p10:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+          "title": "Self-Training PCFG Grammars with Latent Annotations Across Languages",
+          "rank": 13,
+          "score": {
+            "semantic_similarity": 0.9631317183048889,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.8602526873219556,
+            "selection_lower_bound": 0.8602526873219556,
+            "selection_upper_bound": 0.8602526873219556,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9631317183048889,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "5bfd8d40bc071fffaf93685a46974b122ee4239d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "5bfd8d40bc071fffaf93685a46974b122ee4239d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:22:p10:c0",
+                  "arxiv:1706.03762:v7:sec:22:p10:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "174bbdb96252454cbb40a9c4e53335996235a008",
+          "title": "Fast and Accurate Shift-Reduce Constituent Parsing",
+          "rank": 14,
+          "score": {
+            "semantic_similarity": 0.9625735421060422,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.8600294168424168,
+            "selection_lower_bound": 0.8600294168424168,
+            "selection_upper_bound": 0.8600294168424168,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9625735421060422,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "174bbdb96252454cbb40a9c4e53335996235a008"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "174bbdb96252454cbb40a9c4e53335996235a008"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:22:p10:c0",
+                  "arxiv:1706.03762:v7:sec:22:p10:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "f52de7242e574b70410ca6fb70b79c811919fc00",
+          "title": "Learning Accurate, Compact, and Interpretable Tree Annotation",
+          "rank": 15,
+          "score": {
+            "semantic_similarity": 0.9617111844675458,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.8596844737870183,
+            "selection_lower_bound": 0.8596844737870183,
+            "selection_upper_bound": 0.8596844737870183,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9617111844675458,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "f52de7242e574b70410ca6fb70b79c811919fc00"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "f52de7242e574b70410ca6fb70b79c811919fc00"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:22:p10:c0",
+                  "arxiv:1706.03762:v7:sec:22:p10:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "78a9513e70f596077179101f6cb6eadc51602039",
+          "title": "Effective Self-Training for Parsing",
+          "rank": 16,
+          "score": {
+            "semantic_similarity": 0.9613055661477425,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.859522226459097,
+            "selection_lower_bound": 0.859522226459097,
+            "selection_upper_bound": 0.859522226459097,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9613055661477425,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "78a9513e70f596077179101f6cb6eadc51602039"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "78a9513e70f596077179101f6cb6eadc51602039"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:22:p10:c0",
+                  "arxiv:1706.03762:v7:sec:22:p10:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+          "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+          "rank": 17,
+          "score": {
+            "semantic_similarity": 0.9459502347189,
+            "citation_relation": 1.0,
+            "citation_importance": 0.5,
+            "initial_score": 0.85338009388756,
+            "selection_lower_bound": 0.85338009388756,
+            "selection_upper_bound": 0.85338009388756,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9459502347189,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "5b6ec746d309b165f9f9def873a2375b6fb40f3d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "5b6ec746d309b165f9f9def873a2375b6fb40f3d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.5,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:13:p7:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "rank": 18,
+          "score": {
+            "semantic_similarity": 0.976681737592288,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.8031726950369152,
+            "selection_lower_bound": 0.8031726950369152,
+            "selection_upper_bound": 0.8031726950369152,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.976681737592288,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "93499a7c7f699b6630a86fad964536f9423bb6d0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "93499a7c7f699b6630a86fad964536f9423bb6d0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+          "title": "End-To-End Memory Networks",
+          "rank": 19,
+          "score": {
+            "semantic_similarity": 0.9724084704830527,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.801463388193221,
+            "selection_lower_bound": 0.801463388193221,
+            "selection_upper_bound": 0.801463388193221,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9724084704830527,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:3:p2:c1200",
+                  "arxiv:1706.03762:v7:sec:3:p2:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "rank": 20,
+          "score": {
+            "semantic_similarity": 0.9722869499110091,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.8014147799644036,
+            "selection_lower_bound": 0.8014147799644036,
+            "selection_upper_bound": 0.8014147799644036,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9722869499110091,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+          "title": "Sequence to Sequence Learning with Neural Networks",
+          "rank": 21,
+          "score": {
+            "semantic_similarity": 0.9706805548873836,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.8007722219549535,
+            "selection_lower_bound": 0.8007722219549535,
+            "selection_upper_bound": 0.8007722219549535,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9706805548873836,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "cea967b59209c6be22829699f05b8b1ac4dc092d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "cea967b59209c6be22829699f05b8b1ac4dc092d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+          "title": "Exploring the Limits of Language Modeling",
+          "rank": 22,
+          "score": {
+            "semantic_similarity": 0.9669431447823886,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7992772579129555,
+            "selection_lower_bound": 0.7992772579129555,
+            "selection_upper_bound": 0.7992772579129555,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9669431447823886,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "13fe71da009484f240c46f14d9330e932f8de210",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "rank": 23,
+          "score": {
+            "semantic_similarity": 0.9666730271843602,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.799169210873744,
+            "selection_lower_bound": 0.799169210873744,
+            "selection_upper_bound": 0.799169210873744,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9666730271843602,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "13fe71da009484f240c46f14d9330e932f8de210"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "13fe71da009484f240c46f14d9330e932f8de210"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:3:p2:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+          "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+          "rank": 24,
+          "score": {
+            "semantic_similarity": 0.9658647050867597,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7988458820347039,
+            "selection_lower_bound": 0.7988458820347039,
+            "selection_upper_bound": 0.7988458820347039,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9658647050867597,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "0b544dfe355a5070b60986319a3f51fb45d1348e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "0b544dfe355a5070b60986319a3f51fb45d1348e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c0",
+                  "arxiv:1706.03762:v7:sec:4:p2:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "1518039b5001f1836565215eb047526b3ac7f462",
+          "title": "Neural Machine Translation of Rare Words with Subword Units",
+          "rank": 25,
+          "score": {
+            "semantic_similarity": 0.9615403175654237,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7971161270261695,
+            "selection_lower_bound": 0.7971161270261695,
+            "selection_upper_bound": 0.7971161270261695,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9615403175654237,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "1518039b5001f1836565215eb047526b3ac7f462"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "1518039b5001f1836565215eb047526b3ac7f462"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:13:gap1361-1362",
+                  "arxiv:1706.03762:v7:sec:13:p6:c1200",
+                  "arxiv:1706.03762:v7:sec:13:p7:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+          "title": "A Deep Reinforced Model for Abstractive Summarization",
+          "rank": 26,
+          "score": {
+            "semantic_similarity": 0.9593508518337032,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7962403407334813,
+            "selection_lower_bound": 0.7962403407334813,
+            "selection_upper_bound": 0.7962403407334813,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9593508518337032,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "032274e57f7d8b456bd255fe76b909b2c1d7458e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "032274e57f7d8b456bd255fe76b909b2c1d7458e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:3:p2:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+          "title": "Long Short-Term Memory",
+          "rank": 27,
+          "score": {
+            "semantic_similarity": 0.9578505427549922,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7956402171019968,
+            "selection_lower_bound": 0.7956402171019968,
+            "selection_upper_bound": 0.7956402171019968,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9578505427549922,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "2e9d221c206e9503ceb452302d68d10e293f2a10"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "2e9d221c206e9503ceb452302d68d10e293f2a10"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "ac3ee98020251797c2b401e1389461df88e52e62",
+          "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+          "rank": 28,
+          "score": {
+            "semantic_similarity": 0.9550409632544468,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7945163853017787,
+            "selection_lower_bound": 0.7945163853017787,
+            "selection_upper_bound": 0.7945163853017787,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9550409632544468,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "ac3ee98020251797c2b401e1389461df88e52e62"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "ac3ee98020251797c2b401e1389461df88e52e62"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:2:p2:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "rank": 29,
+          "score": {
+            "semantic_similarity": 0.9506709162093943,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7927683664837577,
+            "selection_lower_bound": 0.7927683664837577,
+            "selection_upper_bound": 0.7927683664837577,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9506709162093943,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:4:p2:c0",
+                  "arxiv:1706.03762:v7:sec:4:p2:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+          "title": "A Structured Self-attentive Sentence Embedding",
+          "rank": 30,
+          "score": {
+            "semantic_similarity": 0.9496703332431068,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7923681332972428,
+            "selection_lower_bound": 0.7923681332972428,
+            "selection_upper_bound": 0.7923681332972428,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9496703332431068,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "204a4a70428f3938d2c538a4d74c7ae0416306d8"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "204a4a70428f3938d2c538a4d74c7ae0416306d8"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762:v7:sec:3:p2:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+          "title": "Using the Output Embedding to Improve Language Models",
+          "rank": 31,
+          "score": {
+            "semantic_similarity": 0.9599447151878396,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.9786371814335144,
+            "selection_lower_bound": 0.7339778860751358,
+            "selection_upper_bound": 0.9839778860751358,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_uncertain"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9599447151878396,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "63e39cdf1ad884da6bc69096bb3413b5b1100559"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "63e39cdf1ad884da6bc69096bb3413b5b1100559"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_uncertain",
+                "source_ids": [
+                  "63e39cdf1ad884da6bc69096bb3413b5b1100559"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "34f25a8704614163c4095b3ee2fc969b60de4698",
+          "title": "Dropout: a simple way to prevent neural networks from overfitting",
+          "rank": 32,
+          "score": {
+            "semantic_similarity": 0.9528500595257059,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.9748533650803765,
+            "selection_lower_bound": 0.7311400238102823,
+            "selection_upper_bound": 0.9811400238102823,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_uncertain"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9528500595257059,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "34f25a8704614163c4095b3ee2fc969b60de4698"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "34f25a8704614163c4095b3ee2fc969b60de4698"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_uncertain",
+                "source_ids": [
+                  "34f25a8704614163c4095b3ee2fc969b60de4698"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+          "title": "Layer Normalization",
+          "rank": 33,
+          "score": {
+            "semantic_similarity": 0.9463218369265276,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.9713716463608147,
+            "selection_lower_bound": 0.7285287347706111,
+            "selection_upper_bound": 0.9785287347706111,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_uncertain"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9463218369265276,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "97fb4e3d45bb098e27e0071448b6152217bd35a5"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "97fb4e3d45bb098e27e0071448b6152217bd35a5"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_uncertain",
+                "source_ids": [
+                  "97fb4e3d45bb098e27e0071448b6152217bd35a5"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+          "title": "Rethinking the Inception Architecture for Computer Vision",
+          "rank": 34,
+          "score": {
+            "semantic_similarity": 0.9447309765650915,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.9705231875013821,
+            "selection_lower_bound": 0.7278923906260366,
+            "selection_upper_bound": 0.9778923906260366,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_uncertain"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9447309765650915,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:1706.03762",
+                  "23ffaa0fe06eae05817f527a47ac3291077f9e58"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "23ffaa0fe06eae05817f527a47ac3291077f9e58"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_uncertain",
+                "source_ids": [
+                  "23ffaa0fe06eae05817f527a47ac3291077f9e58"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        }
+      ],
+      "top10_incomplete": 0,
+      "full_order_matches_approved_comparison": true,
+      "original_scores_metrics_and_provenance_unchanged": true
+    },
+    {
+      "aid": "2106.09685",
+      "selection_policy_version": "lower-bound-v1",
+      "weights": {
+        "semantic_similarity": 0.4,
+        "citation_relation": 0.35,
+        "citation_importance": 0.25
+      },
+      "top_k": 10,
+      "ranked": [
+        {
+          "id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+          "title": "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning",
+          "rank": 1,
+          "score": {
+            "semantic_similarity": 0.9781566825708261,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9287626730283305,
+            "selection_lower_bound": 0.9287626730283305,
+            "selection_upper_bound": 0.9287626730283305,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9781566825708261,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:p2:c0",
+                  "arxiv:2106.09685:v2:sec:2:p2:c400",
+                  "arxiv:2106.09685:v2:sec:6:p4:c0",
+                  "arxiv:2106.09685:v2:sec:6:p4:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+          "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "rank": 2,
+          "score": {
+            "semantic_similarity": 0.9712871295971102,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.926014851838844,
+            "selection_lower_bound": 0.926014851838844,
+            "selection_upper_bound": 0.926014851838844,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9712871295971102,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:p1:c0",
+                  "arxiv:2106.09685:v2:sec:2:p1:c400",
+                  "arxiv:2106.09685:v2:sec:2:p1:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+          "title": "Language Models are Few-Shot Learners",
+          "rank": 3,
+          "score": {
+            "semantic_similarity": 0.9697479994442304,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9253991997776921,
+            "selection_lower_bound": 0.9253991997776921,
+            "selection_upper_bound": 0.9253991997776921,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9697479994442304,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "90abbc2cf38462b954ae1b772fac9532e2ccd8b0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "90abbc2cf38462b954ae1b772fac9532e2ccd8b0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:p1:c400",
+                  "arxiv:2106.09685:v2:sec:2:p1:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+          "title": "Parameter-Efficient Transfer Learning for NLP",
+          "rank": 4,
+          "score": {
+            "semantic_similarity": 0.9661923783035662,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9239769513214264,
+            "selection_lower_bound": 0.9239769513214264,
+            "selection_upper_bound": 0.9239769513214264,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9661923783035662,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+                  "arxiv:2106.09685:v2:sec:2:p1:c1200",
+                  "arxiv:2106.09685:v2:sec:2:p2:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+          "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+          "rank": 5,
+          "score": {
+            "semantic_similarity": 0.9660192742373519,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9239077096949407,
+            "selection_lower_bound": 0.9239077096949407,
+            "selection_upper_bound": 0.9239077096949407,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9660192742373519,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+                  "arxiv:2106.09685:v2:sec:2:p1:c1200",
+                  "arxiv:2106.09685:v2:sec:2:p2:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+          "title": "WARP: Word-level Adversarial ReProgramming",
+          "rank": 6,
+          "score": {
+            "semantic_similarity": 0.9648267955711007,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9234307182284403,
+            "selection_lower_bound": 0.9234307182284403,
+            "selection_upper_bound": 0.9234307182284403,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9648267955711007,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c2000",
+                  "arxiv:2106.09685:v2:sec:14:p9:c2400",
+                  "arxiv:2106.09685:v2:sec:4:p3:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "1187c70c4011f935642084e84186284ac0add3d0",
+          "title": "Exploring Versatile Generative Language Model Via Parameter-Efficient Transfer Learning",
+          "rank": 7,
+          "score": {
+            "semantic_similarity": 0.9639406928208061,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9230762771283224,
+            "selection_lower_bound": 0.9230762771283224,
+            "selection_upper_bound": 0.9230762771283224,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9639406928208061,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "1187c70c4011f935642084e84186284ac0add3d0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "1187c70c4011f935642084e84186284ac0add3d0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:4:p3:c1200",
+                  "arxiv:2106.09685:v2:sec:4:p3:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+          "title": "Low-rank plus diagonal adaptation for deep neural networks",
+          "rank": 8,
+          "score": {
+            "semantic_similarity": 0.9637769660723366,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9230107864289346,
+            "selection_lower_bound": 0.9230107864289346,
+            "selection_upper_bound": 0.9230107864289346,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9637769660723366,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "33aa588c89401cbc22a2f4d2fb121d10909a6f18"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "33aa588c89401cbc22a2f4d2fb121d10909a6f18"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c2800",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+          "title": "GPT Understands, Too",
+          "rank": 9,
+          "score": {
+            "semantic_similarity": 0.9618911829253917,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9222564731701567,
+            "selection_lower_bound": 0.9222564731701567,
+            "selection_upper_bound": 0.9222564731701567,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9618911829253917,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "bc37c6bdb8f39929a58b30464f72d6aa46cddc17"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "bc37c6bdb8f39929a58b30464f72d6aa46cddc17"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+                  "arxiv:2106.09685:v2:sec:2:p1:c1200",
+                  "arxiv:2106.09685:v2:sec:2:p2:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "5cea23330c76994cb626df20bed31cc2588033df",
+          "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets",
+          "rank": 10,
+          "score": {
+            "semantic_similarity": 0.9617917060757801,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9222166824303121,
+            "selection_lower_bound": 0.9222166824303121,
+            "selection_upper_bound": 0.9222166824303121,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9617917060757801,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "5cea23330c76994cb626df20bed31cc2588033df"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "5cea23330c76994cb626df20bed31cc2588033df"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c2800",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d",
+          "title": "Extracting deep neural network bottleneck features using low-rank matrix factorization",
+          "rank": 11,
+          "score": {
+            "semantic_similarity": 0.9556302728785265,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9197521091514106,
+            "selection_lower_bound": 0.9197521091514106,
+            "selection_upper_bound": 0.9197521091514106,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9556302728785265,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c2800",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "78b29eba4d6c836483c0aa67d637205e95223ae4",
+          "title": "Semi-Orthogonal Low-Rank Matrix Factorization for Deep Neural Networks",
+          "rank": 12,
+          "score": {
+            "semantic_similarity": 0.9529444904151307,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9186777961660523,
+            "selection_lower_bound": 0.9186777961660523,
+            "selection_upper_bound": 0.9186777961660523,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9529444904151307,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "78b29eba4d6c836483c0aa67d637205e95223ae4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "78b29eba4d6c836483c0aa67d637205e95223ae4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c2800",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+          "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions",
+          "rank": 13,
+          "score": {
+            "semantic_similarity": 0.9503806082947965,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9176522433179186,
+            "selection_lower_bound": 0.9176522433179186,
+            "selection_upper_bound": 0.9176522433179186,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9503806082947965,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "021fc345d40d3e6332cd2ef276e2eaa5e71102e4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "021fc345d40d3e6332cd2ef276e2eaa5e71102e4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c2800",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "d849c09c319f2ce12efc14bddc7581ab9aa688ac",
+          "title": "What Can ResNet Learn Efficiently, Going Beyond Kernels?",
+          "rank": 14,
+          "score": {
+            "semantic_similarity": 0.9483152994009033,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9168261197603613,
+            "selection_lower_bound": 0.9168261197603613,
+            "selection_upper_bound": 0.9168261197603613,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9483152994009033,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "d849c09c319f2ce12efc14bddc7581ab9aa688ac"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "d849c09c319f2ce12efc14bddc7581ab9aa688ac"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3600",
+                  "arxiv:2106.09685:v2:sec:14:p9:c4000"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "d89ee98810039d2061ed42ee8026da49c503d16b",
+          "title": "Learning multiple visual domains with residual adapters",
+          "rank": 15,
+          "score": {
+            "semantic_similarity": 0.9417102984106082,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9141841193642433,
+            "selection_lower_bound": 0.9141841193642433,
+            "selection_upper_bound": 0.9141841193642433,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9417102984106082,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "d89ee98810039d2061ed42ee8026da49c503d16b"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "d89ee98810039d2061ed42ee8026da49c503d16b"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+                  "arxiv:2106.09685:v2:sec:2:p1:c1200",
+                  "arxiv:2106.09685:v2:sec:2:p2:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c0",
+                  "arxiv:2106.09685:v2:sec:4:p3:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "d55d1d035e91220335edff0fe8f5d249d8c4a00b",
+          "title": "Measuring the Intrinsic Dimension of Objective Landscapes",
+          "rank": 16,
+          "score": {
+            "semantic_similarity": 0.9410528700651604,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9139211480260642,
+            "selection_lower_bound": 0.9139211480260642,
+            "selection_upper_bound": 0.9139211480260642,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9410528700651604,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "d55d1d035e91220335edff0fe8f5d249d8c4a00b"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "d55d1d035e91220335edff0fe8f5d249d8c4a00b"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:2:p2:c0",
+                  "arxiv:2106.09685:v2:sec:2:p2:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "104d03a10c7692f0973b39ade83406a49b064ba9",
+          "title": "Backward Feature Correction: How Deep Learning Performs Deep (Hierarchical) Learning",
+          "rank": 17,
+          "score": {
+            "semantic_similarity": 0.9408118511717176,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.913824740468687,
+            "selection_lower_bound": 0.913824740468687,
+            "selection_upper_bound": 0.913824740468687,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9408118511717176,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "104d03a10c7692f0973b39ade83406a49b064ba9"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "104d03a10c7692f0973b39ade83406a49b064ba9"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3600",
+                  "arxiv:2106.09685:v2:sec:14:p9:c4000"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "23c84238f9b15d7fd87a95d3b16882a21b953d8a",
+          "title": "Feature Purification: How Adversarial Training Performs Robust Deep Learning",
+          "rank": 18,
+          "score": {
+            "semantic_similarity": 0.93921205113304,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.913184820453216,
+            "selection_lower_bound": 0.913184820453216,
+            "selection_upper_bound": 0.913184820453216,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.93921205113304,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "23c84238f9b15d7fd87a95d3b16882a21b953d8a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "23c84238f9b15d7fd87a95d3b16882a21b953d8a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c3600",
+                  "arxiv:2106.09685:v2:sec:14:p9:c4000"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "00c3bfcc503e675e640cb92d71611f0e43bf43dc",
+          "title": "When do neural networks outperform kernel methods?",
+          "rank": 19,
+          "score": {
+            "semantic_similarity": 0.9385945096290436,
+            "citation_relation": 1.0,
+            "citation_importance": 0.75,
+            "initial_score": 0.9129378038516174,
+            "selection_lower_bound": 0.9129378038516174,
+            "selection_upper_bound": 0.9129378038516174,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9385945096290436,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "00c3bfcc503e675e640cb92d71611f0e43bf43dc"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "00c3bfcc503e675e640cb92d71611f0e43bf43dc"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.75,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c3200",
+                  "arxiv:2106.09685:v2:sec:14:p9:c3600",
+                  "arxiv:2106.09685:v2:sec:14:p9:c4000"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+          "title": "Attention is All you Need",
+          "rank": 20,
+          "score": {
+            "semantic_similarity": 0.9643969037563012,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7982587615025205,
+            "selection_lower_bound": 0.7982587615025205,
+            "selection_upper_bound": 0.7982587615025205,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9643969037563012,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "204e3073870fae3d05bcbc2f6a8e263d9b72e776"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "204e3073870fae3d05bcbc2f6a8e263d9b72e776"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p8:c0",
+                  "arxiv:2106.09685:v2:sec:2:p2:c2400",
+                  "arxiv:2106.09685:v2:sec:2:p2:c2800",
+                  "arxiv:2106.09685:v2:sec:3:p2:c0",
+                  "arxiv:2106.09685:v2:sec:3:p2:c400"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "rank": 21,
+          "score": {
+            "semantic_similarity": 0.9615276509358749,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.79711106037435,
+            "selection_lower_bound": 0.79711106037435,
+            "selection_upper_bound": 0.79711106037435,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9615276509358749,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "df2b0e26d0599ce3e70df8a9da02e51594e0e992"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "df2b0e26d0599ce3e70df8a9da02e51594e0e992"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:10:p7:c0",
+                  "arxiv:2106.09685:v2:sec:14:gap486-487",
+                  "arxiv:2106.09685:v2:sec:14:p8:c0",
+                  "arxiv:2106.09685:v2:sec:14:p8:c400",
+                  "arxiv:2106.09685:v2:sec:14:p9:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "87da4c27f7b2ddac63654458b06c9d708d042f6a",
+          "title": "Feature Learning in Infinite-Width Neural Networks",
+          "rank": 22,
+          "score": {
+            "semantic_similarity": 0.9593456598998655,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7962382639599462,
+            "selection_lower_bound": 0.7962382639599462,
+            "selection_upper_bound": 0.7962382639599462,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9593456598998655,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "87da4c27f7b2ddac63654458b06c9d708d042f6a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "87da4c27f7b2ddac63654458b06c9d708d042f6a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:6:p4:c1200"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "57458bc1cffe5caa45a885af986d70f723f406b4",
+          "title": "A unified architecture for natural language processing: deep neural networks with multitask learning",
+          "rank": 23,
+          "score": {
+            "semantic_similarity": 0.9500786770702184,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7925314708280874,
+            "selection_lower_bound": 0.7925314708280874,
+            "selection_upper_bound": 0.7925314708280874,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9500786770702184,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "57458bc1cffe5caa45a885af986d70f723f406b4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "57458bc1cffe5caa45a885af986d70f723f406b4"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b",
+          "title": "Generalization Guarantees for Neural Networks via Harnessing the Low-rank Structure of the Jacobian",
+          "rank": 24,
+          "score": {
+            "semantic_similarity": 0.948702292850705,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.791980917140282,
+            "selection_lower_bound": 0.791980917140282,
+            "selection_upper_bound": 0.791980917140282,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.948702292850705,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:14:p9:c2800"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096",
+          "title": "SemEval-2017 Task 1: Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation",
+          "rank": 25,
+          "score": {
+            "semantic_similarity": 0.9393193548243786,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7882277419297514,
+            "selection_lower_bound": 0.7882277419297514,
+            "selection_upper_bound": 0.7882277419297514,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9393193548243786,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:22:gap461-462",
+                  "arxiv:2106.09685:v2:sec:22:p17:c0",
+                  "arxiv:2106.09685:v2:sec:22:p17:c400",
+                  "arxiv:2106.09685:v2:sec:22:p18:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "687bac2d3320083eb4530bf18bb8f8f721477600",
+          "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
+          "rank": 26,
+          "score": {
+            "semantic_similarity": 0.9375402357350794,
+            "citation_relation": 1.0,
+            "citation_importance": 0.25,
+            "initial_score": 0.7875160942940318,
+            "selection_lower_bound": 0.7875160942940318,
+            "selection_upper_bound": 0.7875160942940318,
+            "coverage": 1.0,
+            "status": "complete",
+            "missing_components": [],
+            "missing_reasons": {},
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9375402357350794,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "687bac2d3320083eb4530bf18bb8f8f721477600"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "687bac2d3320083eb4530bf18bb8f8f721477600"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": 0.25,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685:v2:sec:22:gap461-462",
+                  "arxiv:2106.09685:v2:sec:22:p17:c0",
+                  "arxiv:2106.09685:v2:sec:22:p17:c400",
+                  "arxiv:2106.09685:v2:sec:22:p18:c0"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "page-boundary-v31"
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "f93f2476972228de142fde13913bccbec76859b8",
+          "title": "Initialization and Regularization of Factorized Neural Layers",
+          "rank": 27,
+          "score": {
+            "semantic_similarity": 0.9679282974712105,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.9828950919846456,
+            "selection_lower_bound": 0.7371713189884842,
+            "selection_upper_bound": 0.9871713189884841,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_not_identified"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9679282974712105,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "f93f2476972228de142fde13913bccbec76859b8"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "f93f2476972228de142fde13913bccbec76859b8"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_not_identified",
+                "source_ids": [
+                  "f93f2476972228de142fde13913bccbec76859b8"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "1882f194cb43828852cc052887671e55a80f945a",
+          "title": "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+          "rank": 28,
+          "score": {
+            "semantic_similarity": 0.9661043058756517,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.9819222964670141,
+            "selection_lower_bound": 0.7364417223502606,
+            "selection_upper_bound": 0.9864417223502606,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_not_identified"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9661043058756517,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "1882f194cb43828852cc052887671e55a80f945a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "1882f194cb43828852cc052887671e55a80f945a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_not_identified",
+                "source_ids": [
+                  "1882f194cb43828852cc052887671e55a80f945a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "45dfef0cc1ed96558c1c650432ce39d6a1050b6a",
+          "title": "Fixing Weight Decay Regularization in Adam",
+          "rank": 29,
+          "score": {
+            "semantic_similarity": 0.9519684637116663,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.974383180646222,
+            "selection_lower_bound": 0.7307873854846665,
+            "selection_upper_bound": 0.9807873854846665,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_uncertain"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9519684637116663,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "45dfef0cc1ed96558c1c650432ce39d6a1050b6a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "45dfef0cc1ed96558c1c650432ce39d6a1050b6a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_uncertain",
+                "source_ids": [
+                  "45dfef0cc1ed96558c1c650432ce39d6a1050b6a"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        },
+        {
+          "id": "42ec3db12a2e4628885451b13035c2e975220a25",
+          "title": "A Convergence Theory for Deep Learning via Over-Parameterization",
+          "rank": 30,
+          "score": {
+            "semantic_similarity": 0.9473629116630256,
+            "citation_relation": 1.0,
+            "citation_importance": null,
+            "initial_score": 0.9719268862202802,
+            "selection_lower_bound": 0.7289451646652102,
+            "selection_upper_bound": 0.9789451646652103,
+            "coverage": 0.75,
+            "status": "partial",
+            "missing_components": [
+              "citation_importance"
+            ],
+            "missing_reasons": {
+              "citation_importance": "citation_context_not_identified"
+            },
+            "component_details": {
+              "semantic_similarity": {
+                "value": 0.9473629116630256,
+                "missing_reason": null,
+                "source_ids": [
+                  "arxiv:2106.09685",
+                  "42ec3db12a2e4628885451b13035c2e975220a25"
+                ],
+                "normalization_version": "2",
+                "calculation_source": "specter2"
+              },
+              "citation_relation": {
+                "value": 1.0,
+                "missing_reason": null,
+                "source_ids": [
+                  "42ec3db12a2e4628885451b13035c2e975220a25"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              },
+              "citation_importance": {
+                "value": null,
+                "missing_reason": "citation_context_not_identified",
+                "source_ids": [
+                  "42ec3db12a2e4628885451b13035c2e975220a25"
+                ],
+                "normalization_version": "2",
+                "calculation_source": null
+              }
+            },
+            "scoring_version": "2"
+          }
+        }
+      ],
+      "top10_incomplete": 0,
+      "full_order_matches_approved_comparison": true,
+      "original_scores_metrics_and_provenance_unchanged": true
+    }
+  ],
+  "new_provider_calls": 0,
+  "new_llm_cost_usd": 0,
+  "readiness_changed": false,
+  "comparison_artifacts_sha256": {
+    "results.json": "0dd266f45f9c48d14d689bff3dfdac53b857800e79134ce77034683999147e80",
+    "policy-comparison.json": "bd5f0ef775529bdf37d3c62b8072651cb7a1f9d520a110e732b4c11dbbe37558"
+  }
+}

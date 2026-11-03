@@ -1,0 +1,41 @@
+from paper_review.infrastructure.academic_api.arxiv import (
+    ArXivClient,
+    ArXivDownloadError,
+    ArXivError,
+    ArXivHttpError,
+    ArXivNotFoundError,
+    ArXivParseError,
+    ArXivRateLimitError,
+    ArXivSecurityError,
+)
+from paper_review.infrastructure.academic_api.semantic_scholar import (
+    S2Citation,
+    S2Paper,
+    S2Reference,
+    SemanticScholarClient,
+    SemanticScholarError,
+    SemanticScholarHttpError,
+    SemanticScholarNotFoundError,
+    SemanticScholarParseError,
+    SemanticScholarRateLimitError,
+)
+
+__all__ = [
+    "ArXivClient",
+    "ArXivDownloadError",
+    "ArXivError",
+    "ArXivHttpError",
+    "ArXivNotFoundError",
+    "ArXivParseError",
+    "ArXivRateLimitError",
+    "ArXivSecurityError",
+    "S2Citation",
+    "S2Paper",
+    "S2Reference",
+    "SemanticScholarClient",
+    "SemanticScholarError",
+    "SemanticScholarHttpError",
+    "SemanticScholarNotFoundError",
+    "SemanticScholarParseError",
+    "SemanticScholarRateLimitError",
+]
