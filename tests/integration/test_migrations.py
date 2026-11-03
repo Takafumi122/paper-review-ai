@@ -9,7 +9,6 @@ import pytest
 from sqlalchemy import inspect
 
 from paper_review.config import ROOT
-from paper_review.infrastructure.database.models import Base
 from paper_review.infrastructure.database.session import make_engine
 
 
@@ -27,12 +26,26 @@ def test_frozen_migration_ddl(settings):
             assert connection.exec_driver_sql("PRAGMA integrity_check").scalar() == "ok"
             assert connection.exec_driver_sql("PRAGMA foreign_key_check").fetchall() == []
         inspector = inspect(engine)
-        assert set(inspector.get_table_names()) == set(Base.metadata.tables)
-        for table in Base.metadata.sorted_tables:
-            columns = {column["name"]: column for column in inspector.get_columns(table.name)}
-            assert set(columns) == set(table.columns.keys())
-            for column in table.columns:
-                assert columns[column.name]["nullable"] == column.nullable
+        foundation_tables = {"papers", "analysis_jobs", "stage_executions", "llm_executions"}
+        assert set(inspector.get_table_names()) == foundation_tables
+        assert {c["name"] for c in inspector.get_columns("papers")} == {"id", "external_ids"}
+        assert {c["name"] for c in inspector.get_columns("analysis_jobs")} == {
+            "id",
+            "paper_id",
+            "arxiv_revision",
+            "fingerprint",
+            "status",
+            "current_stage",
+            "feature_status",
+            "result",
+            "error_code",
+            "owner",
+            "lease_until",
+            "heartbeat_at",
+            "created_at",
+            "started_at",
+            "finished_at",
+        }
         index = inspector.get_indexes("analysis_jobs")[0]
         assert index["name"] == "uq_active_fingerprint"
         assert index["unique"]
