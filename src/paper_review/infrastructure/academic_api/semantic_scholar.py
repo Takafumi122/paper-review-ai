@@ -32,7 +32,7 @@ logger = logging.getLogger("paper_review")
 
 DEFAULT_S2_API_URL = "https://api.semanticscholar.org/graph/v1"
 DEFAULT_USER_AGENT = (
-    "paper-review-ai/0.1.0 (https://github.com/Takafumi122/paper-reading-assistant)"
+    "paper-review-ai/0.1.0 (https://github.com/Takafumi122/paper-review-ai)"
 )
 DEFAULT_TIMEOUT_SECONDS = 30.0
 DEFAULT_RATE_LIMIT_DELAY = 1.0  # All endpoints share the workspace-wide send gate too.

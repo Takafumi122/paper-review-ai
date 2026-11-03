@@ -6,7 +6,8 @@ import type { Candidate, DemoPaper } from './demo';
 import { LiveApp } from './LiveApp';
 import './style.css';
 
-const repository = 'https://github.com/Takafumi122/paper-reading-assistant';
+const repository = 'https://github.com/Takafumi122/paper-review-ai';
+const previewOnly = import.meta.env.VITE_RECORDED_PREVIEW === 'true';
 const papers = samples.papers as DemoPaper[];
 const filters = [
   ['all', 'すべて'], ['top10', '参考 Top 10'], ['eligible', '対象候補'],
@@ -125,9 +126,9 @@ function Explorer() {
 }
 
 function App() {
-  const [local, setLocal] = useState(false);
+  const [local, setLocal] = useState(previewOnly);
   return <><header className="site-header"><a className="brand" href="./"><span className="brand-mark" aria-hidden="true">p<span>r</span></span><span>Paper Review AI<small>Paper understanding, with evidence.</small></span></a>
-    <nav aria-label="メインナビゲーション">{<button className="text-button" onClick={() => setLocal(v => !v)}>{local ? '論文を解析する' : '記録データを見る'}</button>}<ExternalLink href={repository}>GitHub</ExternalLink></nav></header>
+    <nav aria-label="メインナビゲーション">{!previewOnly && <button className="text-button" onClick={() => setLocal(v => !v)}>{local ? '論文を解析する' : '記録データを見る'}</button>}<ExternalLink href={repository}>GitHub</ExternalLink></nav></header>
     <main className={local ? 'local-demo' : ''}>{local ? <Explorer /> : <LiveApp />}</main>
     <footer className="site-footer"><span>Paper Review AI <span>—</span> 論文を評価するのではなく、理解を支える。</span><div><span>根拠を確認できない関係は確定しません</span><ExternalLink href={`${repository}/blob/main/README.md`}>開発状況・起動方法</ExternalLink></div></footer>
   </>;

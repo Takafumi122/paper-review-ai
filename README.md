@@ -23,8 +23,8 @@ Semantic Scholar（S2）は2026-11-03の最小metadataリクエストでも429�
 必要なもの：Python 3.12、[uv](https://docs.astral.sh/uv/)、Node.js 24、npm。
 
 ```sh
-git clone https://github.com/Takafumi122/paper-reading-assistant.git
-cd paper-reading-assistant
+git clone https://github.com/Takafumi122/paper-review-ai.git
+cd paper-review-ai
 npm --prefix frontend ci --no-audit --no-fund
 npm --prefix frontend run dev
 ```
