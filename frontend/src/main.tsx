@@ -6,7 +6,7 @@ import type { Candidate, DemoPaper } from './demo';
 import { LiveApp } from './LiveApp';
 import './style.css';
 
-const repository = 'https://github.com/Takafumi122/paper-reading-assistant';
+const repository = 'https://github.com/Takafumi122/paper-review-ai';
 const previewOnly = import.meta.env.VITE_RECORDED_PREVIEW === 'true';
 const papers = samples.papers as DemoPaper[];
 const filters = [
