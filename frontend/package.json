@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test src/api.test.ts"
+    "test": "node --experimental-strip-types --test src/*.test.ts"
   },
   "dependencies": {
     "react": "19.2.3",
@@ -17,11 +17,11 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "typescript": "5.9.3",
-    "vite": "7.3.1",
+    "vite": "7.3.7",
     "pyright": "1.1.408"
   },
   "overrides": {
     "esbuild": "0.27.2",
-    "rollup": "4.55.1"
+    "rollup": "4.59.0"
   }
 }
