@@ -1,0 +1,121 @@
+{
+  "decision": "pass_for_scoped_graph_diagnostic",
+  "review_date": "2026-11-03",
+  "reviewer": "Codex agent original-source inspection",
+  "not_independent_gold": true,
+  "relevance_sha256": "33d47b6247ba3f024a92f873ee2417a426926bb87914a4d9edf89f9ff8fd06cd",
+  "selection_sha256": "fdde19932f344b5bff613cdad0f27de6d29cadfc447562857d2fd3ce2c33b940",
+  "plan_sha256": "73f9fc3282d96f43ba04a8fbf01ada9eb82a36b87a22943f60b2b2a580baf623",
+  "candidate_checks": [
+    {
+      "candidate_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+      "score": 4,
+      "contribution_ids": [
+        "C1"
+      ],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+      "score": 1,
+      "contribution_ids": [],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+      "score": 1,
+      "contribution_ids": [],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+      "score": 3,
+      "contribution_ids": [
+        "C1"
+      ],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+      "score": 2,
+      "contribution_ids": [],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+      "score": 2,
+      "contribution_ids": [],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "1187c70c4011f935642084e84186284ac0add3d0",
+      "score": 3,
+      "contribution_ids": [
+        "C1"
+      ],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+      "score": 2,
+      "contribution_ids": [],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+      "score": 2,
+      "contribution_ids": [],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    },
+    {
+      "candidate_id": "5cea23330c76994cb626df20bed31cc2588033df",
+      "score": 2,
+      "contribution_ids": [],
+      "quote_exact": true,
+      "identity_exact": true,
+      "source_scope_valid": true,
+      "final_score_recomputed": true
+    }
+  ],
+  "semantic_review": {
+    "Aghajanyan": "低intrinsic dimensionからLoRAの低rank更新の仮説へ進む2原文でC1への直接的着想を確認。過去研究が更新の低rankを証明したとは扱わない。",
+    "RoBERTa_GPT3": "評価対象モデル・規模の例でありscore1・貢献IDなし。RoBERTaからGPT-3限定C3への誤接続はない。",
+    "Houlsby_Lin": "adapterの構成と推論遅延という対処対象を原文で確認し、C1へのscore3を暫定的に妥当と判断。Linの1層とHoulsbyの2層を区別。",
+    "Lester_WARP_Liu2021": "入力活性・prompt長の制約という関連は根拠がある。score2と3の境界は暫定で、中心的基盤を意味しない。",
+    "Zhao_Sainath": "元ネットワークの低rank制約と、凍結モデルへの低rank更新の違いを確認。score2は一般的前提で、直接拡張を主張していない。"
+  },
+  "limitations": [
+    "Aghajanyanの理由文の「この論文」は対象を明示する表現へ改善余地あり。元の出力は書換えていない。",
+    "Sainathの補足spanは一般理論の隣接文脈で、候補固有の支持は直接引用spanから判断した。",
+    "score2/3の境界と全10整数の正式な正解率は未確定。",
+    "GraphはTargetへの関連scoreをEdgeの証拠に代用せず、個別の原文・公開順序・合流の正当性を別途確認する。",
+    "本番readiness・正式な品質合格を変更しない。"
+  ]
+}

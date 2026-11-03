@@ -1,0 +1,2627 @@
+{
+  "target": "LoRA: Low-Rank Adaptation of Large Language Models",
+  "statistics": {
+    "target_embedding_available": false,
+    "target_s2_id": null,
+    "target_model": null,
+    "target_dimension": null,
+    "target_embedding_provenance": {
+      "status": "unavailable",
+      "missing_reason": "evaluation_stopped_after_429"
+    },
+    "eligible": 30,
+    "ranked": 30,
+    "candidate_embeddings_available": 0,
+    "candidate_embeddings_missing": 30,
+    "candidate_embedding_coverage_percent": 0.0,
+    "candidate_dimensions": [],
+    "candidate_missing_reasons": {
+      "evaluation_stopped_after_429": 30
+    },
+    "metric_coverage": {
+      "semantic_similarity": 0,
+      "citation_relation": 30,
+      "citation_importance": 3
+    },
+    "score_status_counts": {
+      "partial": 30
+    },
+    "http_attempts": 0,
+    "http_statuses": []
+  },
+  "inventory_sha256": "47143f94da13b7494fa9615f391c53fca23d1d336937a0e219a54b857486a1fe",
+  "fixture_sha256": "6731668a37f6a3ed10d77860e21c7ba693c377a061571ffa58564d1d699c1798",
+  "scoring_version": "1",
+  "ranking": [
+    {
+      "rank": 1,
+      "paper_id": "00c3bfcc503e675e640cb92d71611f0e43bf43dc",
+      "title": "When do neural networks outperform kernel methods?",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "00c3bfcc503e675e640cb92d71611f0e43bf43dc"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "00c3bfcc503e675e640cb92d71611f0e43bf43dc"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "00c3bfcc503e675e640cb92d71611f0e43bf43dc"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 2,
+      "paper_id": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+      "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "021fc345d40d3e6332cd2ef276e2eaa5e71102e4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "021fc345d40d3e6332cd2ef276e2eaa5e71102e4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "021fc345d40d3e6332cd2ef276e2eaa5e71102e4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 3,
+      "paper_id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+      "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 4,
+      "paper_id": "104d03a10c7692f0973b39ade83406a49b064ba9",
+      "title": "Backward Feature Correction: How Deep Learning Performs Deep (Hierarchical) Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "104d03a10c7692f0973b39ade83406a49b064ba9"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "104d03a10c7692f0973b39ade83406a49b064ba9"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "104d03a10c7692f0973b39ade83406a49b064ba9"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 5,
+      "paper_id": "1187c70c4011f935642084e84186284ac0add3d0",
+      "title": "Exploring Versatile Generative Language Model Via Parameter-Efficient Transfer Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "1187c70c4011f935642084e84186284ac0add3d0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "1187c70c4011f935642084e84186284ac0add3d0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "1187c70c4011f935642084e84186284ac0add3d0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 6,
+      "paper_id": "1882f194cb43828852cc052887671e55a80f945a",
+      "title": "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "1882f194cb43828852cc052887671e55a80f945a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "1882f194cb43828852cc052887671e55a80f945a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "1882f194cb43828852cc052887671e55a80f945a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 7,
+      "paper_id": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+      "title": "Attention is All you Need",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "204e3073870fae3d05bcbc2f6a8e263d9b72e776"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "204e3073870fae3d05bcbc2f6a8e263d9b72e776"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "204e3073870fae3d05bcbc2f6a8e263d9b72e776"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 8,
+      "paper_id": "23c84238f9b15d7fd87a95d3b16882a21b953d8a",
+      "title": "Feature Purification: How Adversarial Training Performs Robust Deep Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "23c84238f9b15d7fd87a95d3b16882a21b953d8a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "23c84238f9b15d7fd87a95d3b16882a21b953d8a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "23c84238f9b15d7fd87a95d3b16882a21b953d8a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 9,
+      "paper_id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+      "title": "Low-rank plus diagonal adaptation for deep neural networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "33aa588c89401cbc22a2f4d2fb121d10909a6f18"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "33aa588c89401cbc22a2f4d2fb121d10909a6f18"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "33aa588c89401cbc22a2f4d2fb121d10909a6f18"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 10,
+      "paper_id": "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b",
+      "title": "Generalization Guarantees for Neural Networks via Harnessing the Low-rank Structure of the Jacobian",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 11,
+      "paper_id": "42ec3db12a2e4628885451b13035c2e975220a25",
+      "title": "A Convergence Theory for Deep Learning via Over-Parameterization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "42ec3db12a2e4628885451b13035c2e975220a25"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "42ec3db12a2e4628885451b13035c2e975220a25"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "42ec3db12a2e4628885451b13035c2e975220a25"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 12,
+      "paper_id": "45dfef0cc1ed96558c1c650432ce39d6a1050b6a",
+      "title": "Fixing Weight Decay Regularization in Adam",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "45dfef0cc1ed96558c1c650432ce39d6a1050b6a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "45dfef0cc1ed96558c1c650432ce39d6a1050b6a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "45dfef0cc1ed96558c1c650432ce39d6a1050b6a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 13,
+      "paper_id": "57458bc1cffe5caa45a885af986d70f723f406b4",
+      "title": "A unified architecture for natural language processing: deep neural networks with multitask learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "57458bc1cffe5caa45a885af986d70f723f406b4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "57458bc1cffe5caa45a885af986d70f723f406b4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "57458bc1cffe5caa45a885af986d70f723f406b4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 14,
+      "paper_id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+      "title": "WARP: Word-level Adversarial ReProgramming",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 15,
+      "paper_id": "5cea23330c76994cb626df20bed31cc2588033df",
+      "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "5cea23330c76994cb626df20bed31cc2588033df"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5cea23330c76994cb626df20bed31cc2588033df"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "5cea23330c76994cb626df20bed31cc2588033df"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 16,
+      "paper_id": "687bac2d3320083eb4530bf18bb8f8f721477600",
+      "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "687bac2d3320083eb4530bf18bb8f8f721477600"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "687bac2d3320083eb4530bf18bb8f8f721477600"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "687bac2d3320083eb4530bf18bb8f8f721477600"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 17,
+      "paper_id": "78b29eba4d6c836483c0aa67d637205e95223ae4",
+      "title": "Semi-Orthogonal Low-Rank Matrix Factorization for Deep Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "78b29eba4d6c836483c0aa67d637205e95223ae4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "78b29eba4d6c836483c0aa67d637205e95223ae4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "78b29eba4d6c836483c0aa67d637205e95223ae4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 18,
+      "paper_id": "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d",
+      "title": "Extracting deep neural network bottleneck features using low-rank matrix factorization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 19,
+      "paper_id": "87da4c27f7b2ddac63654458b06c9d708d042f6a",
+      "title": "Feature Learning in Infinite-Width Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "87da4c27f7b2ddac63654458b06c9d708d042f6a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "87da4c27f7b2ddac63654458b06c9d708d042f6a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "87da4c27f7b2ddac63654458b06c9d708d042f6a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 20,
+      "paper_id": "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096",
+      "title": "SemEval-2017 Task 1: Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 21,
+      "paper_id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+      "title": "GPT Understands, Too",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "bc37c6bdb8f39929a58b30464f72d6aa46cddc17"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "bc37c6bdb8f39929a58b30464f72d6aa46cddc17"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "bc37c6bdb8f39929a58b30464f72d6aa46cddc17"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 22,
+      "paper_id": "d55d1d035e91220335edff0fe8f5d249d8c4a00b",
+      "title": "Measuring the Intrinsic Dimension of Objective Landscapes",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "d55d1d035e91220335edff0fe8f5d249d8c4a00b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "d55d1d035e91220335edff0fe8f5d249d8c4a00b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "d55d1d035e91220335edff0fe8f5d249d8c4a00b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 23,
+      "paper_id": "d849c09c319f2ce12efc14bddc7581ab9aa688ac",
+      "title": "What Can ResNet Learn Efficiently, Going Beyond Kernels?",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "d849c09c319f2ce12efc14bddc7581ab9aa688ac"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "d849c09c319f2ce12efc14bddc7581ab9aa688ac"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "d849c09c319f2ce12efc14bddc7581ab9aa688ac"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 24,
+      "paper_id": "d89ee98810039d2061ed42ee8026da49c503d16b",
+      "title": "Learning multiple visual domains with residual adapters",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "d89ee98810039d2061ed42ee8026da49c503d16b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "d89ee98810039d2061ed42ee8026da49c503d16b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "d89ee98810039d2061ed42ee8026da49c503d16b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 25,
+      "paper_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+      "title": "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "e54ffc76d805c48660bb0fd20019ca82ac94ba0d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 26,
+      "paper_id": "f93f2476972228de142fde13913bccbec76859b8",
+      "title": "Initialization and Regularization of Factorized Neural Layers",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "f93f2476972228de142fde13913bccbec76859b8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "f93f2476972228de142fde13913bccbec76859b8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "f93f2476972228de142fde13913bccbec76859b8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 27,
+      "paper_id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+      "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 28,
+      "paper_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+      "title": "Parameter-Efficient Transfer Learning for NLP",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 29,
+      "paper_id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+      "title": "Language Models are Few-Shot Learners",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "90abbc2cf38462b954ae1b772fac9532e2ccd8b0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "90abbc2cf38462b954ae1b772fac9532e2ccd8b0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "90abbc2cf38462b954ae1b772fac9532e2ccd8b0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 30,
+      "paper_id": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2106.09685",
+              "df2b0e26d0599ce3e70df8a9da02e51594e0e992"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "df2b0e26d0599ce3e70df8a9da02e51594e0e992"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "df2b0e26d0599ce3e70df8a9da02e51594e0e992"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    }
+  ],
+  "probes": [
+    {
+      "probe": "Intrinsic Dimensionality",
+      "paper_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+      "title": "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 25,
+      "top10": false
+    },
+    {
+      "probe": "Adapters",
+      "paper_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+      "title": "Parameter-Efficient Transfer Learning for NLP",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 28,
+      "top10": false
+    },
+    {
+      "probe": "Prefix-Tuning",
+      "paper_id": "53d8b356551a2361020a948f64454a6d599af69f",
+      "title": "Prefix-Tuning: Optimizing Continuous Prompts for Generation",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": null,
+      "top10": false
+    },
+    {
+      "probe": "Measuring Intrinsic Dimension",
+      "paper_id": "d55d1d035e91220335edff0fe8f5d249d8c4a00b",
+      "title": "Measuring the Intrinsic Dimension of Objective Landscapes",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 22,
+      "top10": false
+    }
+  ],
+  "candidate_embedding_outcomes": [
+    {
+      "paper_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+      "title": "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "d849c09c319f2ce12efc14bddc7581ab9aa688ac",
+      "title": "What Can ResNet Learn Efficiently, Going Beyond Kernels?",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "104d03a10c7692f0973b39ade83406a49b064ba9",
+      "title": "Backward Feature Correction: How Deep Learning Performs Deep (Hierarchical) Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "23c84238f9b15d7fd87a95d3b16882a21b953d8a",
+      "title": "Feature Purification: How Adversarial Training Performs Robust Deep Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "42ec3db12a2e4628885451b13035c2e975220a25",
+      "title": "A Convergence Theory for Deep Learning via Over-Parameterization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:8fd8e6f37fd09e497e41d9e7",
+      "title": "Layer normalization, 2016.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+      "title": "Language Models are Few-Shot Learners",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:ccd6f82ac829eaa658d4d999",
+      "title": "A singular value thresholding algorithm for matrix completion",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096",
+      "title": "SemEval-2017 Task 1: Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "57458bc1cffe5caa45a885af986d70f723f406b4",
+      "title": "A unified architecture for natural language processing: deep neural networks with multitask learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:b8960890f47be2d4706d131d",
+      "title": "Predicting parameters in deep learning, 2014.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "475354f10798f110d34792b6d88f31d6d5cb099e",
+      "title": "Automatically Constructing a Corpus of Sentential Paraphrases",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "a4c40532e68728fbeab5d9415f6ad8e9530db360",
+      "title": "The WebNLG Challenge: Generating Text from RDF Data",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "00c3bfcc503e675e640cb92d71611f0e43bf43dc",
+      "title": "When do neural networks outperform kernel methods?",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "f9700e31a1d0ae34d4571ab056dfb268c1543349",
+      "title": "SAMSum Corpus: A Human-annotated Dialogue Dataset for Abstractive Summarization",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "e603dbdf275ce8c4d2aaf1c137b557b96a555209",
+      "title": "A literature survey of low\u2010rank tensor approximation techniques",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:DOI:10.1145/1390156",
+      "title": "Grassmann discriminant analysis: a unifying view on subspace-based learning",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+      "title": "WARP: Word-level Adversarial ReProgramming",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:cfa0d392ce770911552f0fb3",
+      "title": "Deberta: Decoding-enhanced bert with disentangled attention, 2021.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+      "title": "Parameter-Efficient Transfer Learning for NLP",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+      "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "f93f2476972228de142fde13913bccbec76859b8",
+      "title": "Initialization and Regularization of Factorized Neural Layers",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:ae3b79fd7897f7ff8e62fd89",
+      "title": "Adam: A method for stochastic optimization, 2017.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "1882f194cb43828852cc052887671e55a80f945a",
+      "title": "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+      "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "d55d1d035e91220335edff0fe8f5d249d8c4a00b",
+      "title": "Measuring the Intrinsic Dimension of Objective Landscapes",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "53d8b356551a2361020a948f64454a6d599af69f",
+      "title": "Prefix-Tuning: Optimizing Continuous Prompts for Generation",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:2716bcba59b04b3d9863ca21",
+      "title": "Learning overparameterized neural networks via stochastic gradient descent on structured data",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:1f14320ed51aee2b89ca1785",
+      "title": "Recovery guarantee of weighted low-rank ap- proximation via alternating minimization",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:b9a80e43335427be994cbb32",
+      "title": "Algorithmic regularization in over-parameterized matrix sensing and neural networks with quadratic activations",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "1187c70c4011f935642084e84186284ac0add3d0",
+      "title": "Exploring Versatile Generative Language Model Via Parameter-Efficient Transfer Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+      "title": "GPT Understands, Too",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+      "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "45dfef0cc1ed96558c1c650432ce39d6a1050b6a",
+      "title": "Fixing Weight Decay Regularization in Adam",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:267b33d893246ec78b478036",
+      "title": "Decoupled weight decay regularization, 2019.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:e50a18f3c9fa895d1ae69a5f",
+      "title": "Compacter: Efficient low-rank hypercomplex adapter layers, 2021.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "6e3f8187f8fef3e11578a73f32da07d33dbf8235",
+      "title": "DART: Open-Domain Structured Data Record to Text Generation",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "531a7f2c659787165df4fd5b4580590b953448e4",
+      "title": "The E2E Dataset: New Challenges For End-to-End Generation",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "3f1edf11bc3ca1f0ed116cf72ff51d092ad8644b",
+      "title": "Generalization Guarantees for Neural Networks via Harnessing the Low-rank Structure of the Jacobian",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:96200075dd5d01a24cf970d2",
+      "title": "Adapter- fusion: Non-destructive task composition for transfer learning, 2021.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "78b29eba4d6c836483c0aa67d637205e95223ae4",
+      "title": "Semi-Orthogonal Low-Rank Matrix Factorization for Deep Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:8bc822fdebc7e48fa55a89b5",
+      "title": "Improving Language Under- standing by Generative Pre-Training. pp. 12, a.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:a714909ee04fbfb99d6fffd1",
+      "title": "Language Models are Unsupervised Multitask Learners. pp. 24, b.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "4d1c856275744c0284312a3a50efb6ca9dc4cd4c",
+      "title": "Know What You Don\u2019t Know: Unanswerable Questions for SQuAD",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "d89ee98810039d2061ed42ee8026da49c503d16b",
+      "title": "Learning multiple visual domains with residual adapters",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:5072c2c67eddbc60a9340432",
+      "title": "Adapterdrop: On the efficiency of adapters in transformers, 2020.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "5cea23330c76994cb626df20bed31cc2588033df",
+      "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:2201d2d0b5bca0822936f4b2",
+      "title": "Megatron-lm: Training multi-billion parameter language models using model par- allelism, 2020.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "687bac2d3320083eb4530bf18bb8f8f721477600",
+      "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+      "title": "Attention is All you Need",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:f20408065308786a2342fb63",
+      "title": "Glue: A multi-task benchmark and analysis platform for natural language understanding, 2019.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:e9ffec13700d8f0d24fa27df",
+      "title": "Superglue: A stickier benchmark for general-purpose language understanding systems, 2020.",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "cb0f3ee1e98faf92429d601cdcd76c69c1e484eb",
+      "title": "Neural Network Acceptability Judgments",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+      "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:fcec98bb40e378c8ffb4ebb1",
+      "title": "Transformers: State-of-the-art natural language processing",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "87da4c27f7b2ddac63654458b06c9d708d042f6a",
+      "title": "Feature Learning in Infinite-Width Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "339b2b711fb5b228d097b03ebc3e62a521779235",
+      "title": "BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "7c5fa43e6f9a85c81e3d7b9532e3d851af638e2d",
+      "title": "Extracting deep neural network bottleneck features using low-rank matrix factorization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+      "title": "Low-rank plus diagonal adaptation for deep neural networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "cbd569036fc72ae7ff747350b91816440282596b",
+      "title": "Seq2SQL: Generating Structured Queries from Natural Language using Reinforcement Learning",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    }
+  ]
+}

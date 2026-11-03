@@ -1,0 +1,2200 @@
+{
+  "target": "ReAct: Synergizing Reasoning and Acting in Language Models",
+  "statistics": {
+    "target_embedding_available": false,
+    "target_s2_id": null,
+    "target_model": null,
+    "target_dimension": null,
+    "target_embedding_provenance": {
+      "status": "unavailable",
+      "missing_reason": "evaluation_stopped_after_429"
+    },
+    "eligible": 28,
+    "ranked": 28,
+    "candidate_embeddings_available": 0,
+    "candidate_embeddings_missing": 28,
+    "candidate_embedding_coverage_percent": 0.0,
+    "candidate_dimensions": [],
+    "candidate_missing_reasons": {
+      "evaluation_stopped_after_429": 28
+    },
+    "metric_coverage": {
+      "semantic_similarity": 0,
+      "citation_relation": 28,
+      "citation_importance": 8
+    },
+    "score_status_counts": {
+      "partial": 28
+    },
+    "http_attempts": 0,
+    "http_statuses": []
+  },
+  "inventory_sha256": "72357555a7712fb893139b45dfb88465fb104c0fa3f64de65cf68cde9cbff1fa",
+  "fixture_sha256": "6731668a37f6a3ed10d77860e21c7ba693c377a061571ffa58564d1d699c1798",
+  "scoring_version": "1",
+  "ranking": [
+    {
+      "rank": 1,
+      "paper_id": "23dd78e424d32f6a48660dcd67ce994b8a7db8be",
+      "title": "STaR: Bootstrapping Reasoning With Reasoning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "23dd78e424d32f6a48660dcd67ce994b8a7db8be"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "23dd78e424d32f6a48660dcd67ce994b8a7db8be"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "23dd78e424d32f6a48660dcd67ce994b8a7db8be"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 2,
+      "paper_id": "398a0625e8707a0b41ac58eaec51e8feb87dd7cb",
+      "title": "ALFWorld: Aligning Text and Embodied Environments for Interactive Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "398a0625e8707a0b41ac58eaec51e8feb87dd7cb"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "398a0625e8707a0b41ac58eaec51e8feb87dd7cb"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "398a0625e8707a0b41ac58eaec51e8feb87dd7cb"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 3,
+      "paper_id": "4988b3d378b79eb8669112620baf1ff4e3e536fd",
+      "title": "Text and Patterns: For Effective Chain of Thought, It Takes Two to Tango",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "4988b3d378b79eb8669112620baf1ff4e3e536fd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "4988b3d378b79eb8669112620baf1ff4e3e536fd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "4988b3d378b79eb8669112620baf1ff4e3e536fd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 4,
+      "paper_id": "4c5d4601a3a19c31da6588d2a34adfb161f68c0e",
+      "title": "Imitating Interactive Intelligence",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "4c5d4601a3a19c31da6588d2a34adfb161f68c0e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "4c5d4601a3a19c31da6588d2a34adfb161f68c0e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "4c5d4601a3a19c31da6588d2a34adfb161f68c0e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 5,
+      "paper_id": "5437e8adab596d7294124c0e798708e050e25321",
+      "title": "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "5437e8adab596d7294124c0e798708e050e25321"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5437e8adab596d7294124c0e798708e050e25321"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "5437e8adab596d7294124c0e798708e050e25321"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 6,
+      "paper_id": "5922f437512158970c417f4413bface021df5f78",
+      "title": "A Generalist Agent",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "5922f437512158970c417f4413bface021df5f78"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5922f437512158970c417f4413bface021df5f78"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "5922f437512158970c417f4413bface021df5f78"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 7,
+      "paper_id": "5d798bcee3aa66e591d627a09e27f6da56eea782",
+      "title": "Vygotsky, Luria, and the social brain.",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "5d798bcee3aa66e591d627a09e27f6da56eea782"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5d798bcee3aa66e591d627a09e27f6da56eea782"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "5d798bcee3aa66e591d627a09e27f6da56eea782"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 8,
+      "paper_id": "60ffc252bd4c055d6f6ab7d34a64d221e47aa741",
+      "title": "Inner Speech: Development, Cognitive Functions, Phenomenology, and Neurobiology",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "60ffc252bd4c055d6f6ab7d34a64d221e47aa741"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "60ffc252bd4c055d6f6ab7d34a64d221e47aa741"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "60ffc252bd4c055d6f6ab7d34a64d221e47aa741"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 9,
+      "paper_id": "74eae12620bd1c1393e268bddcb6f129a5025166",
+      "title": "Improving alignment of dialogue agents via targeted human judgements",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "74eae12620bd1c1393e268bddcb6f129a5025166"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "74eae12620bd1c1393e268bddcb6f129a5025166"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "74eae12620bd1c1393e268bddcb6f129a5025166"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 10,
+      "paper_id": "89ad3c55d74466983d8312b24142aae1f4b4879c",
+      "title": "L.S. Vygotsky and the problem of localization of functions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "89ad3c55d74466983d8312b24142aae1f4b4879c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "89ad3c55d74466983d8312b24142aae1f4b4879c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "89ad3c55d74466983d8312b24142aae1f4b4879c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 11,
+      "paper_id": "8aed57b61457655e8354f1b68b34ed1cc0a222ef",
+      "title": "Keep CALM and Explore: Language Models for Action Generation in Text-based Games",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "8aed57b61457655e8354f1b68b34ed1cc0a222ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "8aed57b61457655e8354f1b68b34ed1cc0a222ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "8aed57b61457655e8354f1b68b34ed1cc0a222ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 12,
+      "paper_id": "92173d081b15824d22a9ef070e118744ceee8052",
+      "title": "Show Your Work: Scratchpads for Intermediate Computation with Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "92173d081b15824d22a9ef070e118744ceee8052"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "92173d081b15824d22a9ef070e118744ceee8052"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "92173d081b15824d22a9ef070e118744ceee8052"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 13,
+      "paper_id": "a3076ecfed0571fbbb5217a5cc6b4b6f24f6f7dd",
+      "title": "BlenderBot 3: a deployed conversational agent that continually learns to responsibly engage",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "a3076ecfed0571fbbb5217a5cc6b4b6f24f6f7dd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "a3076ecfed0571fbbb5217a5cc6b4b6f24f6f7dd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "a3076ecfed0571fbbb5217a5cc6b4b6f24f6f7dd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 14,
+      "paper_id": "b9b220b485d2add79118ffdc2aaa148b67fa53ef",
+      "title": "Pre-Trained Language Models for Interactive Decision-Making",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "b9b220b485d2add79118ffdc2aaa148b67fa53ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "b9b220b485d2add79118ffdc2aaa148b67fa53ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "b9b220b485d2add79118ffdc2aaa148b67fa53ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 15,
+      "paper_id": "bfba05093314e52317536b6cfc8b7fded8371e02",
+      "title": "LILA: Language-Informed Latent Actions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "bfba05093314e52317536b6cfc8b7fded8371e02"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "bfba05093314e52317536b6cfc8b7fded8371e02"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "bfba05093314e52317536b6cfc8b7fded8371e02"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 16,
+      "paper_id": "cb5e3f085caefd1f3d5e08637ab55d39e61234fc",
+      "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "cb5e3f085caefd1f3d5e08637ab55d39e61234fc"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "cb5e3f085caefd1f3d5e08637ab55d39e61234fc"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "cb5e3f085caefd1f3d5e08637ab55d39e61234fc"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 17,
+      "paper_id": "d48b29889241551e1ee6622fa78c3fa4159255dd",
+      "title": "Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "d48b29889241551e1ee6622fa78c3fa4159255dd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "d48b29889241551e1ee6622fa78c3fa4159255dd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "d48b29889241551e1ee6622fa78c3fa4159255dd"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 18,
+      "paper_id": "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+      "title": "Large Language Models are Zero-Shot Reasoners",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "e7ad08848d5d7c5c47673ffe0da06af443643bda"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "e7ad08848d5d7c5c47673ffe0da06af443643bda"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "e7ad08848d5d7c5c47673ffe0da06af443643bda"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 19,
+      "paper_id": "f0a0e8b6e84207f50db4d24cc4016e40601214ef",
+      "title": "Faithful Reasoning Using Large Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "f0a0e8b6e84207f50db4d24cc4016e40601214ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "f0a0e8b6e84207f50db4d24cc4016e40601214ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "f0a0e8b6e84207f50db4d24cc4016e40601214ef"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 20,
+      "paper_id": "f3cf71c51b882fe3111d71c4bf104297d38197f8",
+      "title": "Inner Monologue: Embodied Reasoning through Planning with Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "f3cf71c51b882fe3111d71c4bf104297d38197f8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "f3cf71c51b882fe3111d71c4bf104297d38197f8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "f3cf71c51b882fe3111d71c4bf104297d38197f8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 21,
+      "paper_id": "094ff971d6a8b8ff870946c9b3ce5aa173617bfb",
+      "title": "PaLM: Scaling Language Modeling with Pathways",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "094ff971d6a8b8ff870946c9b3ce5aa173617bfb"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "094ff971d6a8b8ff870946c9b3ce5aa173617bfb"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "094ff971d6a8b8ff870946c9b3ce5aa173617bfb"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 22,
+      "paper_id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+      "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "1b6e810ce0afd0dd093f789d2b2742d047e316d5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "1b6e810ce0afd0dd093f789d2b2742d047e316d5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "1b6e810ce0afd0dd093f789d2b2742d047e316d5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 23,
+      "paper_id": "2f3efe44083af91cef562c1a3451eee2f8601d22",
+      "title": "WebGPT: Browser-assisted question-answering with human feedback",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "2f3efe44083af91cef562c1a3451eee2f8601d22"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "2f3efe44083af91cef562c1a3451eee2f8601d22"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "2f3efe44083af91cef562c1a3451eee2f8601d22"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 24,
+      "paper_id": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 25,
+      "paper_id": "659bf9ce7175e1ec266ff54359e2bd76e0b7ff31",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "659bf9ce7175e1ec266ff54359e2bd76e0b7ff31"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "659bf9ce7175e1ec266ff54359e2bd76e0b7ff31"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "659bf9ce7175e1ec266ff54359e2bd76e0b7ff31"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 26,
+      "paper_id": "7a025a90cc36e668fb69f980ee809cd7d752854e",
+      "title": "Adaptive Information Seeking for Open-Domain Question Answering",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "7a025a90cc36e668fb69f980ee809cd7d752854e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "7a025a90cc36e668fb69f980ee809cd7d752854e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "7a025a90cc36e668fb69f980ee809cd7d752854e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 27,
+      "paper_id": "92a8f7f09f3705cb5a6009a42220a6f01ea084e8",
+      "title": "Language Models as Zero-Shot Planners: Extracting Actionable Knowledge for Embodied Agents",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "92a8f7f09f3705cb5a6009a42220a6f01ea084e8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "92a8f7f09f3705cb5a6009a42220a6f01ea084e8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "92a8f7f09f3705cb5a6009a42220a6f01ea084e8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 28,
+      "paper_id": "b17cc18e4130505b939f7d527082eb6be2a7fd5b",
+      "title": "Rationale-Augmented Ensembles in Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:2210.03629",
+              "b17cc18e4130505b939f7d527082eb6be2a7fd5b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "b17cc18e4130505b939f7d527082eb6be2a7fd5b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "b17cc18e4130505b939f7d527082eb6be2a7fd5b"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    }
+  ],
+  "probes": [
+    {
+      "probe": "Chain-of-Thought",
+      "paper_id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+      "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 22,
+      "top10": false
+    },
+    {
+      "probe": "Scratchpads",
+      "paper_id": "92173d081b15824d22a9ef070e118744ceee8052",
+      "title": "Show Your Work: Scratchpads for Intermediate Computation with Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 12,
+      "top10": false
+    },
+    {
+      "probe": "SayCan",
+      "paper_id": "cb5e3f085caefd1f3d5e08637ab55d39e61234fc",
+      "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 16,
+      "top10": false
+    },
+    {
+      "probe": "WebGPT",
+      "paper_id": "2f3efe44083af91cef562c1a3451eee2f8601d22",
+      "title": "WebGPT: Browser-assisted question-answering with human feedback",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 23,
+      "top10": false
+    },
+    {
+      "probe": "Keep CALM and Explore",
+      "paper_id": "8aed57b61457655e8354f1b68b34ed1cc0a222ef",
+      "title": "Keep CALM and Explore: Language Models for Action Generation in Text-based Games",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      },
+      "rank": 11,
+      "top10": false
+    }
+  ],
+  "candidate_embedding_outcomes": [
+    {
+      "paper_id": "4c5d4601a3a19c31da6588d2a34adfb161f68c0e",
+      "title": "Imitating Interactive Intelligence",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "cb5e3f085caefd1f3d5e08637ab55d39e61234fc",
+      "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "60ffc252bd4c055d6f6ab7d34a64d221e47aa741",
+      "title": "Inner Speech: Development, Cognitive Functions, Phenomenology, and Neurobiology",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:6cbcae5bc0ba8e1ba609749a",
+      "title": "Working memory",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "094ff971d6a8b8ff870946c9b3ce5aa173617bfb",
+      "title": "PaLM: Scaling Language Modeling with Pathways",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "f0a0e8b6e84207f50db4d24cc4016e40601214ef",
+      "title": "Faithful Reasoning Using Large Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "d48b29889241551e1ee6622fa78c3fa4159255dd",
+      "title": "Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "ebf59587f8f170ff4241c42263bbfb9da5bd2135",
+      "title": "ELI5: Long Form Question Answering",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "5d798bcee3aa66e591d627a09e27f6da56eea782",
+      "title": "Vygotsky, Luria, and the social brain.",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "74eae12620bd1c1393e268bddcb6f129a5025166",
+      "title": "Improving alignment of dialogue agents via targeted human judgements",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "92a8f7f09f3705cb5a6009a42220a6f01ea084e8",
+      "title": "Language Models as Zero-Shot Planners: Extracting Actionable Knowledge for Embodied Agents",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "f3cf71c51b882fe3111d71c4bf104297d38197f8",
+      "title": "Inner Monologue: Embodied Reasoning through Planning with Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "bfba05093314e52317536b6cfc8b7fded8371e02",
+      "title": "LILA: Language-Informed Latent Actions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+      "title": "Large Language Models are Zero-Shot Reasoners",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "659bf9ce7175e1ec266ff54359e2bd76e0b7ff31",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "b9b220b485d2add79118ffdc2aaa148b67fa53ef",
+      "title": "Pre-Trained Language Models for Interactive Decision-Making",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "89ad3c55d74466983d8312b24142aae1f4b4879c",
+      "title": "L.S. Vygotsky and the problem of localization of functions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "4988b3d378b79eb8669112620baf1ff4e3e536fd",
+      "title": "Text and Patterns: For Effective Chain of Thought, It Takes Two to Tango",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "2f3efe44083af91cef562c1a3451eee2f8601d22",
+      "title": "WebGPT: Browser-assisted question-answering with human feedback",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "92173d081b15824d22a9ef070e118744ceee8052",
+      "title": "Show Your Work: Scratchpads for Intermediate Computation with Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "5922f437512158970c417f4413bface021df5f78",
+      "title": "A Generalist Agent",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:4134d2dfd2d75b58773aab3c",
+      "title": "Alfred: A benchmark for interpreting grounded instructions for everyday tasks",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "398a0625e8707a0b41ac58eaec51e8feb87dd7cb",
+      "title": "ALFWorld: Aligning Text and Embodied Environments for Interactive Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "a3076ecfed0571fbbb5217a5cc6b4b6f24f6f7dd",
+      "title": "BlenderBot 3: a deployed conversational agent that continually learns to responsibly engage",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "b1d24e8e08435b7c52335485a0d635abf9bc604c",
+      "title": "FEVER: a Large-scale Dataset for Fact Extraction and VERification",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "unresolved:206c56fb8aa5180e1ddeb031",
+      "title": "Thinking and speech",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "b17cc18e4130505b939f7d527082eb6be2a7fd5b",
+      "title": "Rationale-Augmented Ensembles in Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+      "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "22655979df781d222eaf812b0d325fa9adf11594",
+      "title": "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "8aed57b61457655e8354f1b68b34ed1cc0a222ef",
+      "title": "Keep CALM and Explore: Language Models for Action Generation in Text-based Games",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "23525374cfd3af714f3ffb7a203b1ef3253333fe",
+      "title": "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "23dd78e424d32f6a48660dcd67ce994b8a7db8be",
+      "title": "STaR: Bootstrapping Reasoning With Reasoning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "5437e8adab596d7294124c0e798708e050e25321",
+      "title": "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    },
+    {
+      "paper_id": "7a025a90cc36e668fb69f980ee809cd7d752854e",
+      "title": "Adaptive Information Seeking for Open-Domain Question Answering",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "status": "unavailable",
+        "missing_reason": "evaluation_stopped_after_429"
+      }
+    }
+  ]
+}

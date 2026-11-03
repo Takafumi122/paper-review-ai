@@ -1,0 +1,877 @@
+{
+  "status": "completed",
+  "scope": "reviewed_diagnostic_only",
+  "lineage": {
+    "status": "completed",
+    "target_id": "arxiv:2106.09685",
+    "nodes": [
+      {
+        "id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+        "title": "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning"
+      },
+      {
+        "id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "title": "Parameter-Efficient Transfer Learning for NLP"
+      }
+    ],
+    "edges": [
+      {
+        "from_paper_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+        "to_paper_id": "arxiv:2106.09685",
+        "relationship": "低い intrinsic dimension という知見から、適応時の重み更新にも低い intrinsic rank があるという仮説とLoRAの低ランク更新表現を導いた",
+        "relationship_score": 4,
+        "evidence_confidence": 1.0,
+        "evidence": [
+          {
+            "span_id": "arxiv:2106.09685:v2:sec:6:p4:c0",
+            "quote": "A neural network contains many dense layers which perform matrix multiplication. The weight\nmatrices in these layers typically have full-rank. When adapting to a specific task, Aghajanyan et al.\n(2020) shows that the pre-trained language models have a low “instrisic dimension” and can still\nlearn efficiently despite a random projection to a smaller subspace. Inspired by this, we hypothe-\nsize the "
+          },
+          {
+            "span_id": "arxiv:2106.09685:v2:sec:6:p4:c400",
+            "quote": "updates to the weights also have a low “intrinsic rank” during adaptation. For a pre-trained\nweight matrix W ∈ Rd×k, we constrain its update by representing the latter with a low-rank de-\n0\ncomposition W + ∆W = W + BA, where B ∈ Rd×r, A ∈ Rr×k, and the rank r (cid:28) min(d, k).\n0 0\nDuring training, W is frozen and does not receive gradient updates, while A and B contain trainable\n0\nparameters. No"
+          }
+        ],
+        "confidence": 1.0,
+        "status": "supported"
+      },
+      {
+        "from_paper_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "to_paper_id": "arxiv:2106.09685",
+        "relationship": "Houlsby et al. (2019) のadapter-based adaptationを既存手法として検討し、その推論レイテンシーや性能上の制約を踏まえて、推論時に追加レイテンシーを生じないLoRAの設計につなげた",
+        "relationship_score": 3,
+        "evidence_confidence": 0.75,
+        "evidence": [
+          {
+            "span_id": "arxiv:2106.09685:v2:sec:2:p2:c0",
+            "quote": "often introduce inference latency (Houlsby et al., 2019; Rebuffi et al., 2017) by extending model\ndepth or reduce the model’s usable sequence length (Li & Liang, 2021; Lester et al., 2021; Ham-\nbardzumyan et al., 2020; Liu et al., 2021) (Section 3). More importantly, these method often fail to\nmatch the fine-tuning baselines, posing a trade-off between efficiency and model quality.\nWe take inspira"
+          },
+          {
+            "span_id": "arxiv:2106.09685:v2:sec:14:p9:c1200",
+            "quote": " to perform fine-tuning in\nthe usual way due to the large checkpoint it produces and the high hardware barrier to entry since it\nhas the same memory footprint as pre-training.\nParameter-Efficient Adaptation. Many have proposed inserting adapter layers between existing\nlayers in a neural network (Houlsby et al., 2019; Rebuffi et al., 2017; Lin et al., 2020). Our method\nuses a similar bottleneck str"
+          },
+          {
+            "span_id": "arxiv:2106.09685:v2:sec:14:p9:c1600",
+            "quote": "ucture to impose a low-rank constraint on the weight updates. The\nkey functional difference is that our learned weights can be merged with the main weights during\ninference, thus not introducing any latency, which is not the case for the adapter layers (Section 3).\nA comtenporary extension of adapter is COMPACTER (Mahabadi et al., 2021), which essentially\nparametrizes the adapter layers using Kron"
+          }
+        ],
+        "confidence": 0.75,
+        "status": "uncertain"
+      }
+    ],
+    "merge_reason": "LoRAは、Aghajanyan et al. (2020) の低い intrinsic dimension に基づく低ランク更新という理論的着想と、Houlsby et al. (2019) のadapter手法およびその推論レイテンシー上の課題という実用上の動機を統合して提案されている。",
+    "missing_reason": null,
+    "contributions": {
+      "problem": "大規模な事前学習済み言語モデルを下流タスクに適応させる際、全パラメータを再学習する full fine-tuning と、タスクごとに独立したモデルを配備することのコストが、モデルの大規模化に伴って過大になるという問題。",
+      "problem_evidence": [
+        {
+          "span_id": "arxiv:2106.09685:v2:sec:1:p1:c0",
+          "quote": "An important paradigm of natural language processing consists of large-scale pre-\ntraining on general domain data and adaptation to particular tasks or domains. As\nwe pre-train larger models, full fine-tuning, which retrains all model parameters,\nbecomes less feasible. Using GPT-3 175B as an example – deploying indepen-\ndent instances of fine-tuned models, each with 175B parameters, is prohibitive"
+        },
+        {
+          "span_id": "arxiv:2106.09685:v2:sec:1:p1:c400",
+          "quote": "ly\nexpensive. We propose Low-Rank Adaptation, or LoRA, which freezes the pre-\ntrained model weights and injects trainable rank decomposition matrices into each\nlayer of the Transformer architecture, greatly reducing the number of trainable pa-\nrameters for downstream tasks. Compared to GPT-3 175B fine-tuned with Adam,\nLoRA can reduce the number of trainable parameters by 10,000 times and the\nGPU m"
+        }
+      ],
+      "contributions": [
+        {
+          "id": "C1",
+          "description": "Low-Rank Adaptation（LoRA）を提案した。事前学習済みの重み W₀ を固定し、重みの更新だけを ΔW = BA として表現して A と B を学習する。ここで B ∈ ℝ^{d×r}、A ∈ ℝ^{r×k}、r ≪ min(d, k) とする。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:1:p1:c400",
+              "quote": "ly\nexpensive. We propose Low-Rank Adaptation, or LoRA, which freezes the pre-\ntrained model weights and injects trainable rank decomposition matrices into each\nlayer of the Transformer architecture, greatly reducing the number of trainable pa-\nrameters for downstream tasks. Compared to GPT-3 175B fine-tuned with Adam,\nLoRA can reduce the number of trainable parameters by 10,000 times and the\nGPU m"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:6:p4:c400",
+              "quote": "updates to the weights also have a low “intrinsic rank” during adaptation. For a pre-trained\nweight matrix W ∈ Rd×k, we constrain its update by representing the latter with a low-rank de-\n0\ncomposition W + ∆W = W + BA, where B ∈ Rd×r, A ∈ Rr×k, and the rank r (cid:28) min(d, k).\n0 0\nDuring training, W is frozen and does not receive gradient updates, while A and B contain trainable\n0\nparameters. No"
+            }
+          ]
+        },
+        {
+          "id": "C2",
+          "description": "GPT-3 175B を Adam で full fine-tuning する場合と比較して、LoRA は学習対象のパラメータ数を 10,000 分の1に削減できると報告している。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:1:p1:c400",
+              "quote": "ly\nexpensive. We propose Low-Rank Adaptation, or LoRA, which freezes the pre-\ntrained model weights and injects trainable rank decomposition matrices into each\nlayer of the Transformer architecture, greatly reducing the number of trainable pa-\nrameters for downstream tasks. Compared to GPT-3 175B fine-tuned with Adam,\nLoRA can reduce the number of trainable parameters by 10,000 times and the\nGPU m"
+            }
+          ]
+        },
+        {
+          "id": "C3",
+          "description": "GPT-3 175B の実験では、LoRA が評価対象の3つのデータセットすべてで fine-tuning のベースラインと同等以上の性能を示したと報告している。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:13:p8:c0",
+              "quote": "As a final stress test for LoRA, we scale up to GPT-3 with 175 billion parameters. Due to the high\ntraining cost, we only report the typical standard deviation for a given task over random seeds, as\nopposed to providing one for every entry. See Section D.4 for details on the hyperparameters used.\nAs shown in Table 4, LoRA matches or exceeds the fine-tuning baseline on all three datasets. Note\nthat"
+            }
+          ]
+        }
+      ]
+    },
+    "contribution_review": {
+      "items": [
+        {
+          "item_id": "problem",
+          "claims": [
+            {
+              "text": "大規模な事前学習済み言語モデルを下流タスクに適応させる際、全パラメータを再学習する full fine-tuning と、",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:1:p1:c0"
+              ],
+              "reason": "事前学習後に特定タスクやドメインへ適応する設定と、full fine-tuning が全モデルパラメータを再学習することが明記されている。"
+            },
+            {
+              "text": "タスクごとに独立したモデルを配備することのコストが、モデルの大規模化に伴って過大になるという問題。",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:1:p1:c0",
+                "arxiv:2106.09685:v2:sec:1:p1:c400"
+              ],
+              "reason": "モデルが大きくなるほど full fine-tuning が実行困難になると述べ、GPT-3 175B の独立した微調整済みモデルを配備する費用が極めて高いことを例示している。「タスクごと」は、このタスク適応と独立したモデル配備の文脈に沿った解釈である。"
+            }
+          ]
+        },
+        {
+          "item_id": "C1",
+          "claims": [
+            {
+              "text": "Low-Rank Adaptation（LoRA）を提案した。",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:1:p1:c400"
+              ],
+              "reason": "Low-Rank Adaptation、略称 LoRA を提案すると明記されている。"
+            },
+            {
+              "text": "事前学習済みの重み W₀ を固定し、",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:6:p4:c400"
+              ],
+              "reason": "学習中は事前学習済みの重みを固定し、勾配更新を行わないと説明されている。"
+            },
+            {
+              "text": "重みの更新だけを ΔW = BA として表現して A と B を学習する。",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:6:p4:c400"
+              ],
+              "reason": "重みの更新を低ランク積 BA で表現する式と、A および B が学習対象のパラメータを持つことが示されている。"
+            },
+            {
+              "text": "ここで B ∈ ℝ^{d×r}、A ∈ ℝ^{r×k}、r ≪ min(d, k) とする。",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:6:p4:c400"
+              ],
+              "reason": "B と A の行列サイズ、およびランク r が d と k の小さい方より十分小さいという条件が記載されている。"
+            }
+          ]
+        },
+        {
+          "item_id": "C2",
+          "claims": [
+            {
+              "text": "GPT-3 175B を Adam で full fine-tuning する場合と比較して、",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:1:p1:c400"
+              ],
+              "reason": "比較対象として、Adam で fine-tuning した GPT-3 175B が明記されている。ここでの full fine-tuning という読みは、固定重みを用いる LoRA と通常の fine-tuning を対比する記述に沿っている。"
+            },
+            {
+              "text": "LoRA は学習対象のパラメータ数を 10,000 分の1に削減できると報告している。",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:1:p1:c400"
+              ],
+              "reason": "LoRA が学習対象のパラメータ数を 10,000 倍削減できるという主張が明記されており、要約の削減率と一致する。"
+            }
+          ]
+        },
+        {
+          "item_id": "C3",
+          "claims": [
+            {
+              "text": "GPT-3 175B の実験では、",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:13:p8:c0"
+              ],
+              "reason": "1750億パラメータの GPT-3 に LoRA を適用した実験であることが明記されている。"
+            },
+            {
+              "text": "LoRA が評価対象の3つのデータセットすべてで fine-tuning のベースラインと同等以上の性能を示したと報告している。",
+              "decision": "supported",
+              "evidence_span_ids": [
+                "arxiv:2106.09685:v2:sec:13:p8:c0"
+              ],
+              "reason": "表4の結果として、LoRA が3つすべてのデータセットで fine-tuning ベースラインと同等以上だったと明記されている。"
+            }
+          ]
+        }
+      ]
+    },
+    "final_ranking": [
+      {
+        "candidate_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+        "score": {
+          "value": 0.9570391706427066,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 1.0,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9287626730283305,
+        "relevance": {
+          "candidate_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+          "score": 4,
+          "contribution_ids": [
+            "C1"
+          ],
+          "reason": "この論文は、事前学習済みモデルの適応時の更新に低ランク性があるという仮説をLoRAの直接的な動機として用いており、C1の中心的な理論的着想を支えている。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:6:p4:c0",
+              "quote": "A neural network contains many dense layers which perform matrix multiplication. The weight\nmatrices in these layers typically have full-rank. When adapting to a specific task, Aghajanyan et al.\n(2020) shows that the pre-trained language models have a low “instrisic dimension” and can still\nlearn efficiently despite a random projection to a smaller subspace. Inspired by this, we hypothe-\nsize the "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p2:c400",
+              "quote": "tion from Li et al. (2018a); Aghajanyan et al. (2020) which show that the learned\nover-parametrized models in fact reside on a low intrinsic dimension. We hypothesize that the\nchange in weights during model adaptation also has a low “intrinsic rank”, leading to our proposed\nLow-Rank Adaptation (LoRA) approach. LoRA allows us to train some dense layers in a neural\nnetwork indirectly by optimizing r"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "score": {
+          "value": 0.8540480945758916,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.75,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9239769513214264,
+        "relevance": {
+          "candidate_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+          "score": 3,
+          "contribution_ids": [
+            "C1"
+          ],
+          "reason": "Adapter tuningはパラメータ効率のための既存手法として比較され、追加層による推論遅延などの制約がLoRAが対処する問題として明示されている。ただし、LoRA自体の低ランク更新の中心的着想ではない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c800",
+              "quote": "iants of adapters. We focus\non the original design by Houlsby et al. (2019) which has two adapter layers per Transformer block\nand a more recent one by Lin et al. (2020) which has only one per block but with an additional\nLayerNorm (Ba et al., 2016). While one can reduce the overall latency by pruning layers or exploit-\ning multi-task settings (Ru¨ckle´ et al., 2020; Pfeiffer et al., 2021), there "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p2:c0",
+              "quote": "often introduce inference latency (Houlsby et al., 2019; Rebuffi et al., 2017) by extending model\ndepth or reduce the model’s usable sequence length (Li & Liang, 2021; Lester et al., 2021; Ham-\nbardzumyan et al., 2020; Liu et al., 2021) (Section 3). More importantly, these method often fail to\nmatch the fine-tuning baselines, posing a trade-off between efficiency and model quality.\nWe take inspira"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c1200",
+              "quote": "is no direct ways to bypass\nthe extra compute in adapter layers. This seems like a non-issue since adapter layers are designed\nto have few parameters (sometimes <1% of the original model) by having a small bottleneck di-\nmension, which limits the FLOPs they can add. However, large neural networks rely on hardware\nparallelism to keep the latency low, and adapter layers have to be processed sequenti"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:9:p6:c2800",
+              "quote": "ormer layer. The activations computed from pre-\nvious layers are simply replaced by trainable ones. The resulting number of trainable parameters is\n|Θ| = L × d × (l + l ), where L is the number of Transformer layers.\nmodel p i\nAdapter tuning as proposed in Houlsby et al. (2019) inserts adapter layers between the self-\nattention module (and the MLP module) and the subsequent residual connection. Th"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "1187c70c4011f935642084e84186284ac0add3d0",
+        "score": {
+          "value": 0.8534851732052016,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.75,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9230762771283224,
+        "relevance": {
+          "candidate_id": "1187c70c4011f935642084e84186284ac0add3d0",
+          "score": 3,
+          "contribution_ids": [
+            "C1"
+          ],
+          "reason": "Adapterの設計と推論遅延の問題がLoRAの比較対象・対処対象として具体的に示されているため、C1が解決しようとする問題に直接関係する。ただし、LoRAの低ランク更新そのものを導出する中心的根拠ではない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:9:p6:c3200",
+              "quote": "ere are two\nfully connected layers with biases in an adapter layer with a nonlinearity in between. We call this\noriginal design AdapterH. Recently, Lin et al. (2020) proposed a more efficient design with the\nadapter layer applied only after the MLP module and after a LayerNorm. We call it AdapterL. This\nis very similar to another deign proposed in Pfeiffer et al. (2021), which we call AdapterP. We"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c800",
+              "quote": "iants of adapters. We focus\non the original design by Houlsby et al. (2019) which has two adapter layers per Transformer block\nand a more recent one by Lin et al. (2020) which has only one per block but with an additional\nLayerNorm (Ba et al., 2016). While one can reduce the overall latency by pruning layers or exploit-\ning multi-task settings (Ru¨ckle´ et al., 2020; Pfeiffer et al., 2021), there "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:21:p17:c800",
+              "quote": "by averaging\nover 100 trials. We vary the input batch size, sequence length, and the adapter bottleneck dimension\nr. We test two adapter designs: the original one by Houlsby et al. (2019), which we call AdapterH,\nand a recent, more efficient variant by Lin et al. (2020), which we call AdapterL. See Section 5.1\nfor more details on the designs. We plot the slow-down in percentage compared to the no-"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+        "score": {
+          "value": 0.754004818559338,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.5,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9239077096949407,
+        "relevance": {
+          "candidate_id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "Prompt tuningは既存の効率的適応手法の一つとして扱われ、その系列の制約が説明されているため前提的な関連はあるが、LoRAの低ランク更新を直接支える証拠はない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p2:c0",
+              "quote": "often introduce inference latency (Houlsby et al., 2019; Rebuffi et al., 2017) by extending model\ndepth or reduce the model’s usable sequence length (Li & Liang, 2021; Lester et al., 2021; Ham-\nbardzumyan et al., 2020; Liu et al., 2021) (Section 3). More importantly, these method often fail to\nmatch the fine-tuning baselines, posing a trade-off between efficiency and model quality.\nWe take inspira"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+        "score": {
+          "value": 0.7537066988927752,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.5,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9234307182284403,
+        "relevance": {
+          "candidate_id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "入力側の適応手法としてLoRAと対比され、系列モデルのスケーリング時に系列長を消費する制約が示されているため前提的な関連はあるが、LoRAの方法論の中心ではない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2400",
+              "quote": "ter et al., 2021; Hambardzumyan et al.,\n2020; Liu et al., 2021). We include comparisons with Li & Liang (2021) in our experiment section.\nHowever, this line of works can only scale up by using more special tokens in the prompt, which\ntake up available sequence length for task tokens when positional embeddings are learned.\nLow-Rank Structures in Deep Learning. Low-rank structure is very common in m"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2000",
+              "quote": "ecker products with some predetermined weight sharing\nscheme. Similarly, combining LoRA with other tensor product-based methods could potentially\nimprove its parameter efficiency, which we leave to future work. More recently, many proposed\noptimizing the input word embeddings in lieu of fine-tuning, akin to a continuous and differentiable\ngeneralization of prompt engineering (Li & Liang, 2021; Les"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+        "score": {
+          "value": 0.7534442415180842,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.5,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9230107864289346,
+        "relevance": {
+          "candidate_id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "深層学習における低ランク構造の先行研究として関連するが、提示された証拠では凍結モデルへの低ランク更新による適応を扱っていないため、LoRAのC1への関係は前提的にとどまる。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c3200",
+              "quote": "ior works\neven explicitly impose the low-rank constraint when training the original neural network (Sainath\net al., 2013; Povey et al., 2018; Zhang et al., 2014; Jaderberg et al., 2014; Zhao et al., 2016; Kho-\ndak et al., 2021; Denil et al., 2014); however, to the best of our knowledge, none of these works\nconsiders low-rank update to a frozen model for adaptation to downstream tasks. In theory li"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2800",
+              "quote": "achine learn-\ning. A lot of machine learning problems have certain intrinsic low-rank structure (Li et al., 2016;\nCai et al., 2010; Li et al., 2018b; Grasedyck et al., 2013). Moreover, it is known that for many\ndeep learning tasks, especially those with a heavily over-parametrized neural network, the learned\nneural network will enjoy low-rank properties after training (Oymak et al., 2019). Some pr"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+        "score": {
+          "value": 0.7529727957313479,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.5,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9222564731701567,
+        "relevance": {
+          "candidate_id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "入力やプロンプトを用いる効率的適応手法としてLoRAと関連するが、提示された証拠では低ランク更新行列というLoRAの中心的手法を直接支えていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2400",
+              "quote": "ter et al., 2021; Hambardzumyan et al.,\n2020; Liu et al., 2021). We include comparisons with Li & Liang (2021) in our experiment section.\nHowever, this line of works can only scale up by using more special tokens in the prompt, which\ntake up available sequence length for task tokens when positional embeddings are learned.\nLow-Rank Structures in Deep Learning. Low-rank structure is very common in m"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2000",
+              "quote": "ecker products with some predetermined weight sharing\nscheme. Similarly, combining LoRA with other tensor product-based methods could potentially\nimprove its parameter efficiency, which we leave to future work. More recently, many proposed\noptimizing the input word embeddings in lieu of fine-tuning, akin to a continuous and differentiable\ngeneralization of prompt engineering (Li & Liang, 2021; Les"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "5cea23330c76994cb626df20bed31cc2588033df",
+        "score": {
+          "value": 0.752947926518945,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.5,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9222166824303121,
+        "relevance": {
+          "candidate_id": "5cea23330c76994cb626df20bed31cc2588033df",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "ニューラルネットワーク学習における低ランク行列因子分解の先行研究として関連するが、提示された証拠では凍結済みモデルの適応における低ランク更新を扱っていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c3200",
+              "quote": "ior works\neven explicitly impose the low-rank constraint when training the original neural network (Sainath\net al., 2013; Povey et al., 2018; Zhang et al., 2014; Jaderberg et al., 2014; Zhao et al., 2016; Kho-\ndak et al., 2021; Denil et al., 2014); however, to the best of our knowledge, none of these works\nconsiders low-rank update to a frozen model for adaptation to downstream tasks. In theory li"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c3600",
+              "quote": "ter-\nature, it is known that neural networks outperform other classical learning methods, including the\ncorresponding (finite-width) neural tangent kernels (Allen-Zhu et al., 2019; Li & Liang, 2018) when\nthe underlying concept class has certain low-rank structure (Ghorbani et al., 2020; Allen-Zhu & Li,\n2019; Allen-Zhu & Li, 2020a). Another theoretical result in Allen-Zhu & Li (2020b) suggests that"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+        "score": {
+          "value": 0.6553217823992775,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.25,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.926014851838844,
+        "relevance": {
+          "candidate_id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+          "score": 1,
+          "contribution_ids": [],
+          "reason": "RoBERTaはLoRAの評価対象となる事前学習済みモデルとして使われているが、提示された証拠ではLoRAの方法論を可能にする中心的な役割は示されていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:10:p7:c0",
+              "quote": "RoBERTa (Liu et al., 2019) optimized the pre-training recipe originally proposed in BERT (Devlin\net al., 2019a) and boosted the latter’s task performance without introducing many more trainable\nparameters. While RoBERTa has been overtaken by much larger models on NLP leaderboards\nsuch as the GLUE benchmark (Wang et al., 2019) in recent years, it remains a competitive and\npopular pre-trained model "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:8:p5:c0",
+              "quote": "We evaluate the downstream task performance of LoRA on RoBERTa (Liu et al., 2019), De-\nBERTa (He et al., 2021), and GPT-2 (Radford et al., b), before scaling up to GPT-3 175B (Brown\net al., 2020). Our experiments cover a wide range of tasks, from natural language understanding\n(NLU) to generation (NLG). Specifically, we evaluate on the GLUE (Wang et al., 2019) benchmark\nfor RoBERTa and DeBERTa. We"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:10:p7:c400",
+              "quote": "for its size among practitioners. We take the pre-trained RoBERTa base\n(125M) and RoBERTa large (355M) from the HuggingFace Transformers library (Wolf et al., 2020)\nand evaluate the performance of different efficient adaptation approaches on tasks from the GLUE\nbenchmark. We also replicate Houlsby et al. (2019) and Pfeiffer et al. (2021) according to their\nsetup. To ensure a fair comparison, we ma"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+        "score": {
+          "value": 0.6549369998610576,
+          "coverage": 1.0,
+          "adjusted_contribution_relevance": 0.25,
+          "adjustment_policy_version": "identity-v1",
+          "status": "complete"
+        },
+        "initial_score": 0.9253991997776921,
+        "relevance": {
+          "candidate_id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+          "score": 1,
+          "contribution_ids": [],
+          "reason": "GPT-3は大規模モデルの例および比較対象として登場するが、提示された証拠ではLoRAの提案やその方法論を直接支えるものとは示されていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c400",
+              "quote": "guage model trained to-date with 175B parameters.\nPrompt Engineering and Fine-Tuning. While GPT-3 175B can adapt its behavior with just a\nfew additional training examples, the result depends heavily on the input prompt (Brown et al.,\n2020). This necessitates an empirical art of composing and formatting the prompt to maximize a\nmodel’s performance on a desired task, which is known as prompt enginee"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p1:c400",
+              "quote": "iginal model. As larger models are trained Weights 𝑟\nevery few months, this changes from a mere “inconvenience” for 𝑊 ∈ ℝ𝑑×𝑑\n𝑊 ∈ ℝ𝑑×𝑑\nGPT-2 (Radford et al., b) or RoBERTa large (Liu et al., 2019) to a 𝐴 = 𝒩(0, 𝜎2)\ncritical deployment challenge for GPT-3 (Brown et al., 2020) with 𝑑\n𝑑\n175 billion trainable parameters.1 x\nx\nMany sought to mitigate this by adapting only some parameters or\nFigure 1: Ou"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:20:p17:c0",
+              "quote": "Method MNLI-m (Val. Acc./%) RTE (Val. Acc./%)\nGPT-3 Few-Shot 40.6 69.0\nGPT-3 Fine-Tuned 89.5 85.4\nTable 8: Fine-tuning significantly outperforms few-shot learning on GPT-3 (Brown et al., 2020)."
+            }
+          ]
+        }
+      }
+    ],
+    "relevance": {
+      "evaluations": [
+        {
+          "candidate_id": "e54ffc76d805c48660bb0fd20019ca82ac94ba0d",
+          "score": 4,
+          "contribution_ids": [
+            "C1"
+          ],
+          "reason": "この論文は、事前学習済みモデルの適応時の更新に低ランク性があるという仮説をLoRAの直接的な動機として用いており、C1の中心的な理論的着想を支えている。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:6:p4:c0",
+              "quote": "A neural network contains many dense layers which perform matrix multiplication. The weight\nmatrices in these layers typically have full-rank. When adapting to a specific task, Aghajanyan et al.\n(2020) shows that the pre-trained language models have a low “instrisic dimension” and can still\nlearn efficiently despite a random projection to a smaller subspace. Inspired by this, we hypothe-\nsize the "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p2:c400",
+              "quote": "tion from Li et al. (2018a); Aghajanyan et al. (2020) which show that the learned\nover-parametrized models in fact reside on a low intrinsic dimension. We hypothesize that the\nchange in weights during model adaptation also has a low “intrinsic rank”, leading to our proposed\nLow-Rank Adaptation (LoRA) approach. LoRA allows us to train some dense layers in a neural\nnetwork indirectly by optimizing r"
+            }
+          ]
+        },
+        {
+          "candidate_id": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+          "score": 1,
+          "contribution_ids": [],
+          "reason": "RoBERTaはLoRAの評価対象となる事前学習済みモデルとして使われているが、提示された証拠ではLoRAの方法論を可能にする中心的な役割は示されていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:10:p7:c0",
+              "quote": "RoBERTa (Liu et al., 2019) optimized the pre-training recipe originally proposed in BERT (Devlin\net al., 2019a) and boosted the latter’s task performance without introducing many more trainable\nparameters. While RoBERTa has been overtaken by much larger models on NLP leaderboards\nsuch as the GLUE benchmark (Wang et al., 2019) in recent years, it remains a competitive and\npopular pre-trained model "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:8:p5:c0",
+              "quote": "We evaluate the downstream task performance of LoRA on RoBERTa (Liu et al., 2019), De-\nBERTa (He et al., 2021), and GPT-2 (Radford et al., b), before scaling up to GPT-3 175B (Brown\net al., 2020). Our experiments cover a wide range of tasks, from natural language understanding\n(NLU) to generation (NLG). Specifically, we evaluate on the GLUE (Wang et al., 2019) benchmark\nfor RoBERTa and DeBERTa. We"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:10:p7:c400",
+              "quote": "for its size among practitioners. We take the pre-trained RoBERTa base\n(125M) and RoBERTa large (355M) from the HuggingFace Transformers library (Wolf et al., 2020)\nand evaluate the performance of different efficient adaptation approaches on tasks from the GLUE\nbenchmark. We also replicate Houlsby et al. (2019) and Pfeiffer et al. (2021) according to their\nsetup. To ensure a fair comparison, we ma"
+            }
+          ]
+        },
+        {
+          "candidate_id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+          "score": 1,
+          "contribution_ids": [],
+          "reason": "GPT-3は大規模モデルの例および比較対象として登場するが、提示された証拠ではLoRAの提案やその方法論を直接支えるものとは示されていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c400",
+              "quote": "guage model trained to-date with 175B parameters.\nPrompt Engineering and Fine-Tuning. While GPT-3 175B can adapt its behavior with just a\nfew additional training examples, the result depends heavily on the input prompt (Brown et al.,\n2020). This necessitates an empirical art of composing and formatting the prompt to maximize a\nmodel’s performance on a desired task, which is known as prompt enginee"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p1:c400",
+              "quote": "iginal model. As larger models are trained Weights 𝑟\nevery few months, this changes from a mere “inconvenience” for 𝑊 ∈ ℝ𝑑×𝑑\n𝑊 ∈ ℝ𝑑×𝑑\nGPT-2 (Radford et al., b) or RoBERTa large (Liu et al., 2019) to a 𝐴 = 𝒩(0, 𝜎2)\ncritical deployment challenge for GPT-3 (Brown et al., 2020) with 𝑑\n𝑑\n175 billion trainable parameters.1 x\nx\nMany sought to mitigate this by adapting only some parameters or\nFigure 1: Ou"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:20:p17:c0",
+              "quote": "Method MNLI-m (Val. Acc./%) RTE (Val. Acc./%)\nGPT-3 Few-Shot 40.6 69.0\nGPT-3 Fine-Tuned 89.5 85.4\nTable 8: Fine-tuning significantly outperforms few-shot learning on GPT-3 (Brown et al., 2020)."
+            }
+          ]
+        },
+        {
+          "candidate_id": "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+          "score": 3,
+          "contribution_ids": [
+            "C1"
+          ],
+          "reason": "Adapter tuningはパラメータ効率のための既存手法として比較され、追加層による推論遅延などの制約がLoRAが対処する問題として明示されている。ただし、LoRA自体の低ランク更新の中心的着想ではない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c800",
+              "quote": "iants of adapters. We focus\non the original design by Houlsby et al. (2019) which has two adapter layers per Transformer block\nand a more recent one by Lin et al. (2020) which has only one per block but with an additional\nLayerNorm (Ba et al., 2016). While one can reduce the overall latency by pruning layers or exploit-\ning multi-task settings (Ru¨ckle´ et al., 2020; Pfeiffer et al., 2021), there "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p2:c0",
+              "quote": "often introduce inference latency (Houlsby et al., 2019; Rebuffi et al., 2017) by extending model\ndepth or reduce the model’s usable sequence length (Li & Liang, 2021; Lester et al., 2021; Ham-\nbardzumyan et al., 2020; Liu et al., 2021) (Section 3). More importantly, these method often fail to\nmatch the fine-tuning baselines, posing a trade-off between efficiency and model quality.\nWe take inspira"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c1200",
+              "quote": "is no direct ways to bypass\nthe extra compute in adapter layers. This seems like a non-issue since adapter layers are designed\nto have few parameters (sometimes <1% of the original model) by having a small bottleneck di-\nmension, which limits the FLOPs they can add. However, large neural networks rely on hardware\nparallelism to keep the latency low, and adapter layers have to be processed sequenti"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:9:p6:c2800",
+              "quote": "ormer layer. The activations computed from pre-\nvious layers are simply replaced by trainable ones. The resulting number of trainable parameters is\n|Θ| = L × d × (l + l ), where L is the number of Transformer layers.\nmodel p i\nAdapter tuning as proposed in Houlsby et al. (2019) inserts adapter layers between the self-\nattention module (and the MLP module) and the subsequent residual connection. Th"
+            }
+          ]
+        },
+        {
+          "candidate_id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "Prompt tuningは既存の効率的適応手法の一つとして扱われ、その系列の制約が説明されているため前提的な関連はあるが、LoRAの低ランク更新を直接支える証拠はない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:2:p2:c0",
+              "quote": "often introduce inference latency (Houlsby et al., 2019; Rebuffi et al., 2017) by extending model\ndepth or reduce the model’s usable sequence length (Li & Liang, 2021; Lester et al., 2021; Ham-\nbardzumyan et al., 2020; Liu et al., 2021) (Section 3). More importantly, these method often fail to\nmatch the fine-tuning baselines, posing a trade-off between efficiency and model quality.\nWe take inspira"
+            }
+          ]
+        },
+        {
+          "candidate_id": "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "入力側の適応手法としてLoRAと対比され、系列モデルのスケーリング時に系列長を消費する制約が示されているため前提的な関連はあるが、LoRAの方法論の中心ではない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2400",
+              "quote": "ter et al., 2021; Hambardzumyan et al.,\n2020; Liu et al., 2021). We include comparisons with Li & Liang (2021) in our experiment section.\nHowever, this line of works can only scale up by using more special tokens in the prompt, which\ntake up available sequence length for task tokens when positional embeddings are learned.\nLow-Rank Structures in Deep Learning. Low-rank structure is very common in m"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2000",
+              "quote": "ecker products with some predetermined weight sharing\nscheme. Similarly, combining LoRA with other tensor product-based methods could potentially\nimprove its parameter efficiency, which we leave to future work. More recently, many proposed\noptimizing the input word embeddings in lieu of fine-tuning, akin to a continuous and differentiable\ngeneralization of prompt engineering (Li & Liang, 2021; Les"
+            }
+          ]
+        },
+        {
+          "candidate_id": "1187c70c4011f935642084e84186284ac0add3d0",
+          "score": 3,
+          "contribution_ids": [
+            "C1"
+          ],
+          "reason": "Adapterの設計と推論遅延の問題がLoRAの比較対象・対処対象として具体的に示されているため、C1が解決しようとする問題に直接関係する。ただし、LoRAの低ランク更新そのものを導出する中心的根拠ではない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:9:p6:c3200",
+              "quote": "ere are two\nfully connected layers with biases in an adapter layer with a nonlinearity in between. We call this\noriginal design AdapterH. Recently, Lin et al. (2020) proposed a more efficient design with the\nadapter layer applied only after the MLP module and after a LayerNorm. We call it AdapterL. This\nis very similar to another deign proposed in Pfeiffer et al. (2021), which we call AdapterP. We"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c800",
+              "quote": "iants of adapters. We focus\non the original design by Houlsby et al. (2019) which has two adapter layers per Transformer block\nand a more recent one by Lin et al. (2020) which has only one per block but with an additional\nLayerNorm (Ba et al., 2016). While one can reduce the overall latency by pruning layers or exploit-\ning multi-task settings (Ru¨ckle´ et al., 2020; Pfeiffer et al., 2021), there "
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:21:p17:c800",
+              "quote": "by averaging\nover 100 trials. We vary the input batch size, sequence length, and the adapter bottleneck dimension\nr. We test two adapter designs: the original one by Houlsby et al. (2019), which we call AdapterH,\nand a recent, more efficient variant by Lin et al. (2020), which we call AdapterL. See Section 5.1\nfor more details on the designs. We plot the slow-down in percentage compared to the no-"
+            }
+          ]
+        },
+        {
+          "candidate_id": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "深層学習における低ランク構造の先行研究として関連するが、提示された証拠では凍結モデルへの低ランク更新による適応を扱っていないため、LoRAのC1への関係は前提的にとどまる。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c3200",
+              "quote": "ior works\neven explicitly impose the low-rank constraint when training the original neural network (Sainath\net al., 2013; Povey et al., 2018; Zhang et al., 2014; Jaderberg et al., 2014; Zhao et al., 2016; Kho-\ndak et al., 2021; Denil et al., 2014); however, to the best of our knowledge, none of these works\nconsiders low-rank update to a frozen model for adaptation to downstream tasks. In theory li"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2800",
+              "quote": "achine learn-\ning. A lot of machine learning problems have certain intrinsic low-rank structure (Li et al., 2016;\nCai et al., 2010; Li et al., 2018b; Grasedyck et al., 2013). Moreover, it is known that for many\ndeep learning tasks, especially those with a heavily over-parametrized neural network, the learned\nneural network will enjoy low-rank properties after training (Oymak et al., 2019). Some pr"
+            }
+          ]
+        },
+        {
+          "candidate_id": "bc37c6bdb8f39929a58b30464f72d6aa46cddc17",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "入力やプロンプトを用いる効率的適応手法としてLoRAと関連するが、提示された証拠では低ランク更新行列というLoRAの中心的手法を直接支えていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:4:p3:c400",
+              "quote": ", 2019; Rebuffi et al., 2017; Pfeiffer et al., 2021; Ru¨ckle´ et al., 2020) or optimizing some forms\nof the input layer activations (Li & Liang, 2021; Lester et al., 2021; Hambardzumyan et al., 2020;\nLiu et al., 2021). However, both strategies have their limitations, especially in a large-scale and\nlatency-sensitive production scenario.\nAdapter Layers Introduce Inference Latency There are many var"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2400",
+              "quote": "ter et al., 2021; Hambardzumyan et al.,\n2020; Liu et al., 2021). We include comparisons with Li & Liang (2021) in our experiment section.\nHowever, this line of works can only scale up by using more special tokens in the prompt, which\ntake up available sequence length for task tokens when positional embeddings are learned.\nLow-Rank Structures in Deep Learning. Low-rank structure is very common in m"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c2000",
+              "quote": "ecker products with some predetermined weight sharing\nscheme. Similarly, combining LoRA with other tensor product-based methods could potentially\nimprove its parameter efficiency, which we leave to future work. More recently, many proposed\noptimizing the input word embeddings in lieu of fine-tuning, akin to a continuous and differentiable\ngeneralization of prompt engineering (Li & Liang, 2021; Les"
+            }
+          ]
+        },
+        {
+          "candidate_id": "5cea23330c76994cb626df20bed31cc2588033df",
+          "score": 2,
+          "contribution_ids": [],
+          "reason": "ニューラルネットワーク学習における低ランク行列因子分解の先行研究として関連するが、提示された証拠では凍結済みモデルの適応における低ランク更新を扱っていない。",
+          "evidence": [
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c3200",
+              "quote": "ior works\neven explicitly impose the low-rank constraint when training the original neural network (Sainath\net al., 2013; Povey et al., 2018; Zhang et al., 2014; Jaderberg et al., 2014; Zhao et al., 2016; Kho-\ndak et al., 2021; Denil et al., 2014); however, to the best of our knowledge, none of these works\nconsiders low-rank update to a frozen model for adaptation to downstream tasks. In theory li"
+            },
+            {
+              "span_id": "arxiv:2106.09685:v2:sec:14:p9:c3600",
+              "quote": "ter-\nature, it is known that neural networks outperform other classical learning methods, including the\ncorresponding (finite-width) neural tangent kernels (Allen-Zhu et al., 2019; Li & Liang, 2018) when\nthe underlying concept class has certain low-rank structure (Ghorbani et al., 2020; Allen-Zhu & Li,\n2019; Allen-Zhu & Li, 2020a). Another theoretical result in Allen-Zhu & Li (2020b) suggests that"
+            }
+          ]
+        }
+      ]
+    },
+    "evidence_preparation": {
+      "e54ffc76d805c48660bb0fd20019ca82ac94ba0d": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:2:p2:c800",
+          "arxiv:2106.09685:v2:sec:6:p4:c0",
+          "arxiv:2106.09685:v2:sec:6:p4:c400"
+        ]
+      },
+      "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:10:p7:c0",
+          "arxiv:2106.09685:v2:sec:10:p7:c400",
+          "arxiv:2106.09685:v2:sec:24:p18:c0",
+          "arxiv:2106.09685:v2:sec:24:p18:c400",
+          "arxiv:2106.09685:v2:sec:2:p1:c0",
+          "arxiv:2106.09685:v2:sec:2:p1:c400",
+          "arxiv:2106.09685:v2:sec:2:p1:c800",
+          "arxiv:2106.09685:v2:sec:8:p5:c0",
+          "arxiv:2106.09685:v2:sec:8:p5:c400"
+        ]
+      },
+      "90abbc2cf38462b954ae1b772fac9532e2ccd8b0": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:gap486-487",
+          "arxiv:2106.09685:v2:sec:14:p9:c0",
+          "arxiv:2106.09685:v2:sec:14:p9:c400",
+          "arxiv:2106.09685:v2:sec:14:p9:c800",
+          "arxiv:2106.09685:v2:sec:20:gap558-559",
+          "arxiv:2106.09685:v2:sec:20:p16:c0",
+          "arxiv:2106.09685:v2:sec:20:p16:c400",
+          "arxiv:2106.09685:v2:sec:20:p17:c0",
+          "arxiv:2106.09685:v2:sec:2:p1:c0",
+          "arxiv:2106.09685:v2:sec:2:p1:c400",
+          "arxiv:2106.09685:v2:sec:2:p1:c800",
+          "arxiv:2106.09685:v2:sec:2:p2:c2000",
+          "arxiv:2106.09685:v2:sec:2:p2:c2400",
+          "arxiv:2106.09685:v2:sec:2:p2:c2800",
+          "arxiv:2106.09685:v2:sec:8:p5:c0",
+          "arxiv:2106.09685:v2:sec:8:p5:c400"
+        ]
+      },
+      "29ddc1f43f28af7c846515e32cc167bc66886d0c": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:10:p7:c0",
+          "arxiv:2106.09685:v2:sec:10:p7:c400",
+          "arxiv:2106.09685:v2:sec:10:p7:c800",
+          "arxiv:2106.09685:v2:sec:14:p9:c1200",
+          "arxiv:2106.09685:v2:sec:14:p9:c1600",
+          "arxiv:2106.09685:v2:sec:14:p9:c800",
+          "arxiv:2106.09685:v2:sec:21:p17:c1200",
+          "arxiv:2106.09685:v2:sec:21:p17:c400",
+          "arxiv:2106.09685:v2:sec:21:p17:c800",
+          "arxiv:2106.09685:v2:sec:24:p18:c0",
+          "arxiv:2106.09685:v2:sec:24:p18:c400",
+          "arxiv:2106.09685:v2:sec:24:p18:c800",
+          "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c1200",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:9:p6:c1200",
+          "arxiv:2106.09685:v2:sec:9:p6:c1600",
+          "arxiv:2106.09685:v2:sec:9:p6:c2000",
+          "arxiv:2106.09685:v2:sec:9:p6:c2400",
+          "arxiv:2106.09685:v2:sec:9:p6:c2800",
+          "arxiv:2106.09685:v2:sec:9:p6:c3200"
+        ]
+      },
+      "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800"
+        ]
+      },
+      "5a2e45ce35fb26ab70a61b424a49f8e5b4532a8e": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c2000",
+          "arxiv:2106.09685:v2:sec:14:p9:c2400",
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:4:p3:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800"
+        ]
+      },
+      "1187c70c4011f935642084e84186284ac0add3d0": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c1200",
+          "arxiv:2106.09685:v2:sec:14:p9:c1600",
+          "arxiv:2106.09685:v2:sec:14:p9:c800",
+          "arxiv:2106.09685:v2:sec:21:p17:c1200",
+          "arxiv:2106.09685:v2:sec:21:p17:c400",
+          "arxiv:2106.09685:v2:sec:21:p17:c800",
+          "arxiv:2106.09685:v2:sec:4:p3:c1200",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800",
+          "arxiv:2106.09685:v2:sec:9:p6:c2800",
+          "arxiv:2106.09685:v2:sec:9:p6:c3200",
+          "arxiv:2106.09685:v2:sec:9:p6:c3600"
+        ]
+      },
+      "33aa588c89401cbc22a2f4d2fb121d10909a6f18": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:14:p9:c3200",
+          "arxiv:2106.09685:v2:sec:14:p9:c3600"
+        ]
+      },
+      "bc37c6bdb8f39929a58b30464f72d6aa46cddc17": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c2000",
+          "arxiv:2106.09685:v2:sec:14:p9:c2400",
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:2:gap1429-1430",
+          "arxiv:2106.09685:v2:sec:2:p2:c0",
+          "arxiv:2106.09685:v2:sec:2:p2:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c0",
+          "arxiv:2106.09685:v2:sec:4:p3:c400",
+          "arxiv:2106.09685:v2:sec:4:p3:c800"
+        ]
+      },
+      "5cea23330c76994cb626df20bed31cc2588033df": {
+        "status": "available",
+        "allowed_source_ids": [
+          "arxiv:2106.09685:v2:sec:14:p9:c2800",
+          "arxiv:2106.09685:v2:sec:14:p9:c3200",
+          "arxiv:2106.09685:v2:sec:14:p9:c3600"
+        ]
+      }
+    }
+  },
+  "production_gates_changed": false,
+  "reused_reviewed_contributions": true
+}

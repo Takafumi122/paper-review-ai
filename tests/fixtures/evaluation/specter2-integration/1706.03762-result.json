@@ -1,0 +1,3099 @@
+{
+  "target": "Attention Is All You Need",
+  "statistics": {
+    "target_embedding_available": false,
+    "target_s2_id": null,
+    "target_model": null,
+    "target_dimension": null,
+    "target_embedding_provenance": {
+      "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+      "requested_field": "embedding.specter_v2",
+      "requested_model": "semantic-scholar:specter_v2",
+      "status": "unavailable",
+      "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+      "lookup_id": "ARXIV:1706.03762",
+      "evaluation_fixture": "1706.03762-responses.json.gz",
+      "retrieved_at": "1791274163.9499469"
+    },
+    "eligible": 34,
+    "ranked": 34,
+    "candidate_embeddings_available": 0,
+    "candidate_embeddings_missing": 34,
+    "candidate_embedding_coverage_percent": 0.0,
+    "candidate_dimensions": [],
+    "candidate_missing_reasons": {
+      "embedding_lookup:SemanticScholarRateLimitError:429": 34
+    },
+    "metric_coverage": {
+      "semantic_similarity": 0,
+      "citation_relation": 34,
+      "citation_importance": 7
+    },
+    "score_status_counts": {
+      "partial": 34
+    },
+    "http_attempts": 1,
+    "http_statuses": [
+      429
+    ]
+  },
+  "inventory_sha256": "14afacf7ba9c7a0a4a79c665816fc780f3fddeb6b493bddfbccd8b3256a065fd",
+  "fixture_sha256": "61ce15e8b86985347fb12182055733b7472336ad782dc9170e4a8c4f5b5f6156",
+  "scoring_version": "1",
+  "ranking": [
+    {
+      "rank": 1,
+      "paper_id": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+      "title": "A Deep Reinforced Model for Abstractive Summarization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "032274e57f7d8b456bd255fe76b909b2c1d7458e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "032274e57f7d8b456bd255fe76b909b2c1d7458e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "032274e57f7d8b456bd255fe76b909b2c1d7458e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 2,
+      "paper_id": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+      "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "0b544dfe355a5070b60986319a3f51fb45d1348e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "0b544dfe355a5070b60986319a3f51fb45d1348e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "0b544dfe355a5070b60986319a3f51fb45d1348e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 3,
+      "paper_id": "13d9323a8716131911bfda048a40e2cde1a76a46",
+      "title": "Structured Attention Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "13d9323a8716131911bfda048a40e2cde1a76a46",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "13d9323a8716131911bfda048a40e2cde1a76a46"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "13d9323a8716131911bfda048a40e2cde1a76a46"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "13d9323a8716131911bfda048a40e2cde1a76a46"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 4,
+      "paper_id": "13fe71da009484f240c46f14d9330e932f8de210",
+      "title": "Long Short-Term Memory-Networks for Machine Reading",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "13fe71da009484f240c46f14d9330e932f8de210",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "13fe71da009484f240c46f14d9330e932f8de210"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "13fe71da009484f240c46f14d9330e932f8de210"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "13fe71da009484f240c46f14d9330e932f8de210"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 5,
+      "paper_id": "1518039b5001f1836565215eb047526b3ac7f462",
+      "title": "Neural Machine Translation of Rare Words with Subword Units",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "1518039b5001f1836565215eb047526b3ac7f462",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "1518039b5001f1836565215eb047526b3ac7f462"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "1518039b5001f1836565215eb047526b3ac7f462"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "1518039b5001f1836565215eb047526b3ac7f462"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 6,
+      "paper_id": "174bbdb96252454cbb40a9c4e53335996235a008",
+      "title": "Fast and Accurate Shift-Reduce Constituent Parsing",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "174bbdb96252454cbb40a9c4e53335996235a008",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "174bbdb96252454cbb40a9c4e53335996235a008"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "174bbdb96252454cbb40a9c4e53335996235a008"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "174bbdb96252454cbb40a9c4e53335996235a008"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 7,
+      "paper_id": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+      "title": "A Structured Self-attentive Sentence Embedding",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "204a4a70428f3938d2c538a4d74c7ae0416306d8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "204a4a70428f3938d2c538a4d74c7ae0416306d8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "204a4a70428f3938d2c538a4d74c7ae0416306d8"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 8,
+      "paper_id": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+      "title": "Rethinking the Inception Architecture for Computer Vision",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "23ffaa0fe06eae05817f527a47ac3291077f9e58"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "23ffaa0fe06eae05817f527a47ac3291077f9e58"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "23ffaa0fe06eae05817f527a47ac3291077f9e58"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 9,
+      "paper_id": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+      "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 10,
+      "paper_id": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+      "title": "Long Short-Term Memory",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "2e9d221c206e9503ceb452302d68d10e293f2a10"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "2e9d221c206e9503ceb452302d68d10e293f2a10"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "2e9d221c206e9503ceb452302d68d10e293f2a10"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 11,
+      "paper_id": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+      "title": "Exploring the Limits of Language Modeling",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 12,
+      "paper_id": "34f25a8704614163c4095b3ee2fc969b60de4698",
+      "title": "Dropout: a simple way to prevent neural networks from overfitting",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "34f25a8704614163c4095b3ee2fc969b60de4698",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "34f25a8704614163c4095b3ee2fc969b60de4698"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "34f25a8704614163c4095b3ee2fc969b60de4698"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "34f25a8704614163c4095b3ee2fc969b60de4698"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 13,
+      "paper_id": "4550a4c714920ef57d19878e31c9ebae37b049b2",
+      "title": "Massive Exploration of Neural Machine Translation Architectures",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "4550a4c714920ef57d19878e31c9ebae37b049b2",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "4550a4c714920ef57d19878e31c9ebae37b049b2"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "4550a4c714920ef57d19878e31c9ebae37b049b2"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "4550a4c714920ef57d19878e31c9ebae37b049b2"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 14,
+      "paper_id": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+      "title": "End-To-End Memory Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 15,
+      "paper_id": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "510e26733aaff585d65701b9f1be7ca9d5afc586"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "510e26733aaff585d65701b9f1be7ca9d5afc586"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "510e26733aaff585d65701b9f1be7ca9d5afc586"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 16,
+      "paper_id": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+      "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "5b6ec746d309b165f9f9def873a2375b6fb40f3d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5b6ec746d309b165f9f9def873a2375b6fb40f3d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "5b6ec746d309b165f9f9def873a2375b6fb40f3d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 17,
+      "paper_id": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+      "title": "Self-Training PCFG Grammars with Latent Annotations Across Languages",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "5bfd8d40bc071fffaf93685a46974b122ee4239d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "5bfd8d40bc071fffaf93685a46974b122ee4239d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "5bfd8d40bc071fffaf93685a46974b122ee4239d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 18,
+      "paper_id": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+      "title": "Using the Output Embedding to Improve Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "63e39cdf1ad884da6bc69096bb3413b5b1100559"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "63e39cdf1ad884da6bc69096bb3413b5b1100559"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "63e39cdf1ad884da6bc69096bb3413b5b1100559"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 19,
+      "paper_id": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+      "title": "Generating Sequences With Recurrent Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 20,
+      "paper_id": "79baf48bd560060549998d7b61751286de062e2a",
+      "title": "Factorization tricks for LSTM networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "79baf48bd560060549998d7b61751286de062e2a",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "79baf48bd560060549998d7b61751286de062e2a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "79baf48bd560060549998d7b61751286de062e2a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "79baf48bd560060549998d7b61751286de062e2a"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 21,
+      "paper_id": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+      "title": "Effective Approaches to Attention-based Neural Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "93499a7c7f699b6630a86fad964536f9423bb6d0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "93499a7c7f699b6630a86fad964536f9423bb6d0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "93499a7c7f699b6630a86fad964536f9423bb6d0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 22,
+      "paper_id": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+      "title": "Layer Normalization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "97fb4e3d45bb098e27e0071448b6152217bd35a5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "97fb4e3d45bb098e27e0071448b6152217bd35a5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "97fb4e3d45bb098e27e0071448b6152217bd35a5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 23,
+      "paper_id": "98445f4172659ec5e891e031d8202c102135c644",
+      "title": "Neural Machine Translation in Linear Time",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "98445f4172659ec5e891e031d8202c102135c644",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "98445f4172659ec5e891e031d8202c102135c644"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "98445f4172659ec5e891e031d8202c102135c644"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "98445f4172659ec5e891e031d8202c102135c644"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 24,
+      "paper_id": "ac3ee98020251797c2b401e1389461df88e52e62",
+      "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "ac3ee98020251797c2b401e1389461df88e52e62",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "ac3ee98020251797c2b401e1389461df88e52e62"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "ac3ee98020251797c2b401e1389461df88e52e62"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "ac3ee98020251797c2b401e1389461df88e52e62"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 25,
+      "paper_id": "b60abe57bc195616063be10638c6437358c81d1e",
+      "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "b60abe57bc195616063be10638c6437358c81d1e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "b60abe57bc195616063be10638c6437358c81d1e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "b60abe57bc195616063be10638c6437358c81d1e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "b60abe57bc195616063be10638c6437358c81d1e"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 26,
+      "paper_id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "cea967b59209c6be22829699f05b8b1ac4dc092d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "cea967b59209c6be22829699f05b8b1ac4dc092d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "cea967b59209c6be22829699f05b8b1ac4dc092d"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 27,
+      "paper_id": "f52de7242e574b70410ca6fb70b79c811919fc00",
+      "title": "Learning Accurate, Compact, and Interpretable Tree Annotation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "f52de7242e574b70410ca6fb70b79c811919fc00",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": null,
+        "initial_score": 1.0,
+        "coverage": 0.35,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity",
+          "citation_importance"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable",
+          "citation_importance": "context_unclassified_nano_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "f52de7242e574b70410ca6fb70b79c811919fc00"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "f52de7242e574b70410ca6fb70b79c811919fc00"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": null,
+            "missing_reason": "context_unclassified_nano_unavailable",
+            "source_ids": [
+              "f52de7242e574b70410ca6fb70b79c811919fc00"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 28,
+      "paper_id": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+      "title": "Convolutional Sequence to Sequence Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "43428880d75b3a14257c3ee9bda054e61eb869c0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "43428880d75b3a14257c3ee9bda054e61eb869c0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "43428880d75b3a14257c3ee9bda054e61eb869c0"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 29,
+      "paper_id": "7345843e87c81e24e42264859b214d26042f8d51",
+      "title": "Recurrent Neural Network Grammars",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "7345843e87c81e24e42264859b214d26042f8d51",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "7345843e87c81e24e42264859b214d26042f8d51"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "7345843e87c81e24e42264859b214d26042f8d51"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "7345843e87c81e24e42264859b214d26042f8d51"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 30,
+      "paper_id": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+      "title": "Can Active Memory Replace Attention?",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "735d547fc75e0772d2a78c46a1cc5fad7da1474c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "735d547fc75e0772d2a78c46a1cc5fad7da1474c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "735d547fc75e0772d2a78c46a1cc5fad7da1474c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 31,
+      "paper_id": "78a9513e70f596077179101f6cb6eadc51602039",
+      "title": "Effective Self-Training for Parsing",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "78a9513e70f596077179101f6cb6eadc51602039",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "78a9513e70f596077179101f6cb6eadc51602039"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "78a9513e70f596077179101f6cb6eadc51602039"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "78a9513e70f596077179101f6cb6eadc51602039"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 32,
+      "paper_id": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+      "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "c6850869aa5e78a107c378d2e8bfa39633158c0c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "c6850869aa5e78a107c378d2e8bfa39633158c0c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "c6850869aa5e78a107c378d2e8bfa39633158c0c"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 33,
+      "paper_id": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+      "title": "Multi-task Sequence to Sequence Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "d76c07211479e233f7c6a6f32d5346c983c5598f"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "d76c07211479e233f7c6a6f32d5346c983c5598f"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "d76c07211479e233f7c6a6f32d5346c983c5598f"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    },
+    {
+      "rank": 34,
+      "paper_id": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "score": {
+        "semantic_similarity": null,
+        "citation_relation": 1.0,
+        "citation_importance": 0.75,
+        "initial_score": 0.8958333333333334,
+        "coverage": 0.6,
+        "status": "partial",
+        "missing_components": [
+          "semantic_similarity"
+        ],
+        "missing_reasons": {
+          "semantic_similarity": "embedding_unavailable"
+        },
+        "component_details": {
+          "semantic_similarity": {
+            "value": null,
+            "missing_reason": "embedding_unavailable",
+            "source_ids": [
+              "arxiv:1706.03762",
+              "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": "unavailable"
+          },
+          "citation_relation": {
+            "value": 1.0,
+            "missing_reason": null,
+            "source_ids": [
+              "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          },
+          "citation_importance": {
+            "value": 0.75,
+            "missing_reason": null,
+            "source_ids": [
+              "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5"
+            ],
+            "normalization_version": "1",
+            "calculation_source": null
+          }
+        },
+        "scoring_version": "1"
+      }
+    }
+  ],
+  "probes": [
+    {
+      "probe": "Bahdanau attention",
+      "paper_id": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "rank": 34,
+      "top10": false
+    },
+    {
+      "probe": "Sequence to Sequence Learning",
+      "paper_id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "rank": 26,
+      "top10": false
+    },
+    {
+      "probe": "Effective Approaches to Attention-based NMT",
+      "paper_id": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+      "title": "Effective Approaches to Attention-based Neural Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "rank": 21,
+      "top10": false
+    },
+    {
+      "probe": "Convolutional Sequence to Sequence Learning",
+      "paper_id": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+      "title": "Convolutional Sequence to Sequence Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "rank": 28,
+      "top10": false
+    },
+    {
+      "probe": "RNN Encoder-Decoder",
+      "paper_id": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+      "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      },
+      "rank": 2,
+      "top10": true
+    }
+  ],
+  "candidate_embedding_outcomes": [
+    {
+      "paper_id": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+      "title": "Layer Normalization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "4550a4c714920ef57d19878e31c9ebae37b049b2",
+      "title": "Massive Exploration of Neural Machine Translation Architectures",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "4550a4c714920ef57d19878e31c9ebae37b049b2",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "13fe71da009484f240c46f14d9330e932f8de210",
+      "title": "Long Short-Term Memory-Networks for Machine Reading",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "13fe71da009484f240c46f14d9330e932f8de210",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+      "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+      "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "ac3ee98020251797c2b401e1389461df88e52e62",
+      "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "ac3ee98020251797c2b401e1389461df88e52e62",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "7345843e87c81e24e42264859b214d26042f8d51",
+      "title": "Recurrent Neural Network Grammars",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "7345843e87c81e24e42264859b214d26042f8d51",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+      "title": "Convolutional Sequence to Sequence Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+      "title": "Generating Sequences With Recurrent Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "unresolved:078702cdd80e25dcceceebe1",
+      "title": "Deep residual learning for im- age recognition",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "candidate_s2_identity_unavailable",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+      "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+      "title": "Long Short-Term Memory",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+      "title": "Self-Training PCFG Grammars with Latent Annotations Across Languages",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+      "title": "Exploring the Limits of Language Modeling",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+      "title": "Can Active Memory Replace Attention?",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "unresolved:f6c084d80422ee53947746ef",
+      "title": "Neural GPUs learn algorithms",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "candidate_s2_identity_unavailable",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "98445f4172659ec5e891e031d8202c102135c644",
+      "title": "Neural Machine Translation in Linear Time",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "98445f4172659ec5e891e031d8202c102135c644",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "13d9323a8716131911bfda048a40e2cde1a76a46",
+      "title": "Structured Attention Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "13d9323a8716131911bfda048a40e2cde1a76a46",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "unresolved:0dd41f53088ce28329d9eaa2",
+      "title": "Adam: A method for stochastic optimization",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "candidate_s2_identity_unavailable",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "79baf48bd560060549998d7b61751286de062e2a",
+      "title": "Factorization tricks for LSTM networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "79baf48bd560060549998d7b61751286de062e2a",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+      "title": "A Structured Self-attentive Sentence Embedding",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+      "title": "Multi-task Sequence to Sequence Learning",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+      "title": "Effective Approaches to Attention-based Neural Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+      "title": "Building a Large Annotated Corpus of English: The Penn Treebank",
+      "eligibility": "excluded",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "78a9513e70f596077179101f6cb6eadc51602039",
+      "title": "Effective Self-Training for Parsing",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "78a9513e70f596077179101f6cb6eadc51602039",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "unresolved:5f65f3ff497121a52fc4ed2f",
+      "title": "A decomposable attention model",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "candidate_s2_identity_unavailable",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+      "title": "A Deep Reinforced Model for Abstractive Summarization",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "f52de7242e574b70410ca6fb70b79c811919fc00",
+      "title": "Learning Accurate, Compact, and Interpretable Tree Annotation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "f52de7242e574b70410ca6fb70b79c811919fc00",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+      "title": "Using the Output Embedding to Improve Language Models",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "1518039b5001f1836565215eb047526b3ac7f462",
+      "title": "Neural Machine Translation of Rare Words with Subword Units",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "1518039b5001f1836565215eb047526b3ac7f462",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "34f25a8704614163c4095b3ee2fc969b60de4698",
+      "title": "Dropout: a simple way to prevent neural networks from overfitting",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "34f25a8704614163c4095b3ee2fc969b60de4698",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+      "title": "End-To-End Memory Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+      "title": "Rethinking the Inception Architecture for Computer Vision",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "unresolved:05a15ad2efaece8f617011de",
+      "title": "Grammar as a foreign language",
+      "eligibility": "uncertain",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "candidate_s2_identity_unavailable",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+      "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "b60abe57bc195616063be10638c6437358c81d1e",
+      "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "b60abe57bc195616063be10638c6437358c81d1e",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    },
+    {
+      "paper_id": "174bbdb96252454cbb40a9c4e53335996235a008",
+      "title": "Fast and Accurate Shift-Reduce Constituent Parsing",
+      "eligibility": "eligible",
+      "embedding_available": false,
+      "embedding_model": null,
+      "dimension": null,
+      "embedding_provenance": {
+        "source": "https://api.semanticscholar.org/graph/v1/paper/batch",
+        "requested_field": "embedding.specter_v2",
+        "requested_model": "semantic-scholar:specter_v2",
+        "status": "unavailable",
+        "missing_reason": "embedding_lookup:SemanticScholarRateLimitError:429",
+        "lookup_id": "174bbdb96252454cbb40a9c4e53335996235a008",
+        "evaluation_fixture": "1706.03762-responses.json.gz",
+        "retrieved_at": "1791274163.9499469"
+      }
+    }
+  ]
+}
