@@ -16,22 +16,26 @@ class TaskPolicy:
 
 EXTRACTION = TaskPolicy("gpt-5-nano", 8000, 2000, 30, 90)
 COMPARISON = TaskPolicy("gpt-5.6-luna", 16000, 4000, 60, 150)
-KNOWLEDGE = TaskPolicy("gpt-5-nano", 8000, 3000, 45, 120)
+KNOWLEDGE = TaskPolicy("gpt-6.1-sol", 8000, 3000, 45, 120)
 ROUTING = {
-    "contribution_extraction": EXTRACTION,
+    "contribution_extraction": TaskPolicy("gpt-6.1-sol", 8000, 2000, 30, 90),
     "problem_extraction": EXTRACTION,
-    "citation_classification": EXTRACTION,
+    "citation_classification": TaskPolicy("gpt-6.1-sol", 8000, 2000, 30, 90),
     "paper_classification": EXTRACTION,
     "evidence_extraction": EXTRACTION,
     "contribution_relevance": COMPARISON,
     "candidate_comparison": COMPARISON,
     "edge_evaluation": COMPARISON,
     "lineage": COMPARISON,
-    "reasoning": TaskPolicy("gpt-5.6-luna", 24000, 8000, 90, 180),
+    "lineage_merge_review": TaskPolicy("gpt-6.1-sol", 8000, 2000, 45, 120),
+    "reasoning": TaskPolicy("gpt-6.1-sol", 24000, 8000, 90, 180),
+    "reasoning_review": TaskPolicy("gpt-6.1-sol", 8000, 2400, 60, 150),
+    "contribution_review": TaskPolicy("gpt-6.1-sol", 8000, 4000, 60, 150),
     "concept_extraction": KNOWLEDGE,
     "concept_necessity": KNOWLEDGE,
     "short_knowledge": KNOWLEDGE,
-    "knowledge_detail": TaskPolicy("gpt-5-nano", 12000, 4000, 60, 150),
+    "knowledge_detail": TaskPolicy("gpt-6.1-terra", 12000, 4000, 60, 150),
+    "knowledge_detail_review": TaskPolicy("gpt-6.1-sol", 8000, 1000, 30, 90),
 }
 
 
@@ -65,6 +69,7 @@ class LLMRequest:
         }
     )
     repair_error: str | None = None
+    client_request_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -79,10 +84,29 @@ class ProviderResponse:
 
 
 class ProviderFailure(Exception):
-    def __init__(self, code: str, *, retryable: bool = False):
+    def __init__(
+        self,
+        code: str,
+        *,
+        retryable: bool = False,
+        retry_after: float | None = None,
+        http_status: int | None = None,
+    ):
         super().__init__(code)
         self.code = code
         self.retryable = retryable
+        self.retry_after = retry_after
+        self.http_status = (
+            http_status if type(http_status) is int and 100 <= http_status <= 599 else None
+        )
+
+
+class ProviderTimeout(TimeoutError):
+    """Safe transport phase only; never retain HTTP exception messages or requests."""
+
+    def __init__(self, phase: str = "unknown") -> None:
+        super().__init__("provider_timeout")
+        self.phase = phase if phase in {"connect", "read", "write", "pool"} else "unknown"
 
 
 class LLMProvider(Protocol):
