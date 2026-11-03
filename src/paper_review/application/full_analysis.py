@@ -620,69 +620,80 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
             **parsed,
         }
         results["sources"] = spans
-        verification_path = ROOT / ".work/live-specter2-contract.json"
-        runtime_limit = ROOT / ".work/s2-rate-limited.json"
-        rate_limited = runtime_limit.exists() or (
-            verification_path.exists()
-            and json.loads(verification_path.read_text()).get("status") == 429
-        )
-        # A recorded operator probe 429 opens the circuit. No new S2 requests
-        # are made by an analysis until a separately authorized verification.
-        async with SemanticScholarClient(
-            max_attempts=1, max_http_attempts=0 if rate_limited else 40
-        ) as scholar:
+        analysis: Stage1Analysis | None = None
+        if worker.settings.reading_only:
+            results["candidate_ranking"] = {
+                "status": "skipped", "reason": "reading_only_mode", "top10": [],
+            }
+        else:
+            verification_path = ROOT / ".work/live-specter2-contract.json"
+            runtime_limit = ROOT / ".work/s2-rate-limited.json"
+            rate_limited = runtime_limit.exists() or (
+                verification_path.exists()
+                and json.loads(verification_path.read_text()).get("status") == 429
+            )
+            # A recorded operator probe 429 opens the circuit. No new S2 requests
+            # are made by an analysis until a separately authorized verification.
+            async with SemanticScholarClient(
+                max_attempts=1, max_http_attempts=0 if rate_limited else 40
+            ) as scholar:
 
-            async def retrieve(_):
-                inventory = await resolve_candidate_inventory(
-                    paper, references, scholar, allow_title_search=False
+                async def retrieve(_):
+                    inventory = await resolve_candidate_inventory(
+                        paper, references, scholar, allow_title_search=False
+                    )
+                    if any("RateLimitError" in warning for warning in inventory.retrieval_warnings):
+                        scholar.max_http_attempts = scholar.http_attempts
+                        runtime_limit.parent.mkdir(parents=True, exist_ok=True)
+                        runtime_limit.write_text(json.dumps({"status": 429}))
+                    if len(inventory.candidates) > 50:
+                        inventory.retrieval_warnings.append("candidate_limit_50")
+                        inventory.candidates = inventory.candidates[:50]
+                    return inventory.model_dump(mode="json")
+
+                inventory = CandidateSet.model_validate(
+                    await stage("retrieving_candidates", JobStatus.RETRIEVING, retrieve)
                 )
-                if any("RateLimitError" in warning for warning in inventory.retrieval_warnings):
-                    scholar.max_http_attempts = scholar.http_attempts
-                    runtime_limit.parent.mkdir(parents=True, exist_ok=True)
-                    runtime_limit.write_text(json.dumps({"status": 429}))
-                if len(inventory.candidates) > 50:
-                    inventory.retrieval_warnings.append("candidate_limit_50")
-                    inventory.candidates = inventory.candidates[:50]
-                return inventory.model_dump(mode="json")
 
-            inventory = CandidateSet.model_validate(
-                await stage("retrieving_candidates", JobStatus.RETRIEVING, retrieve)
-            )
+                async def rank(stage_id):
+                    analysis = await build_stage1_shortlist(paper, inventory, scholar)
+                    audit = await classify_contexts(
+                        worker, job_id, stage_id, analysis.inventory, spans
+                    )
+                    analysis = apply_context_classifications(analysis, audit)
+                    return analysis.model_dump(mode="json")
 
-            async def rank(stage_id):
-                analysis = await build_stage1_shortlist(paper, inventory, scholar)
-                audit = await classify_contexts(worker, job_id, stage_id, analysis.inventory, spans)
-                analysis = apply_context_classifications(analysis, audit)
-                return analysis.model_dump(mode="json")
-
-            analysis = Stage1Analysis.model_validate(
-                await stage("ranking_candidates", JobStatus.RANKING, rank)
-            )
-        top = analysis.ranking.top_k()
-        results["candidate_ranking"] = {
-            "selection_policy_version": analysis.ranking.selection_policy_version,
-            "scoring_version": analysis.ranking.scoring_version,
-            "weights": analysis.ranking.weights,
-            "citation_context_audit": analysis.citation_context_audit,
-            "total": analysis.inventory.total_count,
-            "eligible": len(analysis.inventory.eligible_candidates),
-            "top10": [
-                {
-                    "paper_id": r.candidate.paper_id,
-                    "title": r.candidate.title,
-                    "rank": r.rank,
-                    "score": r.score.model_dump(),
-                }
-                for r in top
-            ],
-            "warnings": analysis.inventory.retrieval_warnings,
-        }
+                analysis = Stage1Analysis.model_validate(
+                    await stage("ranking_candidates", JobStatus.RANKING, rank)
+                )
+            top = analysis.ranking.top_k()
+            results["candidate_ranking"] = {
+                "selection_policy_version": analysis.ranking.selection_policy_version,
+                "scoring_version": analysis.ranking.scoring_version,
+                "weights": analysis.ranking.weights,
+                "citation_context_audit": analysis.citation_context_audit,
+                "total": analysis.inventory.total_count,
+                "eligible": len(analysis.inventory.eligible_candidates),
+                "top10": [
+                    {
+                        "paper_id": r.candidate.paper_id,
+                        "title": r.candidate.title,
+                        "rank": r.rank,
+                        "score": r.score.model_dump(),
+                    }
+                    for r in top
+                ],
+                "warnings": analysis.inventory.retrieval_warnings,
+            }
 
         async def lineage(stage_id):
+            if worker.settings.reading_only:
+                return {"status": "blocked", "reason": "reading_only_mode"}
             if not worker.settings.specter2_verified:
                 return {"status": "blocked", "reason": "specter2_contract_not_verified"}
             if not worker.settings.stage1_audited:
                 return {"status": "blocked", "reason": "stage1_quality_audit_pending"}
+            assert analysis is not None
             return await generate_lineage(
                 paper, analysis, spans, stage_id, call,
                 adjustment_policy=worker.settings.adjustment_policy,

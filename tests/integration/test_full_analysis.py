@@ -781,3 +781,47 @@ def test_long_flow_knowledge_omits_duplicate_quotes_and_fits_real_guard(
     )
     assert all("evidence" not in step for step in task_data["flow"]["steps"])
     assert len(request.context_spans) > 1  # real source context remains, not just generated steps
+
+
+def test_reading_only_never_initializes_s2_or_runs_candidate_llm(engine, settings, monkeypatch):
+    settings = settings.model_copy(update={
+        "pipeline_mode": "full", "reading_only": True,
+        "specter2_verified": True, "stage1_audited": True,
+    })
+
+    def forbidden(**kwargs):
+        raise AssertionError("reading-only must not initialize S2")
+
+    monkeypatch.setattr(full_analysis, "SemanticScholarClient", forbidden)
+    jid = prepare(engine)
+    provider = ScriptedProvider()
+    worker = Worker(engine, settings, gateway=LLMGateway(engine, settings, provider),
+                    pipeline_mode="full")
+    assert worker.run_once() == jid
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job is not None and job.result
+        assert job.status == JobStatus.PARTIAL
+        assert job.feature_status["reasoning"] == job.feature_status["knowledge"] == "completed"
+        assert job.result["lineage"] == {"status": "blocked", "reason": "reading_only_mode"}
+        assert job.result["candidate_ranking"]["status"] == "skipped"
+    assert not any(provider.calls[task] for task in (
+        "citation_classification", "contribution_extraction", "contribution_relevance", "lineage",
+    ))
+    with TestClient(create_app(settings, engine)) as api:
+        assert api.get("/health").json()["reading_only"] is True
+        assert api.get(f"/analyses/{jid}/reasoning").status_code == 200
+
+
+def test_reading_mode_deduplication_is_separate_from_full_mode(engine, settings):
+    full = settings.model_copy(update={"provider": "openai", "pipeline_mode": "full"})
+    reading = full.model_copy(update={"reading_only": True})
+    body = {"arxiv_url": "https://arxiv.org/abs/2305.18290"}
+    with TestClient(create_app(full, engine)) as api:
+        first = api.post("/analyses", json=body)
+        assert first.status_code == 202
+    with TestClient(create_app(reading, engine)) as api:
+        second = api.post("/analyses", json=body)
+        assert second.status_code == 202
+        assert second.json()["job_id"] != first.json()["job_id"]
+        assert api.post("/analyses", json=body).json()["job_id"] == second.json()["job_id"]

@@ -14,7 +14,7 @@ RUN uv sync --locked --no-dev
 COPY main.py alembic.ini ./
 COPY migrations/ ./migrations/
 COPY --from=frontend /build/dist ./frontend/dist
-COPY deployment/start_demo.py ./deployment/start_demo.py
+COPY deployment/start_demo.py deployment/start_railway.py ./deployment/
 RUN useradd --uid 10001 --create-home app && mkdir .work && chown app:app .work
 USER app
 ENV PATH="/app/.venv/bin:$PATH"

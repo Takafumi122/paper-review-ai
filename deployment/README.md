@@ -9,6 +9,21 @@ This is a single-host Python API/Worker, React static build and persistent SQLit
 deployment. The existing Dockerfile builds these together. Run one replica;
 do not place SQLite on a shared network filesystem.
 
+## Railway selected (2026-11-03)
+
+The owner has Railway Hobby and selected it for the live demo. Use the current
+[Railway setup guide](RAILWAY.md), including `start_railway.py` and a persistent
+volume. Its initialization drops to UID/GID 10001 before running the app.
+The earlier Render/Railway proposals below are historical. No host provisioned yet.
+
+## Reading-only rollout (2026-11-03)
+
+The demo wrapper now explicitly starts `--reading-only`: no S2 client, candidate
+ranking or Lineage generation is run. Only `OPENAI_API_KEY` and the invitation
+`PAPER_REVIEW_ACCESS_TOKEN` are required. Existing S2 stop records remain intact.
+See [reading Web rollout](READING_WEB.md) for the current startup and hosting plan.
+The historical deployment measurements below do not prove a new hosted run.
+
 ## Available behavior
 
 Normal-path LoRA, Attention and ReAct runs generated and displayed Reasoning Flow
