@@ -368,6 +368,12 @@ All metrics are normalized to [0, 1]. Missing values remain `value=null` with
 Normalization, missing-value aggregation, and the unresolved adjustment policy
 are specified in [Scoring](scoring-lineage.md). FinalScore is not EdgeConfidence.
 
+On 2026-11-02 the user approved Stage 1 selection policy `lower-bound-v1`:
+select at most Top 10 by the fixed-weight lower bound, then coverage, then canonical ID.
+Keep InitialScore, nullable metrics, missing reasons, provenance and the upper bound separately.
+All-missing candidates remain unranked. Stage 2 scoring and tie-breaks are unchanged;
+the new selection policy does not establish quality acceptance or live readiness.
+
 GPT-5.6 Luna evaluates Contribution Relevance using an integer rubric:
 
 | Score | Meaning |
@@ -379,8 +385,9 @@ GPT-5.6 Luna evaluates Contribution Relevance using an integer rubric:
 | 4 | Target Contributionの成立に直接つながる中核的先行研究 |
 
 `ContributionRelevance = score / 4`.
-`AdjustedContributionRelevance` is a separate field; its transformation has not
-been supplied by the Decision and must be resolved before production Stage 2.
+`AdjustedContributionRelevance` is a separate field. On 2026-10-30 the user approved
+`identity-v1`: it equals `ContributionRelevance` in the initial release. FinalScore
+weights remain unchanged; live-contract and quality verification are still required.
 
 Later extension:
 

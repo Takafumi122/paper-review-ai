@@ -61,10 +61,13 @@ max_incoming_lineages = 2
 3. DOI、arXiv ID、Semantic Scholar IDで統合。IDが矛盾したら自動結合しない。
    正規化タイトルは照合候補の手掛かりに限定し、単独で同一論文と断定しない。
 4. 日付・論文種別を確認し、主系列候補／同時期／後発／対象外を分離。
-5. 30〜50候補を目安にInitialScoreを計算し、最大Top 10をluna評価へ渡す。
+5. 30〜50候補を目安にInitialScoreと選考区間を計算し、`lower-bound-v1`
+   （下限降順→coverage降順→canonical ID順）で最大Top 10をluna評価へ渡す。
+   InitialScore・null・欠損理由は保持する。全欠損は順位対象外。
 6. 候補のContribution、制約、Targetとの関係に必要な根拠を取得し、Contribution Relevanceを評価。
 7. 確定した補正policyでFinalScoreを計算して系列候補を選ぶ。
-   AdjustedContributionRelevance未確定の間はこの処理を本番有効化しない。
+   初版の補正は2026-10-30にユーザー承認されたidentity-v1（補正なし）。
+   実API・Stage 1品質の未検証を、この承認で省略しない。
 8. 各候補間のEdgeを別途評価し、Graph制約とEvidenceを検証して最大5先行研究を出力。
 
 取得元、取得日時、候補除外理由、raw metric、欠損理由、score内訳を保存する。

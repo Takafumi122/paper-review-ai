@@ -52,7 +52,7 @@ requirementsはプロダクト要件、個別docsは詳細仕様を定義する�
 
 | ID | 未決事項 | 必要時期 | 現在の扱い |
 |---|---|---|---|
-| D1 | AdjustedContributionRelevanceの補正式 | Phase 2 Stage 2前 | null、blocked_configuration。FinalScoreを代替計算しない |
+| D1 | AdjustedContributionRelevanceの補正式 | 2026-10-30解決 | ユーザー承認：identity-v1（ContributionRelevanceと同値）。既定FinalScore重みを維持 |
 | D2 | 品質の数値合格閾値、評価担当・二者確認の扱い | 最終評価前 | 評価方法のみ確定。完成・品質合格とは宣言しない |
 | D3 | 10評価論文の版・付録込み50ページ制限との整合 | Phase 1 manifest作成時 | 実物を確認。対象外なら黙って除外せず要件判断 |
 
@@ -69,3 +69,19 @@ allowlist未設定なら外部Web取得なし。非arXiv全文の永久保存を
 Phase 0完了は、fake Jobの投入→実行→結果取得、再起動復旧、schema不正/timeout/予算の検証で判定する。
 D1〜D3はこれらの基盤を妨げない。Phase 2やMVP完成が無条件に承認済みという意味ではない。
 今回の変更は文書のみであり、Phase 0のコード実装は開始していない。
+
+## 2026-10-30 Decision — D1 identity-v1
+
+ユーザーが「初版は補正なしで確定する」を承認。
+AdjustedContributionRelevance = ContributionRelevance、policy版はidentity-v1とする。
+過去の未決記録は当時の経緯として保持する。モデル・API・Stage 1品質の検証を
+省略する承認ではなく、欠損やEvidence不足を0やsupportedへ変換するものでもない。
+
+## 2026-11-02 Decision — Stage 1 lower-bound-v1
+
+ユーザーが方式Cを採用し、正本・本番実装・検証へ進めることを明示的に承認した。
+Stage 1は固定重みのスコア下限降順→coverage降順→canonical ID順で最大Top 10を選ぶ。
+InitialScore、coverage、null、欠損理由とSourceは保持し、下限・上限・選考policy版を別に記録する。
+全欠損は下限0でも順位対象外。旧結果は上書きせず、再現用に旧policyを明示する。
+重み、引用roleの最大集約、Top-K、Stage 2のFinalScore・tie-break、identity-v1は変更しない。
+本判断は品質合格・S2停止解除・Lineage本番有効化の承認ではない。

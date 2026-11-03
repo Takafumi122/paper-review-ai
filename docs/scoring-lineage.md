@@ -1,8 +1,8 @@
 # Research Lineage Scoring
 
-Status: Canonical. Updated: 2026-09-19. Scoring policy draft version: 1.
+Status: Canonical. Updated: 2026-11-02. Stage 1 selection policy: lower-bound-v1.
 ユーザー確定の重み・Contribution/Evidence rubricと、今回補完した正規化規則を区別する。
-AdjustedContributionRelevanceの補正だけは未決であり、Stage 2の本番利用を止める。
+2026-10-30のユーザーDecisionで初版の補正をidentity-v1として確定した。
 Graph仕様は [research-lineage.md](research-lineage.md)、未決事項は [ADR-0001](../ADR/0001-mvp-decisions.md)。
 
 ## 1. 確定した二段階score
@@ -96,17 +96,19 @@ GPT-5.6 LunaがTargetの主要ContributionとCandidateについて整数を返�
 Evidence IDsを保存する。情報不足はscore=0ではなくscore=null。
 複数Contributionについては候補全体のrubricを1回評価し、どのContributionを支えるかを列挙する。
 
-### AdjustedContributionRelevance（未決）
+### AdjustedContributionRelevance（identity-v1）
 
-DecisionはFinalScoreにこの名称を用いるが、補正式を定義していない。
-ContributionRelevanceそのもの、EvidenceConfidenceとの積、重複性の補正などは同じ結果にならない。
-勝手にいずれかを採用しない。
+2026-10-30にユーザーが初版の「補正なし」を承認。
 
-- フィールドは[0,1]またはnull、`adjustment_policy_version`を持つ。
-- 未確定時はnull、missing_reason=`adjustment_policy_unresolved`。
-- **仕様未確定は観測欠損と区別する。この状態でFinalScoreを残り3指標から計算してはならない。**
-- `FinalScore=null / status=blocked_configuration` とし、Phase 0ではfake出力のみ利用可能。
-- Phase 2前にpolicyを承認・版固定し、計算例と評価ケースを追加する。
+```text
+AdjustedContributionRelevance = ContributionRelevance
+adjustment_policy_version = identity-v1
+```
+
+EvidenceConfidenceとの積、重複補正等を暗黙に追加しない。ContributionRelevanceが
+未取得なら補正値もnullとする。FinalScoreの既定の重みは変更しない。
+補正設定が未指定・未知の版ならblocked_configurationとしてFinalScoreを計算しない。
+identity-v1の確定は、実API・Stage 1の検証や最終的な品質合格の代わりにはならない。
 
 ## 4. 欠損値と順位（実装規則）
 
@@ -124,8 +126,24 @@ score = null                                     # coverage == 0
 を添付する。partial scoreはcoverageが異なるため、完全観測と同等の確実性を意味しない。
 この欠損対応はユーザー確定の重みそのものを変更するものではない。
 
-Stage 1はscore降順→coverage降順→canonical paper ID辞書順で最大10件を選ぶ。
-scoreがnullの候補は順位対象外とし、不足数をLLMの推測で埋めない。
+2026-11-02のユーザー承認により、Stage 1の選考は`lower-bound-v1`を使う。
+InitialScoreは上の観測重みによる再正規化値として保持し、選考用の下限・上限と区別する。
+固定重み（合計1）と各未知指標の許容範囲[0,1]から、次を計算する。
+
+```text
+selection_lower_bound = sum(w[i] * value[i] for observed i)
+selection_upper_bound = selection_lower_bound + sum(w[i] for missing i)
+```
+
+これは確率や統計的な信頼区間ではなく、未知値の許容範囲による数学的な区間である。
+下限で選ぶことを「重要度0を観測した」と扱わず、元のnull・missing_reason・Sourceを保持する。
+全指標が揃えば上下限はInitialScoreと一致する。
+
+Stage 1は下限降順→coverage降順→canonical paper ID辞書順で最大10件を選ぶ。
+InitialScoreを追加のtie-breakに使わず、表示用の丸め値で順位を決めない。
+InitialScoreがnullの全欠損候補は、下限0・上限1でも順位対象外とし、不足数をLLMの推測で埋めない。
+selection_policy_version、上下限、InitialScore、coverage、欠損理由を区別して記録する。
+旧`observed-renormalized-v1`の保存結果は上書きしない。過去結果の再現には旧policyを明示する。
 raw値・coverage・欠損パターンを記録し、低coverage候補が有利になる偏りを評価する。
 観測欠損を解消する取得は既定の探索・attempt枠内だけで行う。
 
@@ -137,6 +155,8 @@ Stage 2は補正policyが確定し、ContributionRelevanceとAdjustedContributio
 
 例：S=0.8、C=1、I=nullならInitialScore=(0.32+0.35)/0.75=0.893333…、coverage=0.75。
 S=0.8、C=1、I=0.5ならInitialScore=0.795、coverage=1。
+前者の選考区間は[0.67,0.92]、後者は[0.795,0.795]なので、Stage 1では後者を上位に選ぶ。
+この選考policyの承認は、Stage 1の品質合格やStage 2のreadinessを意味しない。
 全欠損はnullであり、0ではない。
 
 ## 5. EdgeConfidence（ランキングとは別）

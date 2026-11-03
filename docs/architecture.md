@@ -42,7 +42,7 @@ SQLiteはWAL、短いtransaction、busy timeoutを使い、network filesystem上
 
 ```text
 Paper retrieval → Parsing → Contribution/Problem extraction
-→ Reference/Candidate retrieval → Metric calculation / InitialScore
+→ Reference/Candidate retrieval → Metric calculation / InitialScore / Selection bounds
 → Top 10 Contribution evaluation → FinalScore → Lineage construction / validation
 → Reasoning Flow → Concept necessity → Knowledge generation → Persist results
 ```

@@ -35,7 +35,9 @@ Ground truthは候補集合に存在するものだけに限定せず、候補�
 
 - Baseline A: raw citation count降順。
 - Baseline B: SemanticSimilarity降順。
-- Proposed: 確定したInitialScore→Top 10→FinalScore。
+- Proposed: InitialScore・選考区間を記録→承認済み`lower-bound-v1`でTop 10→FinalScore。
+  旧`observed-renormalized-v1`との比較では同じ原文・候補・指標を固定し、
+  selection_policy_versionを記録する。欠損を除く取得coverageと選考方式の効果を分ける。
 
 baselineの欠損はnullとしてunranked、同点はcanonical ID順。欠損率と評価対象coverageを併記する。
 Proposedで補正policyが未確定なら評価完了を主張しない。
