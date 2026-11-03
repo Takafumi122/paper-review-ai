@@ -3,7 +3,10 @@
 ## 今回共有するもの
 
 LLM/NLP論文読解を支援する実装、キー不要の候補プレビュー、ローカル起動手順、
-ネットワークを使わない回帰テストを共有する。ホスト契約や公開デモのデプロイは今回の範囲外。
+ネットワークを使わない回帰テストを共有する。有料ホスト契約や実解析デモのデプロイは今回の範囲外。
+
+公開URL（記録プレビューのみ）：https://takafumi122.github.io/paper-review-ai/
+リポジトリ：https://github.com/Takafumi122/paper-review-ai （旧名paper-reading-assistantからリダイレクト）
 
 | 対象 | 確認できた範囲 | 残る制限 |
 |---|---|---|
@@ -12,7 +15,7 @@ LLM/NLP論文読解を支援する実装、キー不要の候補プレビュー�
 | 前提知識 | 概念の仕組み、論文とのつながり、短文・詳細の照合を実装・検証 | 全論文での説明品質を保証しない |
 | Research Lineage | 保存済みLoRAで現在の生成処理がAghajanyan→LoRAの単一路を返した。原文・候補・年代・構造を再確認 | S2実接続は停止中。本番の2つのreadinessフラグはfalse |
 | 合流の根拠 | RAG原文では同じ主要貢献への2系列統合を支持。LoRAの並列した着想・動機だけの案は不採用 | 固定原文に対する局所的検証であり、候補取得からの一連の成功ではない |
-| 記録プレビュー | 3論文の候補を検索・絞り込み、年代・出典・スコア欠損を確認できる | 保存済み候補の表示。新規論文の解析や完成した研究史ではない |
+| 記録プレビュー | 3論文の候補を検索・絞り込み、年代・出典・スコア欠損を確認できる。GitHub Pagesで公開済み | 保存済み候補の表示。新規論文の解析や完成した研究史ではない |
 
 現在はfull-v35 / merge-grounding-v2 / lower-bound-v1。
 Stage 2補正は承認済みidentity-v1で、重みは正本を維持する。
@@ -72,8 +75,31 @@ CIのDB環境変数に影響されていた設定テストも、defaultと明示
 元バイトを保持する設定とした。大きな変更はCommit単位で確認できる。
 READMEとこの文書への検証結果の追記は、上記コード検証後の文書変更である。
 
+## GitHub Pagesの記録プレビュー（2026-11-03公開）
+
+PR #1（merge commit `42af0ba`）とPR #2（merge commit `19fc698`）をmerge方式で`main`へ統合し、
+機能別コミットを保持した。PR #2は記録専用ビルド、Pages workflow、リポジトリ名変更後のリンク更新を含む。
+
+- 配信内容：`VITE_RECORDED_PREVIEW=true` でビルドした `frontend/dist` のみ。
+  2026-10-06スナップショットの3論文（Attention・LoRA・ReAct）の保存済み候補。
+- 提供しないもの：URL入力、新規論文の解析、Research Lineage・Reasoning Flow・前提知識の生成、
+  API・Worker・DB。APIキー・論文本文・PDF・embeddingベクトルは含まない。
+- 配信workflow：`.github/workflows/pages.yml`。公開前チェック、frontend 6 tests、記録専用ビルドの後に
+  GitHub Pagesへデプロイする。`main`の`frontend/`またはworkflow変更、手動実行で起動する。
+
+| 確認 | 結果 |
+|---|---|
+| PR #2のChecks（push / pull_request） | 両方成功 |
+| ローカル検証（PR #2） | pytest 638 passed（既存warning 2件）、Ruff成功、Pyright 0 errors、frontend 6 tests・記録専用build成功、公開前チェック検出0 |
+| Pages workflow（run 41590816537） | build・deployとも成功 |
+| 公開URLの配信 | HTML・`./assets/`配下のJS・CSSがサブパスで200。JSはローカルの記録専用buildとバイト一致 |
+| ヘッドレスChromeでの操作 | Explorerが初期表示。URL入力欄と実解析への切替ボタンなし。論文切替、検索、5種の絞り込み、候補詳細とスコア内訳、開発状況パネルが動作。JS例外・consoleエラー0 |
+
+ブラウザが自動で要求するホスト直下の`/favicon.ico`は404（アプリはfaviconを定義していない）。
+アプリ資産の404ではない。公開URLでの確認は保存済みデータの表示確認であり、
+実解析・S2復旧・説明品質の合格を示すものではない。今回の公開作業で外部論文取得・S2・有料LLM呼出は0回。
+
 ## 次の公開工程
 
-GitHubの可視性変更・mainへの統合、ホスティング先の契約・公開URL発行は別工程。
-実解析デモにはHTTPS・招待コード・永続SQLite・利用上限が必要で、
-ホスト上の再起動後の永続化と、承認した予算内の実解析を最後に確認する。
+実解析デモには有料または別途承認したホスト、HTTPS・招待コード・永続SQLite・利用上限が必要で、
+ホスト上の再起動後の永続化と、承認した予算内の実解析を最後に確認する。今回は実施していない。
