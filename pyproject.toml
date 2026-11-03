@@ -1,7 +1,7 @@
 [project]
 name = "paper-review-ai"
 version = "0.1.0"
-description = "LLM/NLP paper understanding — offline Phase 0 skeleton"
+description = "Evidence-grounded LLM/NLP paper reading assistant"
 readme = "README.md"
 requires-python = ">=3.12,<4.0"
 dependencies = [
@@ -10,6 +10,9 @@ dependencies = [
   "sqlalchemy>=2.0.45,<2.1",
   "alembic>=1.16,<2",
   "uvicorn>=0.48,<0.49",
+  "pdfplumber>=0.11.10",
+  "httpx>=0.28,<0.29",
+  "tiktoken>=0.12,<1",
 ]
 
 [build-system]
@@ -20,7 +23,7 @@ build-backend = "hatchling.build"
 packages = ["src/paper_review"]
 
 [dependency-groups]
-dev = ["pytest>=9,<10", "httpx>=0.28,<0.29", "ruff>=0.14,<1", "pyright>=1.1.408,<2"]
+dev = ["pytest>=9,<10", "ruff>=0.14,<1", "pyright>=1.1.408,<2"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
