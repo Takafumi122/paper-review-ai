@@ -90,20 +90,57 @@ def test_failure_preserves_partial_results(engine, settings):
         assert result["error_code"] == "refusal"
 
 
-def test_worker_heartbeat_during_slow_provider(engine, settings):
+def test_worker_heartbeat_during_slow_provider(engine, settings, monkeypatch):
+    import asyncio
+    from types import SimpleNamespace
+
     from paper_review.llm.gateway import LLMGateway
-    from paper_review.llm.provider import FakeLLMProvider
+    from paper_review.llm.provider import FakeLLMProvider, LLMRequest, ProviderResponse
+
+    # Advance lease time only at known renewal points. A busy CI runner must not
+    # turn a heartbeat test into an unintended scheduler-latency assertion.
+    clock = [time.time()]
+    started = clock[0]
+    controlled_time = SimpleNamespace(time=lambda: clock[0], monotonic=time.monotonic)
+    monkeypatch.setattr("paper_review.worker.time", controlled_time)
+    monkeypatch.setattr("paper_review.llm.gateway.time", controlled_time)
+    waiting = asyncio.Event()
+    renewed = asyncio.Event()
+    renewals: list[float] = []
+
+    class WaitingProvider(FakeLLMProvider):
+        async def generate(self, request: LLMRequest) -> ProviderResponse:
+            waiting.set()
+            await asyncio.wait_for(renewed.wait(), timeout=5)
+            return await super().generate(request)
 
     short = settings.model_copy(update={"lease_seconds": 0.06})
     job_id = submit(engine, short)
-    gateway = LLMGateway(engine, short, FakeLLMProvider(delay=0.15))
-    assert Worker(engine, short, gateway).run_once() == job_id
+    gateway = LLMGateway(engine, short, WaitingProvider())
+    worker = Worker(engine, short, gateway)
+    contender = Worker(engine, short)
+    original_heartbeat = worker.heartbeat
+
+    def heartbeat(current_job_id: str) -> None:
+        if waiting.is_set():
+            clock[0] += short.lease_seconds / 2
+        original_heartbeat(current_job_id)
+        if waiting.is_set():
+            renewals.append(clock[0])
+            assert contender.claim() is None
+            if len(renewals) >= 5:
+                renewed.set()
+
+    monkeypatch.setattr(worker, "heartbeat", heartbeat)
+    assert worker.run_once() == job_id
+    assert len(renewals) >= 5
+    assert clock[0] - started > 2 * short.lease_seconds
     with Session(engine) as session:
         job = session.get(AnalysisJob, job_id)
         assert job is not None
         assert job.status == "completed"
         assert job.heartbeat_at is not None and job.started_at is not None
-        assert job.heartbeat_at > job.started_at
+        assert job.heartbeat_at > job.started_at + short.lease_seconds
 
 
 def test_separate_worker_process(engine, settings):
