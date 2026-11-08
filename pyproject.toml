@@ -42,3 +42,6 @@ include = ["src", "tests"]
 extraPaths = ["src"]
 pythonVersion = "3.12"
 typeCheckingMode = "standard"
+
+[tool.uv]
+constraint-dependencies = ["certifi>=2026.10.19", "mako>=1.4.2", "pillow>=13.0.0"]
