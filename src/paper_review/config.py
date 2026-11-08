@@ -21,6 +21,7 @@ class Settings(BaseModel):
     provider: Literal["fake", "openai"] = "fake"
     pipeline_mode: Literal["phase0_fake", "phase1", "full"] = "phase0_fake"
     adjustment_policy: Literal["identity-v1"] = "identity-v1"
+    reading_only: bool = False
     specter2_verified: bool = False
     stage1_audited: bool = False
     max_queued_jobs: int = Field(default=10, ge=1, le=50)
@@ -47,6 +48,7 @@ class Settings(BaseModel):
             "PAPER_REVIEW_PROVIDER": "provider",
             "PAPER_REVIEW_PIPELINE_MODE": "pipeline_mode",
             "PAPER_REVIEW_ADJUSTMENT_POLICY": "adjustment_policy",
+            "PAPER_REVIEW_READING_ONLY": "reading_only",
             "PAPER_REVIEW_SPECTER2_VERIFIED": "specter2_verified",
             "PAPER_REVIEW_STAGE1_AUDITED": "stage1_audited",
             "PAPER_REVIEW_MAX_QUEUED_JOBS": "max_queued_jobs",

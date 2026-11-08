@@ -72,6 +72,7 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
             "s2_request_gate_version": "shared-file-v1",
             "stage1_selection_policy_version": DEFAULT_SELECTION_POLICY,
             "lineage_validation_version": "merge-grounding-v2",
+            "reading_only": config.reading_only,
             "limits": {"initial_analysis_budget_usd": config.initial_budget_usd},
             "lineage_readiness": {
                 "specter2_verified": config.specter2_verified,
@@ -113,6 +114,8 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
                 else f"{config.pipeline_mode}-pipeline-v1"
             )
         )
+        if config.reading_only:
+            version += "|reading-only-v1"
         fingerprint = hashlib.sha256(f"{revision}|{version}".encode()).hexdigest()
         with transaction(db) as session:
             existing = session.scalar(

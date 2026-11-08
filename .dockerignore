@@ -12,6 +12,7 @@
 !migrations/**
 !deployment/
 !deployment/start_demo.py
+!deployment/start_railway.py
 !frontend/
 !frontend/package.json
 !frontend/package-lock.json

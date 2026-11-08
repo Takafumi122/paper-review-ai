@@ -39,6 +39,8 @@ function Lineage({ result }: { result: FullResult }) {
   if (!lineage || lineage.status === 'blocked') return <div className="feature-empty"><h3>研究系列はまだ生成されていません</h3>
     <p>{lineage?.reason === 'stage1_quality_audit_pending'
       ? '先行研究の候補順位について品質確認が完了していないため、研究系列の生成を保留しています。'
+      : lineage?.reason === 'reading_only_mode'
+        ? '現在は読解モードです。Reasoning Flowと前提知識を生成し、Research Lineageは生成しません。'
       : lineage?.reason === 'specter2_contract_not_verified'
         ? '論文の類似度を取得する接続の検証が未完了のため、研究系列の生成を保留しています。'
         : '研究系列を支える十分な根拠を確認できませんでした。'}</p>
