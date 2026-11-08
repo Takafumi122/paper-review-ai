@@ -22,7 +22,7 @@ def main() -> None:
     ensure_s2_pause(Path(__file__).resolve().parents[1] / ".work")
     os.execv(
         sys.executable,
-        [sys.executable, "-m", "paper_review.server", "--host", "0.0.0.0"],
+        [sys.executable, "-m", "paper_review.server", "--reading-only", "--host", "0.0.0.0"],
     )
 
 

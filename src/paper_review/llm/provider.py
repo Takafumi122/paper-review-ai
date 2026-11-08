@@ -27,6 +27,7 @@ ROUTING = {
     "candidate_comparison": COMPARISON,
     "edge_evaluation": COMPARISON,
     "lineage": COMPARISON,
+    "lineage_edge_review": TaskPolicy("gpt-6.1-sol", 8000, 2400, 45, 120),
     "lineage_merge_review": TaskPolicy("gpt-6.1-sol", 8000, 2000, 45, 120),
     "reasoning": TaskPolicy("gpt-6.1-sol", 24000, 8000, 90, 180),
     "reasoning_review": TaskPolicy("gpt-6.1-sol", 8000, 2400, 60, 150),

@@ -12,6 +12,7 @@ from pydantic import Field
 
 from paper_review.domain.citation_identity import author_year_aliases, author_year_matches
 from paper_review.domain.models import CandidateSet
+from paper_review.domain.section_titles import is_bibliography_heading
 from paper_review.domain.understanding import OutputModel
 from paper_review.llm.gateway import ExecutionFailure
 from paper_review.llm.provider import ROUTING
@@ -158,7 +159,7 @@ def prepare_contexts(inventory: CandidateSet, spans: list[dict[str, str]]) -> li
     for span in spans:
         if (
             span.get("paper_id") == inventory.target_paper_id
-            and "reference" not in span.get("section", "").lower()
+            and not is_bibliography_heading(span.get("section"))
         ):
             groups[(span["paper_id"], span["revision"], span["section_id"])].append(span)
     contexts: dict[tuple[str, tuple[str, ...]], dict] = {}

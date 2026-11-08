@@ -14,11 +14,11 @@ def verify(client: httpx.Client) -> dict[str, str | int]:
     health = client.get("/health")
     health.raise_for_status()
     data = health.json()
-    if data.get("pipeline") != "full" or data.get("pipeline_version") != "full-v35":
+    if data.get("pipeline") != "full" or data.get("pipeline_version") != "full-v44":
         raise ValueError("unexpected_pipeline_version")
     if data.get("stage1_selection_policy_version") != "lower-bound-v1":
         raise ValueError("unexpected_stage1_selection_policy")
-    if data.get("lineage_validation_version") != "merge-grounding-v2":
+    if data.get("lineage_validation_version") != "edge-grounding-v3":
         raise ValueError("unexpected_lineage_validation_version")
     # Invalid input cannot enqueue work even if authorization is misconfigured.
     response = client.post("/analyses", json={"arxiv_url": "invalid-preflight-input"})

@@ -1,6 +1,7 @@
 """Unit tests for evaluation paper manifest."""
 
-from paper_review.domain.manifest import load_manifest
+from paper_review.domain.manifest import PageLimitCheck, load_manifest
+from paper_review.domain.models import MAX_PAPER_PAGES
 
 
 def test_manifest_loads_all_10_papers():
@@ -43,24 +44,27 @@ def test_adr0001_d3_page_limit_alignment():
     compliant = manifest.compliant_papers
     pending = manifest.pending_decision_papers
 
-    # 8 papers are within 50 pages; 2 papers exceed 50 pages (GPT-3: 75p, InstructGPT: 68p).
-    assert len(compliant) == 8
-    assert len(pending) == 2
-
-    pending_ids = {p.arxiv_id for p in pending}
-    assert pending_ids == {"2005.14165", "2203.02155"}
+    # The 75-page policy includes GPT-3 and InstructGPT without removing appendices.
+    assert manifest.page_limit_rule["max_pages"] == MAX_PAPER_PAGES == 75
+    assert len(compliant) == 10
+    assert pending == []
 
     for p in compliant:
         assert p.page_limit_check.status == "within_limit"
         assert p.page_limit_check.d3_assessment == "compliant"
-        assert p.page_limit_check.expected_page_count <= 50
+        assert p.page_limit_check.limit_pages == MAX_PAPER_PAGES
+        assert p.page_limit_check.expected_page_count <= MAX_PAPER_PAGES
 
-    for p in pending:
-        assert p.page_limit_check.status == "exceeds_limit"
-        assert p.page_limit_check.d3_assessment == "pending_decision"
-        assert p.page_limit_check.expected_page_count > 50
-        assert p.page_limit_check.main_text_page_count <= 50  # main text itself is <= 50
-        assert "ADR-0001 D3" in p.page_limit_check.notes
+
+def test_historical_50_page_manifest_checks_remain_readable():
+    check = PageLimitCheck.model_validate({
+        "expected_page_count": 75, "main_text_page_count": 40,
+        "appendix_page_count": 35, "limit_pages": 50, "exceeds_50_pages": True,
+        "status": "exceeds_limit", "d3_assessment": "pending_decision",
+        "notes": "Historical 50-page assessment",
+    })
+    assert check.limit_pages == 50
+    assert check.exceeds_limit is True
 
 
 def test_initial_study_targets():
@@ -70,3 +74,20 @@ def test_initial_study_targets():
     assert len(initials) == 3
     initial_ids = {p.arxiv_id for p in initials}
     assert initial_ids == {"1706.03762", "2106.09685", "2210.03629"}
+
+
+def test_observed_versions_and_missing_page_partitions():
+    manifest = load_manifest()
+    expected = {"2005.14165": ("v4", 75), "2203.02155": ("v1", 68),
+                "2201.11903": ("v6", 43), "2305.18290": ("v2", 27),
+                "2310.11511": ("v1", 30)}
+    for aid, (version, pages) in expected.items():
+        paper = manifest.get_by_arxiv_id(aid)
+        assert paper is not None
+        assert paper.expected_version == version
+        assert paper.canonical_url.endswith(aid + version)
+        assert paper.page_limit_check.expected_page_count == pages
+        # Total pages are observed; a disjoint main/appendix count is not inferred.
+        assert paper.page_limit_check.main_text_page_count is None
+        assert paper.page_limit_check.appendix_page_count is None
+        assert "SHA-256" in paper.page_limit_check.notes

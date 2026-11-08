@@ -7,12 +7,13 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+MAX_PAPER_PAGES = 75
+
 
 class ExternalIds(BaseModel):
     """External bibliographic identifiers supported by the platform.
 
-    OpenAlex is reserved for future schema compatibility (MVP does not use it).
-    Semantic Scholar is reserved for Phase 2 candidate retrieval.
+    Provider IDs are aliases; explicit retrieval configuration chooses the source.
     """
 
     model_config = ConfigDict(extra="forbid", frozen=True)
@@ -431,6 +432,7 @@ class CandidateSet(BaseModel):
 
     target_paper_id: str
     target_s2_id: str | None = None
+    references_complete: bool | None = None
     candidates: list[CandidatePaper] = Field(default_factory=list)
     retrieved_at: float = Field(default_factory=time.time)
     reference_resolutions: list[ReferenceResolution] = Field(default_factory=list)

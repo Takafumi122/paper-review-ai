@@ -1,6 +1,6 @@
 # Research Lineage
 
-Status: Canonical. Updated: 2026-09-19.
+Status: Canonical. Updated: 2026-11-03.
 要件の正本は [requirements.md](requirements.md)。数値計算は [scoring-lineage.md](scoring-lineage.md)。
 
 ## 1. 目的と範囲
@@ -57,8 +57,10 @@ max_incoming_lineages = 2
 ## 4. 候補探索と絞り込み
 
 1. Targetを取得・構造化し、nanoで根拠付き主要Contributionを最大3件とProblemを抽出。
-2. Target ReferencesとSemantic Scholar Recommendationsを取得。
-3. DOI、arXiv ID、Semantic Scholar IDで統合。IDが矛盾したら自動結合しない。
+2. Target Referencesを基礎に、明示したbackendから候補を取得する。
+   `semantic_scholar`はS2 References/Recommendations、2026-11-03承認の`openalex_local`は
+   OpenAlex References/Related worksと自前SPECTER2を使う。障害時の自動切替はしない。
+3. DOI、arXiv ID、Semantic Scholar/OpenAlex IDで照合。IDが矛盾したら自動結合しない。
    正規化タイトルは照合候補の手掛かりに限定し、単独で同一論文と断定しない。
 4. 日付・論文種別を確認し、主系列候補／同時期／後発／対象外を分離。
 5. 30〜50候補を目安にInitialScoreと選考区間を計算し、`lower-bound-v1`
@@ -71,7 +73,7 @@ max_incoming_lineages = 2
 8. 各候補間のEdgeを別途評価し、Graph制約とEvidenceを検証して最大5先行研究を出力。
 
 取得元、取得日時、候補除外理由、raw metric、欠損理由、score内訳を保存する。
-Academic API障害時にOpenAlex/Crossrefへ切り替えない。取得済みReferences/cacheで縮退し、
+Academic API障害時に別providerへ切り替えない。取得済みReferences/cacheで縮退し、
 不足を明示する。候補名・書誌情報をLLMの記憶から補わない。
 
 ### 制限付き追加取得（実装初期設定）
@@ -82,6 +84,11 @@ Academic APIのHTTP attempts 40件（再試行・ページングを含む）を�
 追加候補も同じ総枠を使い、追加のTop 10枠を作らない。上限と打ち切り理由を保存する。
 選択済み系列の不足Edgeを優先し、無制限な探索・全候補の全組比較はしない。
 取得制限は品質・時間の計測後に設定版を更新できるが、Graph制約は変更しない。
+
+`openalex-local-v2`は未解決Referenceのplaceholderより同定済み候補を先に保持する。
+候補上限50件は維持し、枠に入らないものも元のReferenceごとの解決結果・不足理由を残す。
+OpenAlex indexの欠落を非引用の証拠とせず、references_complete=falseを保持する。
+この取得policyの変更をStage 1重みや順位tie-breakの変更として扱わない。
 
 ## 5. EvidenceとConfidence
 

@@ -2,7 +2,12 @@
 
 LLM/NLP論文を、**Research Lineage・Reasoning Flow・必要な前提知識**から理解するためのアプリです。説明には英語原文の引用を対応付けます。採否判断や、論文の絶対的な品質評価は行いません。
 
-**開発中のプレビューです。** キー不要の記録プレビューを https://takafumi122.github.io/paper-review-ai/ で公開しています（GitHub Pagesの静的サイト）。このURLは3論文の保存済み候補を閲覧するだけで、新しい論文URLの解析や、Research Lineage・Reasoning Flow・前提知識の生成は行いません。実解析を試せるホスト型デモはまだありません。現在の処理版は `full-v35`、合流検証は `merge-grounding-v2` です。
+**開発中の暫定公開版です。** 現在の処理版は `full-v44`、Graphの根拠検証は `edge-grounding-v3` です。
+
+- [Railwayの実解析アプリ](https://paper-review-ai-production.up.railway.app/)：招待コードが必要です。OpenAlex＋CPU版SPECTER2で候補取得し、生成した説明を選択引用で審査します。
+- [GitHub Pagesの記録プレビュー](https://takafumi122.github.io/paper-review-ai/)：APIキー不要の保存済み候補表示です。新規解析は行いません。
+
+Graphの本番有効化は、2026-11-08の所有者による数値品質未達の一時許容に基づきます。正式な品質合格ではありません。引用が先行研究固有の貢献と後続研究との関係を支えなければ、辺を表示しません。[現在の公開状態・未達と検証範囲](docs/graph-publication-status.md)を確認してください。
 
 ## できることと制限
 
@@ -11,12 +16,12 @@ LLM/NLP論文を、**Research Lineage・Reasoning Flow・必要な前提知識**
 | arXiv URLの受付・全文構造化 | 実装済み。取得元の429や取得失敗では処理が制限されます |
 | Reasoning Flow | 原文に対応する推論ステップを生成し、主張と引用を照合します |
 | 前提知識 | ステップ間に必要な概念と短い説明、オンデマンド詳細を生成・照合します |
-| Research Lineage | 候補選考・Graph生成・根拠照合を実装。保存済みLoRAで単一路を確認済み。**本番有効化は保留**です |
+| Research Lineage | OpenAlex＋自前SPECTER2を明示選択でき、Graphを原文で審査します。所有者の例外承認で暫定有効化中。根拠不足の辺は表示しません |
 | キー不要の記録プレビュー | 3論文の保存済み候補を検索・絞り込みし、出典・年代・欠損・スコア内訳を確認できます。[公開URL](https://takafumi122.github.io/paper-review-ai/)で閲覧可能 |
 
-Semantic Scholar（S2）は2026-11-03の最小metadataリクエストでも429となり、再送を停止しました。S2の切り分けは保留中です。新しい論文URLから3機能すべてが完了することや、正式な説明品質合格はまだ保証していません。
+`semantic_scholar`は互換defaultとして残りますが、本番は明示選択の`openalex_local`を使用し、S2を呼びません。障害時に別backendへ自動切替しません。対象は英語の公開arXiv論文・付録込み75ページ以内です。3機能すべての完走や説明品質の正式合格は保証しません。
 
-[検証済み範囲と残課題](docs/release-status.md)に、保存済み入力での検証と新規取得を区別して記載しています。
+[現在の検証済み範囲と残課題](docs/graph-publication-status.md)に、実行成功・根拠審査・品質合格を区別して記載しています。[以前の公開記録](docs/release-status.md)は履歴です。
 
 ## まず記録プレビューを試す（APIキー不要）
 
@@ -46,16 +51,22 @@ npm --prefix frontend run build
 | 環境変数 | 用途 |
 |---|---|
 | `OPENAI_API_KEY` | 説明生成・根拠照合 |
-| `SEMANTIC_SCHOLAR_API_KEY` または `S2_API_KEY` | 学術情報取得。S2停止中は取得を制限 |
+| `OPENALEX_API_KEY` | `openalex_local`の候補取得用。公式モデルと任意CPU依存の準備は[こちら](deployment/LOCAL-EMBEDDINGS.md) |
+| `SEMANTIC_SCHOLAR_API_KEY` または `S2_API_KEY` | 互換defaultのS2 backendを選択する場合のみ必要 |
 | `PAPER_REVIEW_ACCESS_TOKEN` | 共有時の招待コード。ローカルのみでは任意 |
 
+まず読解機能だけを起動する場合、学術APIキーとembeddingモデルは不要です。
+
 ```sh
-uv run --no-env-file python -m paper_review.server
+PAPER_REVIEW_INITIAL_BUDGET_USD=0.50 \
+uv run --no-env-file python -m paper_review.server --reading-only
 ```
+
+候補取得・GraphのためのOpenAlex構成は、[固定モデルとCPUイメージの準備](deployment/LOCAL-EMBEDDINGS.md)に従い、`--academic-backend openalex_local`を明示して起動します。
 
 [ローカルアプリ](http://127.0.0.1:8000)を開きます。マイグレーション・FastAPI・DB-backed Workerを起動します。終了はCtrl+C。既定DBは `.work/app.db`、更新後は再起動が必要です。上記コマンドは `.env` を読み込みません。
 
-Research Lineageの `PAPER_REVIEW_SPECTER2_VERIFIED` と `PAPER_REVIEW_STAGE1_AUDITED` は `false` を維持してください。保存済みデータの成功を理由に有効化せず、429の停止記録も消さないでください。
+新規環境ではreadinessをfalseから開始します。OpenAlex用は`PAPER_REVIEW_OPENALEX_LOCAL_VERIFIED`と`PAPER_REVIEW_OPENALEX_LOCAL_AUDITED`で、S2用のフラグとは独立です。実API/model確認と公開判断を省略して有効化しないでください。既存本番の例外承認を、新しい環境や正式な品質合格へ流用しません。
 
 外部APIを使わずJobの受付・実行だけ確認する場合は、デフォルトのFake設定で以下を別ターミナルで実行できます。APIキーやプロバイダー設定を渡す必要はありません。
 
@@ -87,9 +98,9 @@ python3 scripts/check_publication.py --tracked --history
 
 静的な記録プレビューはフロントエンドのビルドだけで配信でき、https://takafumi122.github.io/paper-review-ai/ で公開済みです。実解析にはPython API・常駐Worker・永続SQLiteが必要で、GitHub Pagesだけでは動きません。
 
-[配置手順](deployment/README.md)と[以前調査した低コスト候補](deployment/LOW_COST_OPTIONS.md)を用意しています。実解析デモ用ホストの契約・デプロイ・公開URL確認は未実施です。
+[配置手順](deployment/README.md)と[Railway手順](deployment/RAILWAY.md)を用意しています。既存のRailway本番は稼働中です。GitHubからの自動デプロイは停止しており、PRのmergeだけでは本番は更新されません。GitHub Pagesは引き続き記録プレビュー専用です。
 
-共有する実解析デモにはHTTPS、招待コード、永続ディスクが必要です。プロバイダーのキーはホストのSecret設定に置き、フロントエンドへ渡しません。既定で初期解析USD 1.00、詳細USD 0.10の予約予算を適用します。費用は推定で、応答喪失による不明額は保持します。初期解析の受付上限は待機・実行中10件、24時間25件です。詳細生成を含むアカウント全体の支出上限ではありません。
+共有する実解析デモにはHTTPS、招待コード、永続ディスクが必要です。プロバイダーのキーはホストのSecret設定に置き、フロントエンドへ渡しません。既定で初期解析USD 1.00、詳細USD 0.10の予約予算を適用します。費用は推定で、応答喪失による不明額は保持します。設定defaultは待機・実行中10件、直近24時間25件です。既存本番は初期解析USD 0.50/Job・詳細USD 0.10/Job、同時1 Job・直近24時間3 Jobへ絞っています。詳細生成も受付Job数に算入します。プロバイダーやインフラ全体の請求上限ではありません。
 
 招待コードは共有デモ用で、利用者ごとのデータ分離はありません。開発者の `.work`、`.env`、DB、ログをデモへコピーしないでください。
 

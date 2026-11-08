@@ -10,6 +10,7 @@ from paper_review.application.lineage_evidence import (
     RelevanceSelectionBatch,
     prepare_candidate_evidence,
     selected_relevance,
+    symbolic_citation_owners,
     validate_contribution_language,
 )
 from paper_review.application.stage1_shortlist import Stage1Analysis
@@ -18,6 +19,7 @@ from paper_review.domain.models import (
     CandidateSet,
     Paper,
     Reference,
+    ReferenceResolution,
     Stage1RankedCandidate,
     Stage1RankingResult,
     Stage1Score,
@@ -53,6 +55,48 @@ def test_candidate_direct_spans_are_fairly_prioritized_and_neighbours_preserve_o
     assert json.loads(result[0]["identifies_candidate_ids"]) == ["a"]
     assert result[-1]["text"] == neighbour["text"]
     assert result[-1]["start_offset"] == neighbour["start_offset"]
+
+
+def test_symbolic_citation_requires_unique_resolution_and_matching_body_revision():
+    ref = candidate("a", 2).source_references[0].model_copy(update={"citation_key": "[LPP+20]"})
+    resolution = ReferenceResolution(
+        reference_id=ref.id, reference_order=ref.ref_order, candidate_id="a",
+        status="resolved", method="exact_title_author_year",
+    )
+    bibliography = {**span("bibliography", "[LPP+20] Prior paper"), "section": "References"}
+    earlier = {**span("earlier", "Prior [LPP+20]."), "revision": "older"}
+    spans = [
+        span("actual", "We compare against [LPP+20].", section="results"),
+        span("other", "See [LPP+200] or [lpp+20]."), bibliography, earlier,
+    ]
+    candidates = {cid: candidate(cid, label) for cid, label in [("a", 2), ("b", 3)]}
+    _, allowed = prepare_candidate_evidence(
+        candidates, spans, symbolic_owners=symbolic_citation_owners([ref], [resolution])
+    )
+    assert allowed == {"a": {"actual"}, "b": set()}
+    assert not symbolic_citation_owners([ref, ref.model_copy(update={"id": "duplicate"})],
+                                        [resolution])
+    assert not symbolic_citation_owners([ref], [resolution, resolution])
+    assert not symbolic_citation_owners([ref], [resolution.model_copy(
+        update={"status": "unresolved"}
+    )])
+
+
+def test_candidate_source_options_use_only_bound_request_aliases():
+    from paper_review.llm.gateway import prepare_source_request, request_schema
+
+    first = span("original-a", "Prior [2] is used.")
+    second = span("original-b", "Other [3] is used.", section="other")
+    prepared, _ = prepare_candidate_evidence({"a": candidate("a", 2), "b": candidate("b", 3)},
+                                              [first, second])
+    task = {"span_id": "task-data", "text": json.dumps({"candidates": []})}
+    _, context, aliases = prepare_source_request(
+        request_schema(RelevanceSelectionBatch, bind_evidence=True), (prepared[0], task),
+    )
+    options = json.loads(context[-1]["text"])["candidate_evidence_options"]
+    assert options == {"a": {"identifying_source_ids": ["S0"], "allowed_source_ids": ["S0"]}}
+    assert aliases["S0"][0] == "original-a"
+    assert "candidate_evidence_options" not in json.loads(task["text"])
 
 
 @pytest.mark.parametrize("identity", [None, "context", "a"])
@@ -134,6 +178,14 @@ def test_missing_prepared_evidence_is_null_and_never_sent_for_semantic_scoring(m
                 "candidate_id": "a", "score": 3, "contribution_ids": ["c"],
                 "reason": "方法を拡張", "identifying_evidence": evidence, "evidence": evidence,
             }]})
+        elif task == "lineage_edge_review":
+            assert extra is not None
+            value = schema.model_validate({"edges": [
+                {"edge_id": item["edge_id"], "claims": [{
+                    "text": item["relationship"], "decision": "supported",
+                    "evidence_span_ids": item["selected_source_ids"], "reason": "原文で支持",
+                }]} for item in extra["edges"]
+            ]})
         else:
             assert task == "lineage"
             value = LineageProposal.model_validate({"predecessor_ids": ["a"],
@@ -157,6 +209,7 @@ def test_missing_prepared_evidence_is_null_and_never_sent_for_semantic_scoring(m
     else:
         assert calls == [
             "contribution_extraction", "contribution_review", "contribution_relevance", "lineage",
+            "lineage_edge_review",
         ]
         assert result["status"] == "completed"
         assert result["edges"][0]["confidence"] == pytest.approx(0.85)

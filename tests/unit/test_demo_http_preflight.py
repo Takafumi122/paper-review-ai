@@ -36,12 +36,12 @@ def test_preflight_never_enqueues_valid_work(fault, reason):
                 200,
                 json={
                     "pipeline": "full",
-                    "pipeline_version": "old" if fault == "version" else "full-v35",
+                    "pipeline_version": "old" if fault == "version" else "full-v44",
                     "stage1_selection_policy_version": (
                         "observed-renormalized-v1" if fault == "policy" else "lower-bound-v1"
                     ),
                     "lineage_validation_version": (
-                        "old" if fault == "merge" else "merge-grounding-v2"
+                        "old" if fault == "merge" else "edge-grounding-v3"
                     ),
                 },
             )

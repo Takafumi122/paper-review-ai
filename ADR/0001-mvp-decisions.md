@@ -53,8 +53,8 @@ requirementsはプロダクト要件、個別docsは詳細仕様を定義する�
 | ID | 未決事項 | 必要時期 | 現在の扱い |
 |---|---|---|---|
 | D1 | AdjustedContributionRelevanceの補正式 | 2026-10-30解決 | ユーザー承認：identity-v1（ContributionRelevanceと同値）。既定FinalScore重みを維持 |
-| D2 | 品質の数値合格閾値、評価担当・二者確認の扱い | 最終評価前 | 評価方法のみ確定。完成・品質合格とは宣言しない |
-| D3 | 10評価論文の版・付録込み50ページ制限との整合 | Phase 1 manifest作成時 | 実物を確認。対象外なら黙って除外せず要件判断 |
+| D2 | 品質の数値合格閾値、評価担当・二者確認の扱い | 2026-11-04方針確定 | ユーザーがLLM参照ラベルと提示済み数値基準を採用。追加API費用なしで既存出力を評価。独立人手評価とは呼ばず、不足coverageを合格にしない |
+| D3 | 10評価論文の版・付録込み75ページ制限との整合 | Phase 1 manifest作成時 | 2026-11-04：上限75ページを採用。GPT-3 v4（75）・InstructGPT v1（68）・CoT v6（43）・DPO v2（27）・Self-RAG v1（30）を公式PDFで確認しmanifest v1.2.0に固定。残る5論文の再検証・品質合格を意味しない |
 
 D1は単なる正規化方法ではなく意味のあるscore変更なので、Evidenceとの積などを勝手に設定しない。
 通常の欠損処理でD1を回避することも禁止する。
@@ -85,3 +85,26 @@ InitialScore、coverage、null、欠損理由とSourceは保持し、下限・�
 全欠損は下限0でも順位対象外。旧結果は上書きせず、再現用に旧policyを明示する。
 重み、引用roleの最大集約、Top-K、Stage 2のFinalScore・tie-break、identity-v1は変更しない。
 本判断は品質合格・S2停止解除・Lineage本番有効化の承認ではない。
+
+## 2026-11-03 Decision — OpenAlex + local SPECTER2 alternative
+
+ユーザーがS2代替構成の実装と、接続・実推論・代表論文・指定10論文への診断・仕様採用判断を
+なるべく連続して行うことを承認した。従来Decision 4のOpenAlex除外を、この明示選択の取得経路に
+限って拡張する。NormalizedImpact、Crossref fallback、重み・Top-K・引用policyの変更は含まない。
+
+`openalex_local`はOpenAlex書誌/引用情報と公式SPECTER2の固定base/proximity adapterを使用する。
+互換defaultはS2とし、自動fallbackは行わない。候補保持policy `openalex-local-v2`では未解決
+placeholderが同定済み候補を排除しないようにし、元のReference解決結果と候補50件上限を保持する。
+自前推論の任意ML runtimeはこの目的に限って追加する。モデル資産と全cacheはworkspace内に置く。
+
+本採用は構成を選べることの承認であり、品質合格や本番Lineage有効化の承認ではない。
+実接続・実model契約とStage 1品質を分離し、D2/D3、引用不整合、取得不足を成功で上書きしない。
+2026-11-03の`.env`読み込み許可は今回の会話限りであり、恒久的なsecurity規則の変更ではない。
+
+## 2026-11-04 Decision — LLM参照ラベルと数値基準
+
+ユーザーが「LLMの採点で正解を作る」と、提示済みの数値基準案を明示採用した。
+固定基準は`evaluation/acceptance/criteria-v1.json`。既存出力を参照するLLM評価として
+採点者・原文Evidence・snapshot hash・事前閲覧を記録し、独立人手正解とは呼ばない。
+追加API費用は使わず、既存出力に欠ける版・機能・baselineを成功で埋めない。
+Railway公開はユーザー指定だが、品質合格・容量検証・credential送信承認は区別して実施する。

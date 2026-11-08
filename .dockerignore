@@ -10,8 +10,12 @@
 !src/**
 !migrations/
 !migrations/**
+!scripts/
+!scripts/prepare_local_specter2.py
 !deployment/
 !deployment/start_demo.py
+!deployment/start_railway.py
+!deployment/verify_railway_graph.py
 !frontend/
 !frontend/package.json
 !frontend/package-lock.json
@@ -22,3 +26,22 @@
 !frontend/src/**
 **/__pycache__
 **/*.pyc
+
+# Parent-directory exceptions above must never re-include generated or private files.
+**/node_modules
+frontend/dist
+**/.git
+**/.env
+**/.env.*
+**/.venv
+**/.work
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/*.sqlite
+**/*.sqlite3
+**/*.log
+**/*.pdf
+**/*.safetensors
+**/*.pt
+**/*.pth

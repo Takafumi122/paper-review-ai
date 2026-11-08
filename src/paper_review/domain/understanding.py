@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 from paper_review.domain.candidate_retrieval import evaluate_temporal_eligibility
 from paper_review.domain.citation_identity import author_year_matches
 from paper_review.domain.models import CandidatePaper, Paper, Stage1Score
+from paper_review.domain.section_titles import is_bibliography_heading
 
 
 class OutputModel(BaseModel):
@@ -342,8 +343,15 @@ def final_score(stage1: Stage1Score, relevance: Relevance, *, adjustment_policy:
     }
 
 
+SymbolicCitationOwners = dict[tuple[str, str, str], str]
+SYMBOLIC_CITATION = re.compile(
+    r"\[(?=[A-Za-z0-9+*†‡-]*[A-Za-z])[A-Za-z0-9][A-Za-z0-9+*†‡-]{0,31}\]"
+)
+
+
 def candidate_is_identified(
-    candidate: CandidatePaper, evidence: list[Evidence], sources: dict[str, dict[str, str]]
+    candidate: CandidatePaper, evidence: list[Evidence], sources: dict[str, dict[str, str]],
+    *, symbolic_owners: SymbolicCitationOwners | None = None,
 ) -> bool:
     for item in evidence:
         source = sources.get(item.span_id, {})
@@ -361,6 +369,13 @@ def candidate_is_identified(
             return True
         if next(author_year_matches(candidate, item.quote), None) is not None:
             return True
+        if symbolic_owners and not is_bibliography_heading(source.get("section")):
+            origin = (source.get("paper_id", ""), source.get("revision", ""))
+            if any(
+                symbolic_owners.get((*origin, match[0])) == candidate.paper_id
+                for match in SYMBOLIC_CITATION.finditer(item.quote)
+            ):
+                return True
     return False
 
 
@@ -370,6 +385,7 @@ def validate_lineage(
     candidates: dict[str, CandidatePaper],
     sources: dict[str, dict[str, str]],
     *, contributions: Contributions | None = None,
+    symbolic_owners: SymbolicCitationOwners | None = None,
 ) -> list[dict]:
     """Validate topology/chronology/quotes before assigning code-owned confidence."""
     predecessors = proposal.predecessor_ids
@@ -408,7 +424,9 @@ def validate_lineage(
         if temporal != "eligible":
             raise ValueError("lineage_chronology_unverified")
         validate_evidence(edge.evidence, sources)
-        if edge.evidence and not candidate_is_identified(earlier, edge.evidence, sources):
+        if edge.evidence and not candidate_is_identified(
+            earlier, edge.evidence, sources, symbolic_owners=symbolic_owners
+        ):
             raise ValueError("lineage_candidate_not_identified")
         if any(sources[e.span_id].get("paper_id") not in {a, b, target.id} for e in edge.evidence):
             raise ValueError("lineage_evidence_wrong_paper")
@@ -463,16 +481,19 @@ def validate_lineage(
     # Their distinctness and integration are semantic checks, not ID inequality.
     for branch in support.branches:
         validate_evidence(branch.evidence, sources)
-        if not candidate_is_identified(candidates[branch.from_paper_id], branch.evidence, sources):
+        if not candidate_is_identified(
+            candidates[branch.from_paper_id], branch.evidence, sources,
+            symbolic_owners=symbolic_owners,
+        ):
             raise ValueError("lineage_merge_branch_not_identified")
         if any(sources[e.span_id].get("paper_id") not in {
             branch.from_paper_id, support.node_id, target.id,
-        } or "reference" in sources[e.span_id].get("section", "").lower()
+        } or is_bibliography_heading(sources[e.span_id].get("section"))
                for e in branch.evidence):
             raise ValueError("lineage_merge_evidence_wrong_scope")
     validate_evidence(support.integration_evidence, sources)
     if any(sources[e.span_id].get("paper_id") not in {support.node_id, target.id}
-           or "reference" in sources[e.span_id].get("section", "").lower()
+           or is_bibliography_heading(sources[e.span_id].get("section"))
            for e in support.integration_evidence):
         raise ValueError("lineage_merge_evidence_wrong_scope")
     return validated

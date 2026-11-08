@@ -102,7 +102,23 @@ def parse_arxiv_atom(xml_text: str, target_id: str) -> ArXivMetadata:
     if not entries:
         raise ArXivNotFoundError(f"Paper {target_id} not found in arXiv")
 
-    entry = entries[0]
+    wanted = normalize_arxiv_id(target_id)
+    matches = []
+    for item in entries:
+        id_element = item.find("atom:id", ATOM_NS)
+        try:
+            found = normalize_arxiv_id((id_element.text or "") if id_element is not None else "")
+        except ValueError:
+            continue
+        if found.arxiv_id == wanted.arxiv_id and (
+            wanted.version is None or wanted.version == found.version
+        ):
+            matches.append(item)
+    if len(matches) > 1:
+        raise ArXivParseError("duplicate_arxiv_identity_in_response")
+    if not matches:
+        raise ArXivNotFoundError("arXiv paper not found: requested_identity_or_version")
+    entry = matches[0]
 
     # Check for arXiv error entry (arXiv returns an entry with title "Error" on invalid query)
     title_el = entry.find("atom:title", ATOM_NS)

@@ -1,13 +1,13 @@
 {
-  "manifest_version": "1.0.0",
-  "generated_at": "2026-09-21",
+  "manifest_version": "1.2.1",
+  "generated_at": "2026-11-05",
   "target_domain": "Computer Science / Artificial Intelligence / NLP / LLMs",
   "description": "Evaluation paper set defined in docs/thesis-choosing.md and requirements.md",
   "page_limit_rule": {
-    "max_pages": 50,
+    "max_pages": 75,
     "includes_appendix": true,
     "canonical_reference": "docs/requirements.md Section 40.3 / ADR-0001 D3",
-    "policy": "MVPでは付録を含む全体で50ページ以内を原則とする。超過時は要件判断または例外承認が必要。"
+    "policy": "2026-11-04のユーザー提案を採用し、MVPでは付録を含む全体で75ページ以内とする。超過時は要件判断または例外承認が必要。"
   },
   "papers": [
     {
@@ -26,11 +26,11 @@
         "expected_page_count": 15,
         "main_text_page_count": 10,
         "appendix_page_count": 5,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで15ページ。50ページ制限に完全に適合。"
+        "notes": "manifest記載の付録込み15ページは75ページ上限内。版・ページ数の実測確認は別途必要。",
+        "exceeds_limit": false
       }
     },
     {
@@ -47,13 +47,13 @@
       "initial_study_target": false,
       "page_limit_check": {
         "expected_page_count": 75,
-        "main_text_page_count": 40,
-        "appendix_page_count": 35,
-        "limit_pages": 50,
-        "exceeds_50_pages": true,
-        "status": "exceeds_limit",
-        "d3_assessment": "pending_decision",
-        "notes": "付録込みで75ページあり50ページ制限を超過する。本文のみでは40ページで制限内。ADR-0001 D3に基づき、(1) 付録除外パースの例外承認、(2) 50ページ上限の個別例外承認、(3) 評価集合の見直しのいずれかの要件判断が必要。"
+        "main_text_page_count": null,
+        "appendix_page_count": null,
+        "limit_pages": 75,
+        "status": "within_limit",
+        "d3_assessment": "compliant",
+        "notes": "2026-11-04に公式arXivのv4 PDFを付録込み75ページと実測。PDF SHA-256: 97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83。出典: evaluation/reports/evaluation-sources-2026-11-04/source-observations.json。本文・付録の排他的ページ数は未確定のためnull（参考文献・目次・同一ページの混在を推測配分しない）。75ページ上限内。品質合格は別途。",
+        "exceeds_limit": false
       }
     },
     {
@@ -72,11 +72,11 @@
         "expected_page_count": 19,
         "main_text_page_count": 11,
         "appendix_page_count": 8,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで19ページ。50ページ制限に適合。"
+        "notes": "manifest記載の付録込み19ページは75ページ上限内。版・ページ数の実測確認は別途必要。",
+        "exceeds_limit": false
       }
     },
     {
@@ -95,11 +95,11 @@
         "expected_page_count": 26,
         "main_text_page_count": 14,
         "appendix_page_count": 12,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで26ページ。50ページ制限に適合。"
+        "notes": "manifest記載の付録込み26ページは75ページ上限内。版・ページ数の実測確認は別途必要。",
+        "exceeds_limit": false
       }
     },
     {
@@ -116,13 +116,13 @@
       "initial_study_target": false,
       "page_limit_check": {
         "expected_page_count": 68,
-        "main_text_page_count": 26,
-        "appendix_page_count": 42,
-        "limit_pages": 50,
-        "exceeds_50_pages": true,
-        "status": "exceeds_limit",
-        "d3_assessment": "pending_decision",
-        "notes": "付録込みで68ページあり50ページ制限を超過する。本文のみでは26ページで制限内。ADR-0001 D3に基づき、(1) 付録除外パースの例外承認、(2) 50ページ上限の個別例外承認、(3) 評価集合の見直しのいずれかの要件判断が必要。"
+        "main_text_page_count": null,
+        "appendix_page_count": null,
+        "limit_pages": 75,
+        "status": "within_limit",
+        "d3_assessment": "compliant",
+        "notes": "2026-11-04に公式arXivのv1 PDFを付録込み68ページと実測。PDF SHA-256: c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98。出典: evaluation/reports/evaluation-sources-2026-11-04/source-observations.json。本文・付録の排他的ページ数は未確定のためnull（参考文献・目次・同一ページの混在を推測配分しない）。75ページ上限内。品質合格は別途。",
+        "exceeds_limit": false
       }
     },
     {
@@ -138,14 +138,14 @@
       "reason_for_selection": "Few-shotと推論の関係。Observation/Result/Interpretationの区別",
       "initial_study_target": false,
       "page_limit_check": {
-        "expected_page_count": 42,
-        "main_text_page_count": 12,
-        "appendix_page_count": 30,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "expected_page_count": 43,
+        "main_text_page_count": null,
+        "appendix_page_count": null,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで42ページ。50ページ制限に適合。"
+        "notes": "2026-11-04に公式arXivのv6 PDFを付録込み43ページと実測。PDF SHA-256: 7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12。出典: evaluation/reports/evaluation-sources-2026-11-04/source-observations.json。本文・付録の排他的ページ数は未確定のためnull（参考文献・目次・同一ページの混在を推測配分しない）。75ページ上限内。品質合格は別途。",
+        "exceeds_limit": false
       }
     },
     {
@@ -161,14 +161,14 @@
       "reason_for_selection": "ReasoningとActingの統合。異なる系列を合流させる正当性",
       "initial_study_target": true,
       "page_limit_check": {
-        "expected_page_count": 33,
-        "main_text_page_count": 12,
-        "appendix_page_count": 21,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "expected_page_count": 31,
+        "main_text_page_count": null,
+        "appendix_page_count": null,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで33ページ。50ページ制限に適合。"
+        "notes": "2026-11-05に公式arXiv v2 PDFを31ページと再確認。PDF SHA-256: 4430bc2c4450bd25047dc6e5c189296d59663e2a378c12557c7773752c8a369b。既存抽出元hash一致。出典: evaluation/reports/live-ten-paper-2026-11-05/remaining-five-pdf-audit.json。旧33ページ指定を訂正し、本文/付録の排他的内訳は推測せずnull。",
+        "exceeds_limit": false
       }
     },
     {
@@ -184,14 +184,14 @@
       "reason_for_selection": "RLHFからPreference optimizationへの関係。数式を過剰に説明しない範囲",
       "initial_study_target": false,
       "page_limit_check": {
-        "expected_page_count": 28,
-        "main_text_page_count": 14,
-        "appendix_page_count": 14,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "expected_page_count": 27,
+        "main_text_page_count": null,
+        "appendix_page_count": null,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで28ページ。50ページ制限に適合。"
+        "notes": "2026-11-04に公式arXivのv2 PDFを付録込み27ページと実測。PDF SHA-256: a280dc33571ceb07c9ede5fc997f81162c5491080c9ef3f2abe13bfd0c713bfd。出典: evaluation/reports/evaluation-sources-2026-11-04/source-observations.json。本文・付録の排他的ページ数は未確定のためnull（参考文献・目次・同一ページの混在を推測配分しない）。75ページ上限内。品質合格は別途。",
+        "exceeds_limit": false
       }
     },
     {
@@ -210,34 +210,34 @@
         "expected_page_count": 26,
         "main_text_page_count": 12,
         "appendix_page_count": 14,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで26ページ。50ページ制限に適合。"
+        "notes": "manifest記載の付録込み26ページは75ページ上限内。版・ページ数の実測確認は別途必要。",
+        "exceeds_limit": false
       }
     },
     {
       "paper_id": "arxiv:2310.11511",
       "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
       "arxiv_id": "2310.11511",
-      "expected_version": "v2",
-      "canonical_url": "https://arxiv.org/abs/2310.11511v2",
+      "expected_version": "v1",
+      "canonical_url": "https://arxiv.org/abs/2310.11511v1",
       "category": "cs.CL",
-      "categories": ["cs.CL", "cs.AI"],
+      "categories": ["cs.CL", "cs.AI", "cs.LG"],
       "published_date": "2023-10-17",
-      "date_provenance": "arXiv v1 submission date: 2023-10-17 (v2 published 2024-02-12)",
+      "date_provenance": "arXiv v1 submission date: 2023-10-17; official submission history lists v1 only (checked 2026-11-04: https://arxiv.org/abs/2310.11511)",
       "reason_for_selection": "RAG、適応的取得、自己評価の関係。分岐Reasoningと背景概念",
       "initial_study_target": false,
       "page_limit_check": {
-        "expected_page_count": 23,
-        "main_text_page_count": 14,
-        "appendix_page_count": 9,
-        "limit_pages": 50,
-        "exceeds_50_pages": false,
+        "expected_page_count": 30,
+        "main_text_page_count": null,
+        "appendix_page_count": null,
+        "limit_pages": 75,
         "status": "within_limit",
         "d3_assessment": "compliant",
-        "notes": "付録込みで23ページ。50ページ制限に適合。"
+        "notes": "2026-11-04に公式arXivのv1 PDFを付録込み30ページと実測。PDF SHA-256: d9eaa1398abac0df67a9d0933a5bf8b6d9d83d2e72da2a486073cd842dd52978。出典: evaluation/reports/evaluation-sources-2026-11-04/source-observations.json。本文・付録の排他的ページ数は未確定のためnull（参考文献・目次・同一ページの混在を推測配分しない）。75ページ上限内。品質合格は別途。 取得不能の旧v2・23ページ指定を公式版履歴に基づきv1・30ページへ訂正（ユーザー依頼の評価条件確定）。",
+        "exceeds_limit": false
       }
     }
   ]

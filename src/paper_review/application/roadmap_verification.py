@@ -66,11 +66,15 @@ def run_operator(phase: str, budget_cents: int = 15) -> dict:
     Evaluator fixes can be loaded without repeatedly restarting the user's keyed
     API/Worker. Production processes and readiness settings are not hot-reloaded.
     """
-    if phase not in {"s2", "classify", "lineage", "reconnect"}:
+    if phase == "s2-key-probe":
+        if budget_cents != 0:
+            return {"status": "blocked", "reason": "metadata_only_zero_llm_budget_required"}
+    elif phase not in {"s2", "classify", "lineage", "reconnect"}:
         return {"status": "blocked", "reason": "unknown_phase"}
     if phase == "reconnect" and budget_cents != 160:
         return {"status": "blocked", "reason": "explicit_bundle_budget_required"}
-    if budget_cents != 50 and not (phase in {"lineage", "reconnect"} and budget_cents == 160):
+    if (phase != "s2-key-probe" and budget_cents != 50
+            and not (phase in {"lineage", "reconnect"} and budget_cents == 160)):
         return {"status": "blocked", "reason": "explicit_bundle_budget_required"}
     try:
         process = subprocess.run(
@@ -378,10 +382,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Fixed local verification phases; no key arguments",
     )
-    parser.add_argument("phase", choices=["s2", "classify", "lineage", "reconnect"])
-    parser.add_argument("--budget-cents", type=int, choices=[15, 50, 160], default=15)
+    parser.add_argument("phase", choices=["s2", "classify", "lineage", "reconnect", "s2-key-probe"])
+    parser.add_argument("--budget-cents", type=int, choices=[0, 15, 50, 160], default=15)
     args = parser.parse_args()
-    if args.phase == "reconnect":
+    if args.phase == "s2-key-probe":
+        from paper_review.application.s2_key_probe import evaluate as key_probe
+
+        value = key_probe() if args.budget_cents == 0 else {
+            "status": "blocked", "reason": "metadata_only_zero_llm_budget_required",
+        }
+    elif args.phase == "reconnect":
         from paper_review.application.limited_s2_verification import evaluate as reconnect
 
         value = reconnect(args.budget_cents)

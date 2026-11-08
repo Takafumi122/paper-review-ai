@@ -1,6 +1,6 @@
 # Paper Understanding Agent - Requirements Specification
 
-Status: Canonical MVP requirements. Updated: 2026-09-19.
+Status: Canonical MVP requirements. Updated: 2026-11-03.
 
 2026-09-19のユーザーDecisionを反映した要件の正本。
 詳細仕様は [Architecture](architecture.md)、[Research Lineage](research-lineage.md)、
@@ -344,10 +344,16 @@ Up to 5 Predecessor Papers (Target excluded)
 Lineage Construction
 ```
 
-MVP candidate sources:
+MVP candidate sources (explicit backend selection, extended 2026-11-03):
 
 - Target Paper references
-- Semantic Scholar recommendations
+- `semantic_scholar`: Semantic Scholar references/recommendations and provider embeddings
+- `openalex_local`: OpenAlex references/related works and local SPECTER2 embeddings
+
+The user authorized the alternative's implementation and consecutive live verification.
+Select one backend for a Job; do not automatically switch providers after failure.
+The legacy backend remains the compatibility default. Adoption of the alternative
+does not establish Stage 1 quality acceptance or permit bypassing Lineage readiness.
 
 Candidate pool target: 30–50 papers; fewer are allowed when retrieval is incomplete.
 Extract at most three main Target Contributions. Stage 1 selects at most Top 10:
@@ -364,7 +370,8 @@ FinalScore = 0.40 × AdjustedContributionRelevance
 ```
 
 All metrics are normalized to [0, 1]. Missing values remain `value=null` with
-`missing_reason`, never zero. OpenAlex and NormalizedImpact are excluded from MVP.
+`missing_reason`, never zero. NormalizedImpact remains excluded from MVP;
+OpenAlex bibliographic metadata is allowed in the explicitly selected alternative.
 Normalization, missing-value aggregation, and the unresolved adjustment policy
 are specified in [Scoring](scoring-lineage.md). FinalScore is not EdgeConfidence.
 
@@ -391,7 +398,6 @@ weights remain unchanged; live-contract and quality verification are still requi
 
 Later extension:
 
-- OpenAlex
 - Crossref
 
 ---
@@ -816,7 +822,7 @@ Use:
 
 ```text
 arXiv
-Semantic Scholar
+Semantic Scholar OR OpenAlex + local SPECTER2 (explicit configuration)
 ```
 
 ---
@@ -846,16 +852,29 @@ Use Semantic Scholar for:
 
 ---
 
-## 23.4 Later APIs
+## 23.4 OpenAlex + local SPECTER2 alternative
+
+The `openalex_local` backend uses OpenAlex for bibliographic resolution, references
+and related works, and the official locally pinned SPECTER2 base/proximity adapter
+for similarity. It requires no S2 requests or S2 key. Preserve missing abstracts,
+date precision, provenance and identity conflicts. Do not treat OpenAlex's primary
+location publication date as a verified first public release date.
+
+Weights, Top-K, citation importance and Evidence rules are unchanged. An incomplete
+reference index does not establish non-citation. Local model contents, runtime
+versions and preprocessing must partition caches. API/model contract and Stage 1
+quality gates are separate from S2 readiness. See [Architecture](architecture.md)
+and [the implementation and live verification notes](openalex-local-migration.md).
+
+## 23.5 Later APIs
 
 Not required for initial MVP:
 
 ```text
-OpenAlex
 Crossref
 ```
 
-OpenAlex may later provide normalized bibliometric metrics.
+Normalized bibliometric metrics remain a possible later extension.
 
 Crossref may later serve as metadata fallback / DOI resolution.
 
@@ -1309,10 +1328,14 @@ paper-level cost across all analyses, retries and on-demand generations.
 MVP:
 
 ```text
-<= 50 pages
+<= 75 pages (including appendices)
 ```
 
 Papers exceeding this may be rejected or marked unsupported.
+
+2026-11-04: ユーザー提案により50ページから75ページへ引き上げ。
+GPT-3 v4（実測75ページ）とInstructGPT v1（実測68ページ）を付録込みで扱う。
+LLMの入力token・費用・timeout上限は別途維持し、全ページが各LLM入力に収まることは保証しない。
 
 ---
 
@@ -1530,10 +1553,15 @@ The MVP is complete when all of the following are possible.
 ## Evaluation
 
 - [ ] The 10-paper evaluation set exists
-- [ ] Manual annotations exist
+- [ ] Reference annotations exist with their human/LLM origin recorded
 - [ ] Research Lineage baseline comparison exists
-- [ ] Reasoning Flow human evaluation exists
+- [ ] Reasoning Flow evaluation exists under the approved assessor policy
 - [ ] JIT Knowledge evaluation exists
+
+2026-11-04: The owner explicitly adopted LLM-generated reference labels and the
+proposed numerical acceptance criteria for the existing-output evaluation.
+Identify this as post-output LLM assessment, not independent human evaluation.
+Missing papers/features and failed thresholds still prevent full quality acceptance.
 
 ---
 
@@ -1552,7 +1580,8 @@ The following do **not** block Phase 0 and may be finalized during their impleme
 - quality thresholds and annotation procedure before final evaluation.
 
 Redis, Vector DB and Agent Framework are not needed in the initial architecture.
-OpenAlex/Crossref integration is outside MVP. Remaining specification gates,
+Crossref integration is outside MVP; OpenAlex is an explicit alternative as above.
+Remaining specification gates,
 including AdjustedContributionRelevance, are tracked in [ADR-0001](../ADR/0001-mvp-decisions.md).
 
 ---

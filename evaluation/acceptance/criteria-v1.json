@@ -1,0 +1,72 @@
+{
+  "version": "llm-reference-acceptance-v1",
+  "created_at": "2026-11-04",
+  "status": "approved_and_frozen",
+  "reviewer": "codex_current_session_llm",
+  "reviewer_arrangement": "llm_only_user_authorized",
+  "approved_by": "user_explicit_reply_2026_11_04",
+  "frozen_at": "2026-11-04",
+  "formal_evaluation_started": true,
+  "basis": "Proposal informed by canonical evaluation design; not derived from independently labelled measurements",
+  "prior_diagnostic_exposure": true,
+  "hard_requirements": [
+    "No fabricated source, candidate identity or evidence location",
+    "No false supported Graph edge under the user-selected LLM source review",
+    "No reversal of a central claim or confusion of experimental result with demonstrated guarantee",
+    "No score/readiness acceptance from unreviewed, failed or N/A items",
+    "Report all ten papers, missing outcomes, single-reviewer limitations and source/version mismatches",
+    "Preserve existing request, attempt, cost and timeout limits"
+  ],
+  "proposed_thresholds": [
+    {
+      "metric": "lineage_precision_at_3_macro",
+      "minimum": 0.6666666666666666,
+      "reason": "At least two of three positions relevant on average; empty positions remain zero"
+    },
+    {
+      "metric": "candidate_generation_required_recall_macro",
+      "minimum": 0.8,
+      "reason": "Detect missing required predecessors before ranking; gold includes items outside retrieved candidates"
+    },
+    {
+      "metric": "lineage_ndcg_at_5_macro_minus_best_baseline_same_paired_papers",
+      "minimum": 0.0,
+      "reason": "Proposed should not underperform the stronger fixed-candidate baseline on the same labelled papers"
+    },
+    {
+      "metric": "reasoning_correct_step_fraction_macro",
+      "minimum": 0.8,
+      "reason": "Correct, partially_correct and incorrect remain separate; critical errors trigger a hard failure"
+    },
+    {
+      "metric": "knowledge_displayed_precision_macro",
+      "minimum": 0.8,
+      "reason": "Most displayed concepts should be required for the annotated transition"
+    },
+    {
+      "metric": "knowledge_required_recall_macro",
+      "minimum": 0.7,
+      "reason": "Cover the human-labelled 5-10-concept evaluation set; not a claim of complete concept recall"
+    }
+  ],
+  "mandatory_additional_reports": [
+    "Precision@5 and RequiredRecall@3/5 with attainable recall ceiling",
+    "NDCG@3 and per-paper paired baseline coverage",
+    "Graph relationship correctness, false-supported counts, abstentions and legitimate merges",
+    "Reasoning edge validity, major omissions and partial/incorrect fractions",
+    "Knowledge contextual accuracy and unnecessary explanations",
+    "Per-paper initial LLM cost including retries and held unknown costs; USD 1.00 target",
+    "Per-paper cold/cache latency, 5-minute soft-target hit counts and resource usage"
+  ],
+  "aggregation": {
+    "quality": "macro over defined per-paper values with explicit denominator; no combined cross-feature quality score",
+    "na": "excluded from arithmetic only; retain counts/reasons and do not interpret a missing feature as passing",
+    "paired_baseline": "same papers with defined values for Proposed and both baselines; publish unmatched/NA cases",
+    "insufficient_coverage": "inconclusive until human decision; never silently pass a small reviewed subset",
+    "required_recall_at_5": "report without a fixed acceptance cutoff because attainable recall depends on required-set size"
+  },
+  "release_decision": null,
+  "production_readiness_changed": false,
+  "date_precision": "day",
+  "reference_kind": "llm_generated_post_output_not_human_gold"
+}
