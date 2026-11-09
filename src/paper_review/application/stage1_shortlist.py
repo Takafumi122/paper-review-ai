@@ -38,6 +38,8 @@ def apply_context_classifications(analysis: Stage1Analysis, audit: dict) -> Stag
     complete = bool(analysis.inventory.reference_resolutions) and all(
         r.status == "resolved" for r in analysis.inventory.reference_resolutions
     )
+    if analysis.inventory.references_complete is not None:
+        complete = analysis.inventory.references_complete
     ranking = rank_stage1_candidates(
         analysis.target,
         analysis.inventory,

@@ -13,6 +13,7 @@ from paper_review.infrastructure.academic_api.arxiv import (
     ArXivParseError,
     ArXivSecurityError,
     RateLimiter,
+    parse_arxiv_atom,
 )
 
 SAMPLE_ATOM_XML = """<?xml version="1.0" encoding="UTF-8"?>
@@ -342,3 +343,18 @@ def test_sync_wrappers():
         captured = path
     assert captured is not None
     assert not captured.exists()
+
+
+def test_atom_batch_selects_requested_identity_and_version():
+    entry = SAMPLE_ATOM_XML.split("<entry>", 1)[1].split("</entry>", 1)[0]
+    batch = SAMPLE_ATOM_XML.replace("1706.03762", "1601.00001").replace(
+        "</feed>", "<entry>" + entry + "</entry></feed>",
+    )
+    metadata = parse_arxiv_atom(batch, "1706.03762v7")
+    assert metadata.arxiv_id == "1706.03762"
+    assert metadata.current_version == "v7"
+    with pytest.raises(ArXivNotFoundError):
+        parse_arxiv_atom(batch, "1706.03762v1")
+    duplicate = SAMPLE_ATOM_XML.replace("</feed>", "<entry>" + entry + "</entry></feed>")
+    with pytest.raises(ArXivParseError, match="duplicate_arxiv_identity"):
+        parse_arxiv_atom(duplicate, "1706.03762")

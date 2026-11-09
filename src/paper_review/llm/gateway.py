@@ -68,6 +68,7 @@ SAFE_VALIDATION_REASONS = frozenset(
         "lineage_merge_requires_distinct_contributions",
         "lineage_merge_branch_not_identified",
         "lineage_merge_evidence_wrong_scope",
+        "lineage_edge_review_coverage_mismatch",
         "lineage_merge_review_coverage_mismatch",
         "lineage_merge_review_unselected_evidence",
         "lineage_merge_review_missing_evidence",
@@ -153,7 +154,48 @@ def request_schema(
             item_schema["required"].remove(key)
         item_schema["properties"]["edge_id"] = {"type": "string", "enum": list(knowledge_edges)}
         item_schema["required"].append("edge_id")
+    if bind_evidence:
+        # Source selection precedes prose in generation only. Stored models and
+        # the semantic reviewers keep their existing fields and contracts.
+        for name, first in (
+            ("KnowledgeItem", ("id", "concept", "edge_id", "evidence")),
+            ("ReasoningStepDraft", ("id", "kind", "evidence", "summary",
+                                    "reader_explanation_evidence")),
+        ):
+            definition = schema.get("$defs", {}).get(name)
+            if definition is not None:
+                properties = definition["properties"]
+                order = list(dict.fromkeys(
+                    [k for k in first if k in properties] + list(properties)
+                ))
+                definition["properties"] = {k: properties[k] for k in order}
+                definition["required"] = [k for k in order if k in definition["required"]]
     return schema
+
+
+def adjacent_source_spans(
+    spans: tuple[dict[str, str], ...],
+) -> list[tuple[dict[str, str], dict[str, str]]]:
+    """Find unambiguous original boundaries within one paper, revision and section."""
+    starts: dict[tuple[str, str, str, int], list[dict[str, str]]] = {}
+    ends: dict[tuple[str, str, str, int], list[dict[str, str]]] = {}
+    for span in spans:
+        origin = (span.get("paper_id", ""), span.get("revision", ""), span.get("section_id", ""))
+        if not all(origin):
+            continue
+        try:
+            start, end = int(span["start_offset"]), int(span["end_offset"])
+        except (KeyError, ValueError):
+            continue
+        if start < 0 or end <= start or end - start != len(span["text"]):
+            continue
+        starts.setdefault((*origin, start), []).append(span)
+        ends.setdefault((*origin, end), []).append(span)
+    return [
+        (previous[0], following[0])
+        for boundary, following in starts.items()
+        if len(previous := ends.get(boundary, [])) == len(following) == 1
+    ]
 
 
 def prepare_source_request(
@@ -178,25 +220,28 @@ def prepare_source_request(
         )
     # Navigation only: connect exact contiguous excerpts actually present in
     # this request. Do not expand quotes or attach unselected evidence.
-    starts: dict[tuple[str, str, str, int], list[dict[str, str]]] = {}
-    ends: dict[tuple[str, str, str, int], list[dict[str, str]]] = {}
+    for previous, following in adjacent_source_spans(tuple(transformed)):
+        previous["next_span_id"] = following["span_id"]
+        following["previous_span_id"] = previous["span_id"]
+    # A code-owned index makes candidate-specific choices visible after aliasing.
+    # Only sources actually included in this request can appear in these options.
+    candidate_options: dict[str, dict[str, list[str]]] = {}
     for span in transformed:
-        origin = (span.get("paper_id", ""), span.get("revision", ""), span.get("section_id", ""))
-        if not all(origin):
-            continue
-        try:
-            start, end = int(span["start_offset"]), int(span["end_offset"])
-        except (KeyError, ValueError):
-            continue
-        if start < 0 or end - start != len(span["text"]):
-            continue
-        starts.setdefault((*origin, start), []).append(span)
-        ends.setdefault((*origin, end), []).append(span)
-    for boundary, following in starts.items():
-        previous = ends.get(boundary, [])
-        if len(previous) == len(following) == 1:
-            previous[0]["next_span_id"] = following[0]["span_id"]
-            following[0]["previous_span_id"] = previous[0]["span_id"]
+        for field, key in (("identifies_candidate_ids", "identifying_source_ids"),
+                           ("candidate_ids", "allowed_source_ids")):
+            for cid in json.loads(span.get(field, "[]")):
+                options = candidate_options.setdefault(cid, {
+                    "identifying_source_ids": [], "allowed_source_ids": [],
+                })
+                options[key].append(span["span_id"])
+    if candidate_options:
+        for span in transformed:
+            if span["span_id"] == "task-data":
+                task = json.loads(span["text"])
+                task["candidate_evidence_options"] = candidate_options
+                span = {**span, "text": json.dumps(task, ensure_ascii=False)}
+                transformed = [span if s["span_id"] == "task-data" else s for s in transformed]
+                break
     result = copy.deepcopy(schema)
     result["$defs"]["Evidence"]["properties"]["span_id"]["enum"] = list(references)
     return result, tuple(transformed), references
@@ -273,7 +318,7 @@ class LLMGateway:
             task: replace(policy, model=evaluation_model) if evaluation_model else policy
             for task, policy in ROUTING.items()
         }
-        self.pipeline_version = "model-evaluation-v1" if evaluation_model else "full-v35"
+        self.pipeline_version = "model-evaluation-v1" if evaluation_model else "full-v44"
 
     async def execute[T: BaseModel](
         self,

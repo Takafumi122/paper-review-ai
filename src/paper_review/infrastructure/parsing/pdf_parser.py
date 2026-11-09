@@ -24,10 +24,11 @@ from paper_review.domain.models import (
     ParsedSection,
     SourceSpan,
 )
+from paper_review.domain.section_titles import is_bibliography_heading
 
 logger = logging.getLogger("paper_review")
 
-DEFAULT_PARSER_VERSION = "pdfplumber-0.2.0"
+DEFAULT_PARSER_VERSION = "pdfplumber-0.2.2"
 
 STANDARD_HEADINGS: frozenset[str] = frozenset(
     {
@@ -192,7 +193,7 @@ def extract_references(
 ) -> list[ParsedReference]:
     """Parse bibliography entries from extracted References section text.
 
-    Supports both numbered styles (e.g. "[1] ...") and unnumbered author-year styles.
+    Supports bracketed numeric/alphanumeric labels and unnumbered author-year styles.
     Maps each entry to its originating page using character offset lookup in source_spans.
     """
     # Preserve offsets before trimming, including repeated lines and page separators.
@@ -207,7 +208,8 @@ def extract_references(
     if not lines:
         return []
 
-    numbered = any(re.match(r"^\[\d+\]", line) for line, _, _ in lines)
+    label_pattern = r"^(\[[A-Za-z0-9][A-Za-z0-9+*†‡-]{0,31}\])\s*(.*)"
+    labelled = any(re.match(label_pattern, line) for line, _, _ in lines)
     indents = [x for _, _, x in lines if x is not None]
     left = min(indents) if indents else 0.0
     hanging = bool(indents and any(5 <= x - left <= 24 for x in indents))
@@ -237,8 +239,8 @@ def extract_references(
         )
 
     for line, position, indent in lines:
-        number = re.match(r"^(\[\d+\])\s*(.*)", line)
-        if numbered:
+        number = re.match(label_pattern, line)
+        if labelled:
             is_start = number is not None
         elif hanging and indent is not None:
             # Hanging bibliography: author starts at left, *all* continuation
@@ -474,9 +476,7 @@ class PDFParserAdapter:
                         current_is_appendix = is_app
                         current_heading_page = p_num
 
-                        if h_title and (
-                            "reference" in h_title.lower() or "bibliography" in h_title.lower()
-                        ):
+                        if is_bibliography_heading(h_title):
                             in_appendix_mode = True
                         if is_app:
                             in_appendix_mode = True

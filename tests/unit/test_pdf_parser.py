@@ -371,7 +371,25 @@ def test_to_paper_revision_conversion():
     assert rev.content_hash == "sha256_dummy"
     assert rev.pdf_source_url == "https://arxiv.org/pdf/1706.03762v7.pdf"
     assert rev.page_count == 1
-    assert rev.parser_version == "pdfplumber-0.2.0"
+    assert rev.parser_version == "pdfplumber-0.2.2"
+
+
+def test_preference_heading_does_not_switch_parser_into_appendix_mode():
+    doc = parse_pdf(create_minimal_pdf([[
+        "4 Direct Preference Optimization",
+        "The method defines a preference objective.",
+        "6 Experiments",
+        "6.2 Can DPO scale to real preference datasets?",
+        "Summarization and dialogue results are reported here.",
+        "References",
+        "[1] Author. Prior research. 2020.",
+        "A Additional results",
+        "Additional observations.",
+    ]]))
+    method = next(s for s in doc.sections if s.title == "4 Direct Preference Optimization")
+    results = next(s for s in doc.sections if s.title and s.title.startswith("6.2"))
+    assert not method.is_appendix and not results.is_appendix
+    assert "Summarization" in results.text
 
 
 def test_repr_never_leaks_raw_text():
@@ -408,3 +426,18 @@ def test_adapter_instance_parse():
     doc = adapter.parse(create_minimal_pdf([["Abstract", "Content"]]))
     assert doc.parser_version == "custom-0.2.0"
     assert doc.page_count == 1
+
+
+def test_alphanumeric_bibliography_labels_preserve_entries_and_pages():
+    doc = parse_pdf(create_minimal_pdf([
+        ["Abstract", "Synthetic text for a bibliography label regression test.",
+         "References", "[ABC+20] Alice Brown et al. A synthetic method. 2020.",
+         "Continuation with https://example.org/paper and additional details.",
+         "[DEF19a] David Evans. Another synthetic method. 2019."],
+        ["[ZSW+19b] Zoe Smith et al. A third synthetic method. 2019.",
+         "A continuation line should remain inside this reference."],
+    ]))
+    assert [r.citation_key for r in doc.references] == ["[ABC+20]", "[DEF19a]", "[ZSW+19b]"]
+    assert [r.page for r in doc.references] == [1, 1, 2]
+    assert "https://example.org/paper" in doc.references[0].raw_text
+    assert "continuation line" in doc.references[2].raw_text

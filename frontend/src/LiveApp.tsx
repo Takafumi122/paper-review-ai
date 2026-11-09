@@ -12,6 +12,9 @@ interface Knowledge { id: string; concept: string; from_step_id: string; to_step
 interface LineageEdge { from_paper_id: string; to_paper_id: string; relationship: string;
   confidence: number; status: string; evidence: Evidence[] }
 interface FullResult { pipeline: 'full'; features: Record<string, string>; sources: Source[];
+  candidate_ranking?: { status?: string; total?: number; eligible?: number;
+    top10: { paper_id: string; title: string | null; rank: number;
+      score: { semantic_similarity: number | null } }[] };
   paper?: { id: string; title: string; authors: string[]; arxiv_version: string; page_count: number; retrieval_source?: string; parser_version?: string };
   lineage?: { status: string; reason?: string; target_id?: string; nodes?: { id: string; title: string }[];
     edges?: LineageEdge[]; missing_reason?: string | null };
@@ -34,15 +37,31 @@ function EvidenceList({ items, sources }: { items: Evidence[]; sources: Source[]
   })}</div>;
 }
 
+function CandidateRanking({ result }: { result: FullResult }) {
+  const ranking = result.candidate_ranking;
+  if (!ranking || ranking.status === 'skipped' || ranking.top10.length === 0) return null;
+  return <section aria-label="取得した先行研究候補"><h3>取得した先行研究候補</h3>
+    <p>候補 {ranking.total ?? '—'} 件のうち、時系列・種別の条件を満たす {ranking.eligible ?? '—'} 件から上位を表示しています。論文間の関係は原文の根拠で別途確認します。</p>
+    <ol>{ranking.top10.map(candidate => <li className="live-card" key={candidate.paper_id}>
+      <strong>#{candidate.rank} {candidate.title ?? 'タイトル未取得'}</strong>
+      <p className="fine-print">{candidate.paper_id} · 類似度：{candidate.score.semantic_similarity === null
+        ? '未取得' : candidate.score.semantic_similarity.toFixed(3)}</p>
+    </li>)}</ol>
+  </section>;
+}
+
 function Lineage({ result }: { result: FullResult }) {
   const lineage = result.lineage;
-  if (!lineage || lineage.status === 'blocked') return <div className="feature-empty"><h3>研究系列はまだ生成されていません</h3>
-    <p>{lineage?.reason === 'stage1_quality_audit_pending'
+  if (!lineage || lineage.status === 'blocked') return <><CandidateRanking result={result} />
+    <div className="feature-empty"><h3>研究系列はまだ生成されていません</h3>
+    <p>{lineage?.reason === 'stage1_quality_audit_pending' || lineage?.reason === 'openalex_local_quality_audit_pending'
       ? '先行研究の候補順位について品質確認が完了していないため、研究系列の生成を保留しています。'
-      : lineage?.reason === 'specter2_contract_not_verified'
+      : lineage?.reason === 'reading_only_mode'
+        ? '現在は読解モードです。Reasoning Flowと前提知識を生成し、Research Lineageは生成しません。'
+      : lineage?.reason === 'specter2_contract_not_verified' || lineage?.reason === 'openalex_local_contract_not_verified'
         ? '論文の類似度を取得する接続の検証が未完了のため、研究系列の生成を保留しています。'
         : '研究系列を支える十分な根拠を確認できませんでした。'}</p>
-    <p>{result.features.reasoning === 'completed' || result.features.knowledge === 'completed' ? '利用可能な論理構造・前提知識の結果は、それぞれのタブで確認できます。' : '現時点で表示できる解析結果はありません。'}</p></div>;
+    <p>{result.features.reasoning === 'completed' || result.features.knowledge === 'completed' ? '利用可能な論理構造・前提知識の結果は、それぞれのタブで確認できます。' : '現時点で表示できる解析結果はありません。'}</p></div></>;
   const edges = lineage.edges ?? [];
   const target = result.paper?.id ?? lineage.target_id ?? 'target';
   const allNodes = [...(lineage.nodes ?? []), { id: target, title: result.paper?.title ?? 'Target' }];
@@ -144,7 +163,7 @@ export function LiveApp() {
     <form className="analysis-form" onSubmit={start}><label htmlFor="live-arxiv">読む論文の arXiv URL</label><div className="analysis-input"><input id="live-arxiv" required type="url" value={url} onChange={e => setUrl(e.target.value)} placeholder="https://arxiv.org/abs/1706.03762" disabled={active || sending} /><button disabled={active || sending}>{sending ? '受付中…' : active ? '解析中…' : '論文を読み解く →'}</button></div>
       <div className="sample-inputs"><span>入力例：</span>{[['Attention', '1706.03762'], ['LoRA', '2106.09685'], ['ReAct', '2210.03629']].map(([name, id]) => <button key={id} type="button" disabled={active || sending} onClick={() => setUrl(`https://arxiv.org/abs/${id}`)}>{name}</button>)}</div>
       <details className="access-code"><summary>招待用アクセスコードを使う場合</summary><input type="password" aria-label="招待用アクセスコード" placeholder="APIキーではありません" value={access} onChange={e => setAccess(e.target.value)} /></details>
-      <p className="fine-print">英語の公開arXiv論文が対象です（付録込み50ページ以内）。数分かかる場合があります。原文の根拠を確認できない内容は不確か・根拠不足と表示します。</p></form>
+      <p className="fine-print">英語の公開arXiv論文が対象です（付録込み75ページ以内）。数分かかる場合があります。原文の根拠を確認できない内容は不確か・根拠不足と表示します。</p></form>
     {error && <div className="notice" role="alert"><div><strong>{error}</strong>{jobId && <button onClick={() => setRetry(v => v + 1)}>状態の取得を再試行</button>}</div></div>}
     {jobId && <section className="job-progress" aria-live="polite"><span className={active ? 'status-dot pulse' : 'status-dot'} /><strong>{analysis ? labels[analysis.status] : '受付済み・状態を確認中'}</strong><span>{active ? analysis?.current_stage ?? '' : ''}</span><small>Job: {jobId}</small></section>}
     {reasoningEvidenceRejected && <div className="notice" role="status"><div><strong>主張と根拠の対応を確認できませんでした</strong><p>選択した原文の根拠では支えきれない、または範囲が曖昧な主張が見つかったため、論理構造とそれに基づく前提知識の表示を止めました。</p></div></div>}

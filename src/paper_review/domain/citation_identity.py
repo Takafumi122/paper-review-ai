@@ -6,8 +6,17 @@ from collections.abc import Iterator
 from paper_review.domain.models import CandidatePaper
 
 
+def author_surname(name: str) -> str:
+    """Handle explicit 'Family, Given' metadata without inventing author aliases."""
+    parts = name.split(",", 1)[0].split() if "," in name else name.split()
+    return parts[-1].lower() if parts else ""
+
+
 def author_year_aliases(candidate: CandidatePaper) -> set[tuple[str, int, str]]:
     if not candidate.authors or not candidate.authors[0].split():
+        return set()
+    surname = author_surname(candidate.authors[0])
+    if not surname:
         return set()
     # The target may cite the conference year, whereas S2 reports the preprint
     # year. This is a citation alias, never a change to publication chronology.
@@ -31,7 +40,7 @@ def author_year_aliases(candidate: CandidatePaper) -> set[tuple[str, int, str]]:
         if candidate.year is None:
             return set()
         cited_years = {(candidate.year, "")}
-    return {(candidate.authors[0].split()[-1].lower(), year, suffix)
+    return {(surname, year, suffix)
             for year, suffix in cited_years}
 
 
@@ -52,7 +61,7 @@ def author_year_matches(
             names = candidate.authors or []
             if match["second"] and (
                 len(names) != 2 or not names[1].split()
-                or names[1].split()[-1].lower() != match["second"].lower()
+                or author_surname(names[1]) != match["second"].lower()
             ):
                 continue
             yield match

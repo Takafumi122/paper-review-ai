@@ -1,6 +1,6 @@
 # System Architecture
 
-Status: Canonical design baseline. Updated: 2026-09-19.
+Status: Canonical design baseline. Updated: 2026-11-03.
 プロダクト仕様は [requirements.md](requirements.md) を正とする。
 技術選定と運用上限は個人開発MVPの実装初期設定であり、ユーザー確定Decisionと区別する。
 
@@ -12,7 +12,8 @@ flowchart TD
   API --> DB[(SQLite)]
   Worker[Python Worker / fixed Pipeline] --> DB
   Worker --> Parser[Paper Parser]
-  Worker --> Academic[arXiv / Semantic Scholar clients]
+  Worker --> Academic[arXiv / selected S2 or OpenAlex client]
+  Worker --> Embedding[Optional local CPU SPECTER2]
   Worker --> Gateway[LLM Gateway]
   Gateway --> OpenAI[OpenAI Responses API]
   Parser --> Temp[Temporary PDF]
@@ -29,6 +30,7 @@ flowchart TD
 | Async Job | DB-backed queue / 専用Worker | 再起動後の復旧。API内メモリqueueだけに依存しない |
 | Parser | pdfplumberを第一候補に品質検証 | ページ・文字位置・表抽出。Section認識は別処理 |
 | Academic API | HTTPX専用client | timeout、rate limit、batch、cacheを管理 |
+| Local embedding | 任意依存のPyTorch / adapters | OpenAlex代替構成を明示選択した場合のSPECTER2推論のみ |
 | Pipeline | 固定Python stage関数 | 分岐・停止条件をコードで制御 |
 | Cache | SQLite | 小規模なAPI応答とstage結果の再利用 |
 | Graph UI | React＋SVG | 小さいGraphを表示。汎用Graph編集機能は不要 |
@@ -115,6 +117,14 @@ Knowledgeの必要度は0:不要、1:あるとよい、2:重要、3:Step間の�
 ## 5. 外部取得・保存・cache
 
 arXiv clientはmetadataと対象版PDF、S2 clientはReferences、Recommendations、取得可能な引用文脈・embeddingを担当。
+2026-11-03承認の代替構成は`PAPER_REVIEW_ACADEMIC_BACKEND=openalex_local`で選択する。
+OpenAlexは書誌照合・References・Related works、自前SPECTER2は類似度用vectorを担当し、S2を呼ばない。
+互換defaultはsemantic_scholarのまま。障害時に別backendへ自動切替しない。
+公式base/proximity adapterをcommit固定してworkspace内へ準備し、推論時には取得しない。
+任意ML依存の追加はこの自前embeddingのために限る。専用serviceやVector DBは追加しない。
+モデル/前処理/runtime/入力hashを分けてSQLite cacheへ保存する。API要求予約と停止状態はJob単位で
+永続化し、再起動で最大40要求枠を回復させない。新しいbackend/モデル構成で旧Jobを再開しない。
+取得契約の確認とStage 1品質確認を別gateとし、S2のreadinessを代替構成へ流用しない。
 APIで得られた項目をLLMで上書きしない。missingは推測せず記録する。
 APIごとにrate limiterを置き、429・Retry-After、timeout、最大attemptを扱う。
 制約はAPI実装時に公式資料で再確認し、設定化する。LLMとAcademic APIのattempt集計を混同しない。
@@ -149,7 +159,7 @@ src/paper_review/
   infrastructure/
     database/             永続化、migration補助、cache
     parsing/              Parser adapter
-    academic_api/         arXiv、Semantic Scholar
+    academic_api/         arXiv、Semantic Scholar、OpenAlex
     llm/                  OpenAI adapter
     observability.py
   api/                    HTTP schema/routes

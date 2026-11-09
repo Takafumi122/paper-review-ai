@@ -2,18 +2,42 @@
 
 import json
 import re
+from collections import Counter
 
 from pydantic import Field
 
-from paper_review.domain.models import CandidatePaper
+from paper_review.domain.models import CandidatePaper, Reference, ReferenceResolution
 from paper_review.domain.understanding import (
+    SYMBOLIC_CITATION,
     Contributions,
     Evidence,
     OutputModel,
     Relevance,
     RelevanceBatch,
+    SymbolicCitationOwners,
     candidate_is_identified,
 )
+
+
+def symbolic_citation_owners(
+    references: list[Reference], resolutions: list[ReferenceResolution],
+) -> SymbolicCitationOwners:
+    """Bind exact bibliography labels only when the entry and resolution are unique."""
+    keys = [
+        ((ref.paper_id, ref.revision_id, ref.citation_key), ref.id)
+        for ref in references
+        if ref.citation_key and SYMBOLIC_CITATION.fullmatch(ref.citation_key)
+    ]
+    key_counts = Counter(key for key, _ in keys)
+    resolution_counts = Counter(row.reference_id for row in resolutions)
+    resolved = {
+        row.reference_id: row.candidate_id for row in resolutions
+        if row.status == "resolved" and resolution_counts[row.reference_id] == 1
+    }
+    return {
+        key: resolved[ref_id] for key, ref_id in keys
+        if key_counts[key] == 1 and ref_id in resolved
+    }
 
 
 class CandidateRelevanceSelection(OutputModel):
@@ -57,6 +81,7 @@ def validate_contribution_language(value: Contributions) -> None:
 
 def prepare_candidate_evidence(
     candidates: dict[str, CandidatePaper], spans: list[dict[str, str]],
+    *, symbolic_owners: SymbolicCitationOwners | None = None,
 ) -> tuple[list[dict[str, str]], dict[str, set[str]]]:
     """Direct citation-bearing spans first, then contiguous neighbours, fairly by candidate.
 
@@ -69,6 +94,7 @@ def prepare_candidate_evidence(
     for cid, candidate in candidates.items():
         direct[cid] = [s["span_id"] for s in spans if candidate_is_identified(
             candidate, [Evidence(span_id=s["span_id"], quote=s["text"])], sources,
+            symbolic_owners=symbolic_owners,
         )]
         neighbours[cid] = []
         for sid in direct[cid]:

@@ -11,10 +11,22 @@ WORKDIR /app
 COPY pyproject.toml uv.lock README.md ./
 COPY src/ ./src/
 RUN uv sync --locked --no-dev
+ARG LOCAL_EMBEDDINGS=false
+# Opt-in CPU runtime, matching the measured Linux evaluation environment.
+# Metadata-only deployments retain the default image without ML dependencies.
+RUN case "$LOCAL_EMBEDDINGS" in \
+    false) ;; \
+    true) uv pip install --python /app/.venv/bin/python \
+              --index-url https://download.pytorch.org/whl/cpu 'torch==2.15.0' \
+          && uv pip install --python /app/.venv/bin/python \
+              'adapters==1.3.0' 'transformers==4.57.6' 'numpy==2.5.4' ;; \
+    *) exit 1 ;; \
+    esac
 COPY main.py alembic.ini ./
 COPY migrations/ ./migrations/
+COPY scripts/prepare_local_specter2.py ./scripts/
 COPY --from=frontend /build/dist ./frontend/dist
-COPY deployment/start_demo.py ./deployment/start_demo.py
+COPY deployment/start_demo.py deployment/start_railway.py deployment/verify_railway_graph.py ./deployment/
 RUN useradd --uid 10001 --create-home app && mkdir .work && chown app:app .work
 USER app
 ENV PATH="/app/.venv/bin:$PATH"

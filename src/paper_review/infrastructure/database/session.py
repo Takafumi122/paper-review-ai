@@ -10,7 +10,8 @@ from paper_review.config import Settings
 
 def make_engine(settings: Settings) -> Engine:
     engine = create_engine(
-        f"sqlite:///{settings.database_path}", connect_args={"check_same_thread": False}
+        f"sqlite:///{settings.database_path}", connect_args={"check_same_thread": False},
+        hide_parameters=True,
     )
 
     @event.listens_for(engine, "connect")

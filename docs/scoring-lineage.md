@@ -1,6 +1,6 @@
 # Research Lineage Scoring
 
-Status: Canonical. Updated: 2026-11-02. Stage 1 selection policy: lower-bound-v1.
+Status: Canonical. Updated: 2026-11-03. Stage 1 selection policy: lower-bound-v1.
 ユーザー確定の重み・Contribution/Evidence rubricと、今回補完した正規化規則を区別する。
 2026-10-30のユーザーDecisionで初版の補正をidentity-v1として確定した。
 Graph仕様は [research-lineage.md](research-lineage.md)、未決事項は [ADR-0001](../ADR/0001-mvp-decisions.md)。
@@ -19,7 +19,8 @@ FinalScore = 0.40 × AdjustedContributionRelevance
 ```
 
 Stage 1は最大Top 10。Stage 2の順位はGraph構築への入力であり、上位を自動でEdge接続しない。
-OpenAlexはMVPで呼ばず、NormalizedImpactはその追加時まで使用しない。
+2026-11-03承認の`openalex_local`選択時はOpenAlexの書誌情報を使用できる。
+NormalizedImpactは使用しない。取得backendの変更で重みを変えない。
 Raw citation countはbaseline用にのみ保持し、これらの式へ追加しない。
 
 ## 2. Metricの表現
@@ -41,8 +42,13 @@ NaN、無限大、範囲外のLLM scoreを黙ってclampせずvalidation failure
 
 ### SemanticSimilarity
 
-同一model/version・同一次元のSPECTER2 vectorsをSemantic Scholarから取得できる場合に計算する。
-追加embedding providerや自動的な別modelへの切替はMVPに含めない。
+同一model/version・同一次元のSPECTER2 vectorsを使用する。
+`semantic_scholar`ではS2配信vector、明示選択した`openalex_local`では固定した公式baseと
+proximity adapterの自前推論vectorを使う。異なるbackendのvectorを混ぜず、Targetと候補を
+同じモデル空間で処理する。自動的な別model/providerへの切替は行わない。
+自前推論はtitle＋SEP＋abstract、最大512 token、CLS pooling、CPU eval/inference mode。
+abstract欠損をtitleのみで埋めない。モデルファイルhash・runtime版・前処理版・入力hashを残す。
+S2配信vectorとの完全一致は仮定せず、固定候補集合で比較して取得元変更の効果と分離する。
 
 ```text
 cos = dot(target, candidate) / (norm(target) * norm(candidate))

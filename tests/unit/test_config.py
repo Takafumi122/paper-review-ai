@@ -1,3 +1,4 @@
+import hashlib
 from pathlib import Path
 
 import pytest
@@ -56,3 +57,15 @@ def test_real_provider_and_gates_are_explicit(monkeypatch):
     assert value.provider == "openai" and value.pipeline_mode == "full"
     assert not value.specter2_verified and not value.stage1_audited
     assert value.adjustment_policy == "identity-v1"
+
+
+@pytest.mark.parametrize("previous_version", ["v35", "v36"])
+def test_scope_grounding_revision_does_not_reuse_previous_reading_fingerprint(previous_version):
+    revision = "2203.02155v1"
+    previous = hashlib.sha256(
+        f"{revision}|full-pipeline-{previous_version}|reading-only-v1".encode()
+    ).hexdigest()
+    settings = Settings(pipeline_mode="full", reading_only=True)
+    assert settings.analysis_fingerprint(revision) != previous
+    fake_previous = hashlib.sha256(f"{revision}|fake-pipeline-v1".encode()).hexdigest()
+    assert Settings().analysis_fingerprint(revision) == fake_previous

@@ -455,6 +455,12 @@ def test_bundle_lineage_adapter_uses_reviewed_sources_and_shared_validator(
                 output = {"evaluations": [{"candidate_id": "candidate", "score": 4,
                     "contribution_ids": ["c"], "reason": "手法を使用",
                     "identifying_evidence": evidence, "evidence": evidence}]}
+            elif request.task_type == "lineage_edge_review":
+                items = json.loads(request.context_spans[-1]["text"])["edges"]
+                output = {"edges": [{"edge_id": item["edge_id"], "claims": [{
+                    "text": item["relationship"], "decision": "supported",
+                    "evidence_span_ids": item["selected_source_ids"], "reason": "原文で支持",
+                }]} for item in items]}
             else:
                 assert request.task_type == "lineage"
                 output = {"predecessor_ids": ["candidate"], "merge_reason": None,
@@ -495,10 +501,11 @@ def test_bundle_lineage_adapter_uses_reviewed_sources_and_shared_validator(
     result = bundle.evaluate("lineage", 50)
     assert result["status"] == "completed" and result["scope"] == "reviewed_diagnostic_only"
     assert result["lineage"]["edges"][0]["confidence"] == pytest.approx(0.85)
-    assert calls[-4:] == [
+    assert calls[-5:] == [
         "contribution_extraction", "contribution_review", "contribution_relevance", "lineage",
+        "lineage_edge_review",
     ]
-    assert bundle.evaluate("lineage", 50) == result and len(calls) == 6
+    assert bundle.evaluate("lineage", 50) == result and len(calls) == 7
     assert settings.stage1_audited is False and settings.specter2_verified is False
     before = len(calls)
     continuation = asyncio.run(bundle._lineage(
@@ -507,6 +514,6 @@ def test_bundle_lineage_adapter_uses_reviewed_sources_and_shared_validator(
         accepted_contributions=result["lineage"],
     ))
     assert continuation["reused_reviewed_contributions"] is True
-    assert len(calls) == before + 2
-    assert calls[-2:] == ["contribution_relevance", "lineage"]
+    assert len(calls) == before + 3
+    assert calls[-3:] == ["contribution_relevance", "lineage", "lineage_edge_review"]
     assert continuation["lineage"]["contributions"] == result["lineage"]["contributions"]

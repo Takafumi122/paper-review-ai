@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
+import re
 import time
 from collections.abc import Awaitable, Callable
 from contextlib import suppress
@@ -19,27 +21,46 @@ from paper_review.application.knowledge_prompts import (
     SHORT_KNOWLEDGE_PROMPT,
     short_knowledge_inputs,
 )
+from paper_review.application.knowledge_review import (
+    KnowledgeEvidenceFailure,
+    review_knowledge_items,
+)
+from paper_review.application.lineage_edge_review import review_lineage_edges
 from paper_review.application.lineage_evidence import (
     RelevanceSelectionBatch,
     prepare_candidate_evidence,
     selected_relevance,
+    symbolic_citation_owners,
     validate_contribution_language,
 )
 from paper_review.application.lineage_merge_review import review_lineage_merge
+from paper_review.application.local_embedding_enrichment import enrich_local_embeddings
+from paper_review.application.openalex_inventory import resolve_openalex_inventory
+from paper_review.application.reading_sources import reading_source_windows
 from paper_review.application.reasoning_prompt import REASONING_PROMPT
 from paper_review.application.reasoning_review import (
     ReasoningEvidenceFailure,
     review_reasoning_step,
 )
+from paper_review.application.source_context import auxiliary_section, interleave, section_family
 from paper_review.application.stage1_shortlist import (
     Stage1Analysis,
     apply_context_classifications,
     build_stage1_shortlist,
 )
-from paper_review.config import ROOT
+from paper_review.config import LINEAGE_VALIDATION_VERSION, ROOT
 from paper_review.domain.candidate_inventory import resolve_candidate_inventory
 from paper_review.domain.jobs import JobStatus, transition
-from paper_review.domain.models import CandidateSet, ExternalIds, Paper, PaperSection, Reference
+from paper_review.domain.models import (
+    MAX_PAPER_PAGES,
+    CandidateSet,
+    ExternalIds,
+    Paper,
+    PaperSection,
+    Reference,
+)
+from paper_review.domain.section_titles import is_bibliography_heading
+from paper_review.domain.stage1_scoring import rank_stage1_candidates
 from paper_review.domain.understanding import (
     Contributions,
     KnowledgeBatch,
@@ -54,10 +75,17 @@ from paper_review.domain.understanding import (
     validate_lineage,
     validate_reasoning,
 )
+from paper_review.infrastructure.academic_api.local_cache import LocalArtifactCache
+from paper_review.infrastructure.academic_api.openalex import OpenAlexClient
 from paper_review.infrastructure.academic_api.semantic_scholar import SemanticScholarClient
 from paper_review.infrastructure.database import models as db
 from paper_review.infrastructure.database.session import transaction
-from paper_review.llm.gateway import ExecutionFailure, prepare_source_request, request_schema
+from paper_review.llm.gateway import (
+    ExecutionFailure,
+    adjacent_source_spans,
+    prepare_source_request,
+    request_schema,
+)
 from paper_review.llm.provider import ROUTING
 from paper_review.llm.token_budget import estimate_input_tokens
 
@@ -148,7 +176,7 @@ def source_spans(sections: list[PaperSection]) -> list[dict[str, str]]:
     spans = []
     section_order = {section.id: i for i, section in enumerate(sections)}
     for section in sections:
-        if section.title and "reference" in section.title.lower():
+        if is_bibliography_heading(section.title):
             continue
         pages = (section.span_info or {}).get("source_spans", [])
         if not pages:
@@ -222,6 +250,54 @@ def select_context(spans: list[dict[str, str]], byte_limit: int) -> tuple[dict[s
     return tuple(selected)
 
 
+def reasoning_windows(spans: list[dict[str, str]]) -> list[tuple[dict[str, str], ...]]:
+    boundaries = {
+        (previous["span_id"], following["span_id"])
+        for previous, following in adjacent_source_spans(tuple(spans))
+    }
+    sections: dict[tuple[str, str, str], list[list[dict[str, str]]]] = {}
+    for span in spans:
+        origin = (span["paper_id"], span["revision"], span["section_id"])
+        windows = sections.setdefault(origin, [])
+        if (windows and len(windows[-1]) < 3
+                and span.get("source_kind") != "stored_reading_window"
+                and (windows[-1][-1]["span_id"], span["span_id"]) in boundaries):
+            windows[-1].append(span)
+        else:
+            windows.append([span])
+    # A large Results family must not consume the input before Limitations or
+    # Conclusion. Keep subsection breadth within each observed numbered family.
+    families: dict[
+        tuple[str, str, str], list[list[tuple[dict[str, str], ...]]]
+    ] = {}
+    auxiliary: list[list[tuple[dict[str, str], ...]]] = []
+    for windows in sections.values():
+        group = [tuple(window) for window in windows]
+        if auxiliary_section(group[0][0]):
+            auxiliary.append(group)
+        else:
+            families.setdefault(section_family(group[0][0]), []).append(group)
+    # Give each observed section a first window before adding depth. Long
+    # sections then expose their middle and end before consuming the prefix.
+    main = interleave(list(families.values()))
+    central_families = {
+        section_family(group[0][0]) for group in main
+        if re.search(
+            r"experiment|results|evaluation|approach|method|finetun|model.architecture",
+            group[0][0].get("section", ""), re.I,
+        )
+    }
+    central, remaining = [], []
+    for group in main:
+        indices = list(dict.fromkeys((0, len(group) // 2, len(group) - 1)))
+        rest = [group[i] for i in indices if i != 0]
+        rest.extend(window for i, window in enumerate(group) if i not in indices)
+        target = central if section_family(group[0][0]) in central_families else remaining
+        target.append(rest)
+    return ([group[0] for group in main] + interleave(central)
+            + interleave(remaining) + interleave(auxiliary))
+
+
 def fit_context(
     schema: dict,
     instructions: str,
@@ -230,6 +306,7 @@ def fit_context(
     *,
     extra_span: dict[str, str] | None = None,
     preserve_source_order: bool = False,
+    contiguous_windows: bool = False,
 ) -> tuple[dict[str, str], ...]:
     extra = (extra_span,) if extra_span else ()
     ordered = (
@@ -239,13 +316,14 @@ def fit_context(
             spans, sum(len(json.dumps(s, ensure_ascii=False).encode()) for s in spans)
         )
     )
+    windows = reasoning_windows(spans) if contiguous_windows else [(span,) for span in ordered]
     selected: tuple[dict[str, str], ...] = ()
-    for span in ordered:
+    for window in windows:
         effective_schema, effective_context, _ = prepare_source_request(
-            schema, (*selected, span, *extra)
+            schema, (*selected, *window, *extra)
         )
         if estimate_input_tokens(effective_schema, effective_context, instructions) <= limit:
-            selected = (*selected, span)
+            selected = (*selected, *window)
     return (*selected, *extra)
 
 
@@ -282,6 +360,7 @@ async def generate_lineage(
     paper: Paper, analysis: Stage1Analysis, spans: list[dict[str, str]], stage_id: str,
     call: Callable[..., Awaitable[Any]], *, adjustment_policy: str,
     relevance_only: bool = False,
+    references: list[Reference] | None = None,
 ) -> dict:
     """Shared generation core; caller establishes scoped readiness, never flips runtime gates."""
     top = analysis.ranking.top_k()
@@ -299,7 +378,12 @@ async def generate_lineage(
                 "contribution_review": review.model_dump(),
                 "missing_reason": "研究課題または貢献の全主張を選択引用で確認できませんでした。"}
     candidates = {r.candidate.paper_id: r.candidate for r in top}
-    relevance_spans, allowed = prepare_candidate_evidence(candidates, spans)
+    symbolic_owners = symbolic_citation_owners(
+        references or [], analysis.inventory.reference_resolutions
+    )
+    relevance_spans, allowed = prepare_candidate_evidence(
+        candidates, spans, symbolic_owners=symbolic_owners
+    )
     prepared = {cid: c for cid, c in candidates.items() if allowed[cid]}
     candidate_data = [
         {
@@ -327,7 +411,8 @@ async def generate_lineage(
             if any(e.span_id not in allowed[item.candidate_id] for e in item.evidence):
                 raise ValueError("relevance_evidence_wrong_candidate")
             if item.evidence and not candidate_is_identified(
-                candidates[item.candidate_id], item.evidence, sources
+                candidates[item.candidate_id], item.evidence, sources,
+                symbolic_owners=symbolic_owners,
             ):
                 raise ValueError("relevance_candidate_not_identified")
             if item.score is not None and not item.evidence:
@@ -355,6 +440,9 @@ async def generate_lineage(
         "For every non-null score, select ONE identifying_evidence source whose "
         "identifies_candidate_ids includes that candidate, plus up to three evidence sources "
         "whose candidate_ids include it. Context alone does not identify a candidate; "
+        "The code-owned candidate_evidence_options table lists the exact source aliases "
+        "per candidate in this request. Select only that candidate's listed aliases; "
+        "do not borrow a nearby source merely because it supports another candidate. "
         "identity alone does not support a role. Write Japanese reasons. No outside memory.",
         relevance_spans,
         {"contributions": [{"id": c.id, "description": c.description}
@@ -408,7 +496,9 @@ async def generate_lineage(
                 "final_ranking": scores, "relevance": relevance.model_dump(),
                 "evidence_preparation": preparation,
                 "missing_reason": "候補に対応する十分な根拠を確認できませんでした。"}
-    graph_spans, _ = prepare_candidate_evidence(selected, spans)
+    graph_spans, _ = prepare_candidate_evidence(
+        selected, spans, symbolic_owners=symbolic_owners
+    )
     # A merge must also see the already-reviewed target contribution evidence.
     # These spans supply context, never candidate identity on the model's behalf.
     existing = {s["span_id"] for s in graph_spans}
@@ -420,7 +510,10 @@ async def generate_lineage(
                 existing.add(evidence.span_id)
 
     def check_graph(value):
-        validate_lineage(value, paper, selected, sources, contributions=contributions)
+        validate_lineage(
+            value, paper, selected, sources, contributions=contributions,
+            symbolic_owners=symbolic_owners,
+        )
 
     graph = await call(
         LineageProposalDraft,
@@ -467,7 +560,37 @@ async def generate_lineage(
         },
         check_graph, preserve_source_order=True,
     )
-    edges = validate_lineage(graph, paper, selected, sources, contributions=contributions)
+    edges = validate_lineage(
+        graph, paper, selected, sources, contributions=contributions,
+        symbolic_owners=symbolic_owners,
+    )
+    assessment = {
+        "contributions": contributions.model_dump(),
+        "contribution_review": review.model_dump(),
+        "final_ranking": scores,
+        "relevance": relevance.model_dump(),
+        "evidence_preparation": preparation,
+        "validation_version": LINEAGE_VALIDATION_VERSION,
+    }
+    edge_review = None
+    if edges:
+        if all(edge.evidence for edge in graph.edges):
+            verdict, bindings = await review_lineage_edges(
+                graph, paper, selected, sources, stage_id, call,
+            )
+            edge_review = verdict.model_dump() | {
+                "supported": verdict.supported, "quotation_bindings": bindings,
+            }
+        if not edge_review or not edge_review["supported"]:
+            return {
+                "status": "insufficient_evidence", "target_id": paper.id,
+                "nodes": [], "edges": [], "merge_reason": None,
+                "missing_reason": (
+                    "先行研究固有の貢献と後続研究へのつながりを原文で確認できませんでした。"
+                ),
+                "edge_review": edge_review, "unverified_proposal": graph.model_dump(),
+                **assessment,
+            }
     merge_review = None
     if graph.merge_support is not None:
         verdict, bindings = await review_lineage_merge(graph, contributions, stage_id, call)
@@ -483,11 +606,9 @@ async def generate_lineage(
                 "missing_reason": (
                     "主要貢献による異なる2系列の明示的な統合を原文で確認できませんでした。"
                 ),
-                "merge_review": merge_review, "unverified_proposal": graph.model_dump(),
-                "contributions": contributions.model_dump(),
-                "contribution_review": review.model_dump(),
-                "final_ranking": scores, "relevance": relevance.model_dump(),
-                "evidence_preparation": preparation, "validation_version": "merge-grounding-v2",
+                "edge_review": edge_review, "merge_review": merge_review,
+                "unverified_proposal": graph.model_dump(),
+                **assessment,
             }
     return {
         "status": "completed",
@@ -496,8 +617,9 @@ async def generate_lineage(
         "edges": edges,
         "merge_reason": graph.merge_reason,
         "merge_support": graph.merge_support.model_dump() if graph.merge_support else None,
+        "edge_review": edge_review,
         "merge_review": merge_review,
-        "validation_version": "merge-grounding-v2",
+        "validation_version": LINEAGE_VALIDATION_VERSION,
         "missing_reason": graph.missing_reason,
         "contributions": contributions.model_dump(),
         "contribution_review": review.model_dump(),
@@ -526,10 +648,10 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
                     db.StageExecution.job_id == job_id, db.StageExecution.name == name
                 )
             )
-            if saved and saved.status == "completed" and saved.checkpoint is not None:
-                return saved.checkpoint
             job.status = status.value
             job.current_stage = name
+            if saved and saved.status == "completed" and saved.checkpoint is not None:
+                return saved.checkpoint
             if saved is None:
                 saved = db.StageExecution(job_id=job_id, name=name, input_hash=job.fingerprint)
                 session.add(saved)
@@ -573,6 +695,7 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
         preserve_source_order: bool = False,
         bind_evidence: bool = True,
         require_all_sources: bool = False,
+        logical_call_id: str | None = None,
     ):
         policy = ROUTING[task]
         extra_span = {"span_id": "task-data", "text": json.dumps(extra or {}, ensure_ascii=False)}
@@ -587,11 +710,12 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
             policy.max_input_tokens,
             extra_span=extra_span,
             preserve_source_order=preserve_source_order,
+            contiguous_windows=task == "reasoning",
         )
         return await worker.gateway.execute(
             job_id=job_id,
             stage_id=stage_id,
-            logical_call_id=f"{task}-v34",
+            logical_call_id=logical_call_id or f"{task}-v34",
             task_type=task,
             output_schema=schema,
             owner=worker.owner,
@@ -604,88 +728,153 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
 
     try:
 
+        with transaction(worker.engine) as session:
+            configuration = session.scalar(select(db.StageExecution).where(
+                db.StageExecution.job_id == job_id,
+                db.StageExecution.name == "retrieval_configuration",
+            ))
+            if (configuration
+                    and configuration.checkpoint != worker.settings.retrieval_configuration()):
+                raise ExecutionFailure("retrieval_configuration_changed")
+            if (not configuration and not worker.settings.reading_only
+                    and worker.settings.academic_backend == "openalex_local"):
+                raise ExecutionFailure("retrieval_configuration_missing")
+
         async def parse(stage_id):
             return await asyncio.to_thread(worker.execute_phase1_parsing, job_id, stage_id)
 
         parsed = await stage("parsing", JobStatus.PARSING, parse)
-        if parsed["page_count"] > 50:
+        if parsed["page_count"] > MAX_PAPER_PAGES:
             raise ExecutionFailure("unsupported_page_limit")
         paper, sections, references = load_parsed(worker, job_id)
         spans = source_spans(sections)
-        sources = {s["span_id"]: s for s in spans}
+        reading_spans = reading_source_windows(spans)
+        sources = {s["span_id"]: s for s in [*spans, *reading_spans]}
         results["paper"] = {
             "id": paper.id,
             "title": paper.title,
             "authors": paper.authors,
             **parsed,
         }
-        results["sources"] = spans
-        verification_path = ROOT / ".work/live-specter2-contract.json"
-        runtime_limit = ROOT / ".work/s2-rate-limited.json"
-        rate_limited = runtime_limit.exists() or (
-            verification_path.exists()
-            and json.loads(verification_path.read_text()).get("status") == 429
-        )
-        # A recorded operator probe 429 opens the circuit. No new S2 requests
-        # are made by an analysis until a separately authorized verification.
-        async with SemanticScholarClient(
-            max_attempts=1, max_http_attempts=0 if rate_limited else 40
-        ) as scholar:
+        results["sources"] = list(sources.values())
+        analysis: Stage1Analysis | None = None
+        if worker.settings.reading_only:
+            results["candidate_ranking"] = {
+                "status": "skipped", "reason": "reading_only_mode", "top10": [],
+            }
+        elif worker.settings.academic_backend == "openalex_local":
+            cache = LocalArtifactCache(ROOT / ".work/openalex-local-cache.db")
+            async with OpenAlexClient(
+                api_key=os.environ.get("OPENALEX_API_KEY"), cache=cache, budget_key=job_id,
+                verify_arxiv_dates=True,
+            ) as client:
 
-            async def retrieve(_):
-                inventory = await resolve_candidate_inventory(
-                    paper, references, scholar, allow_title_search=False
+                async def retrieve_openalex(_):
+                    inventory = await resolve_openalex_inventory(paper, references, client)
+                    return inventory.model_dump(mode="json")
+
+                inventory = CandidateSet.model_validate(await stage(
+                    "retrieving_candidates", JobStatus.RETRIEVING, retrieve_openalex,
+                ))
+
+            async def rank_local(stage_id):
+                enriched, candidates = await enrich_local_embeddings(
+                    paper, inventory, worker.settings.local_specter2_manifest, cache,
                 )
-                if any("RateLimitError" in warning for warning in inventory.retrieval_warnings):
-                    scholar.max_http_attempts = scholar.http_attempts
-                    runtime_limit.parent.mkdir(parents=True, exist_ok=True)
-                    runtime_limit.write_text(json.dumps({"status": 429}))
-                if len(inventory.candidates) > 50:
-                    inventory.retrieval_warnings.append("candidate_limit_50")
-                    inventory.candidates = inventory.candidates[:50]
-                return inventory.model_dump(mode="json")
+                analysis = Stage1Analysis(
+                    target=enriched, inventory=candidates,
+                    ranking=rank_stage1_candidates(
+                        enriched, candidates, target_references_fully_resolved=False,
+                    ),
+                )
+                audit = await classify_contexts(worker, job_id, stage_id, candidates, spans)
+                return apply_context_classifications(analysis, audit).model_dump(mode="json")
 
-            inventory = CandidateSet.model_validate(
-                await stage("retrieving_candidates", JobStatus.RETRIEVING, retrieve)
+            analysis = Stage1Analysis.model_validate(await stage(
+                "ranking_candidates", JobStatus.RANKING, rank_local,
+            ))
+        else:
+            verification_path = ROOT / ".work/live-specter2-contract.json"
+            runtime_limit = ROOT / ".work/s2-rate-limited.json"
+            rate_limited = runtime_limit.exists() or (
+                verification_path.exists()
+                and json.loads(verification_path.read_text()).get("status") == 429
             )
+            # A recorded operator probe 429 opens the circuit. No new S2 requests
+            # are made by an analysis until a separately authorized verification.
+            async with SemanticScholarClient(
+                max_attempts=1, max_http_attempts=0 if rate_limited else 40
+            ) as scholar:
 
-            async def rank(stage_id):
-                analysis = await build_stage1_shortlist(paper, inventory, scholar)
-                audit = await classify_contexts(worker, job_id, stage_id, analysis.inventory, spans)
-                analysis = apply_context_classifications(analysis, audit)
-                return analysis.model_dump(mode="json")
+                async def retrieve(_):
+                    inventory = await resolve_candidate_inventory(
+                        paper, references, scholar, allow_title_search=False
+                    )
+                    if any("RateLimitError" in warning for warning in inventory.retrieval_warnings):
+                        scholar.max_http_attempts = scholar.http_attempts
+                        runtime_limit.parent.mkdir(parents=True, exist_ok=True)
+                        runtime_limit.write_text(json.dumps({"status": 429}))
+                    if len(inventory.candidates) > 50:
+                        inventory.retrieval_warnings.append("candidate_limit_50")
+                        inventory.candidates = inventory.candidates[:50]
+                    return inventory.model_dump(mode="json")
 
-            analysis = Stage1Analysis.model_validate(
-                await stage("ranking_candidates", JobStatus.RANKING, rank)
-            )
-        top = analysis.ranking.top_k()
-        results["candidate_ranking"] = {
-            "selection_policy_version": analysis.ranking.selection_policy_version,
-            "scoring_version": analysis.ranking.scoring_version,
-            "weights": analysis.ranking.weights,
-            "citation_context_audit": analysis.citation_context_audit,
-            "total": analysis.inventory.total_count,
-            "eligible": len(analysis.inventory.eligible_candidates),
-            "top10": [
-                {
-                    "paper_id": r.candidate.paper_id,
-                    "title": r.candidate.title,
-                    "rank": r.rank,
-                    "score": r.score.model_dump(),
-                }
-                for r in top
-            ],
-            "warnings": analysis.inventory.retrieval_warnings,
-        }
+                inventory = CandidateSet.model_validate(
+                    await stage("retrieving_candidates", JobStatus.RETRIEVING, retrieve)
+                )
+
+                async def rank(stage_id):
+                    analysis = await build_stage1_shortlist(paper, inventory, scholar)
+                    audit = await classify_contexts(
+                        worker, job_id, stage_id, analysis.inventory, spans
+                    )
+                    analysis = apply_context_classifications(analysis, audit)
+                    return analysis.model_dump(mode="json")
+
+                analysis = Stage1Analysis.model_validate(
+                    await stage("ranking_candidates", JobStatus.RANKING, rank)
+                )
+        if analysis is not None:
+            top = analysis.ranking.top_k()
+            results["candidate_ranking"] = {
+                "academic_backend": worker.settings.academic_backend,
+                "retrieval_configuration": worker.settings.retrieval_configuration(),
+                "selection_policy_version": analysis.ranking.selection_policy_version,
+                "scoring_version": analysis.ranking.scoring_version,
+                "weights": analysis.ranking.weights,
+                "citation_context_audit": analysis.citation_context_audit,
+                "total": analysis.inventory.total_count,
+                "eligible": len(analysis.inventory.eligible_candidates),
+                "top10": [
+                    {
+                        "paper_id": r.candidate.paper_id,
+                        "title": r.candidate.title,
+                        "rank": r.rank,
+                        "score": r.score.model_dump(),
+                    }
+                    for r in top
+                ],
+                "warnings": analysis.inventory.retrieval_warnings,
+            }
 
         async def lineage(stage_id):
-            if not worker.settings.specter2_verified:
+            if worker.settings.reading_only:
+                return {"status": "blocked", "reason": "reading_only_mode"}
+            if worker.settings.academic_backend == "openalex_local":
+                if not worker.settings.openalex_local_verified:
+                    return {"status": "blocked", "reason": "openalex_local_contract_not_verified"}
+                if not worker.settings.openalex_local_audited:
+                    return {"status": "blocked", "reason": "openalex_local_quality_audit_pending"}
+            elif not worker.settings.specter2_verified:
                 return {"status": "blocked", "reason": "specter2_contract_not_verified"}
-            if not worker.settings.stage1_audited:
+            if (worker.settings.academic_backend == "semantic_scholar"
+                    and not worker.settings.stage1_audited):
                 return {"status": "blocked", "reason": "stage1_quality_audit_pending"}
+            assert analysis is not None
             return await generate_lineage(
                 paper, analysis, spans, stage_id, call,
                 adjustment_policy=worker.settings.adjustment_policy,
+                references=references,
             )
 
         try:
@@ -709,7 +898,7 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
                 stage_id,
                 "reasoning",
                 REASONING_PROMPT,
-                spans,
+                reading_spans,
                 validator=check_draft,
             )
             flow = draft.to_flow()
@@ -752,7 +941,7 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
 
             async def knowledge(stage_id):
                 ordered_sources, context_data, edge_refs = short_knowledge_inputs(
-                    flow.model_dump(), spans
+                    flow.model_dump(), reading_spans
                 )
                 if not edge_refs:
                     return {"items": []}
@@ -775,9 +964,16 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
                     knowledge_edges=edge_refs,
                     preserve_source_order=True,
                 )
-                return {"items": [i.model_dump() for i in batch.items if i.necessity_score == 3]}
+                items = [i for i in batch.items if i.necessity_score == 3]
+                return {"items": [i.model_dump() for i in items]}
 
-            results["knowledge"] = await stage("building_knowledge", JobStatus.KNOWLEDGE, knowledge)
+            knowledge_result = await stage("building_knowledge", JobStatus.KNOWLEDGE, knowledge)
+            # A cached generation checkpoint is also a draft until its selected
+            # quotations have been reviewed. Never publish it before this gate.
+            await review_knowledge_items(
+                worker, job_id, KnowledgeBatch.model_validate(knowledge_result).items, call,
+            )
+            results["knowledge"] = knowledge_result
             features["knowledge"] = "completed"
         except Exception as exc:
             if type(exc).__name__ == "LeaseLost":
@@ -785,6 +981,8 @@ async def run_full_analysis(worker: Worker, job_id: str) -> None:
             errors.append("reasoning_or_knowledge_generation_failed")
             if isinstance(exc, ReasoningEvidenceFailure):
                 errors.append("reasoning_evidence_not_supported")
+            if isinstance(exc, KnowledgeEvidenceFailure):
+                errors.append("knowledge_evidence_not_supported")
             if features["reasoning"] != "completed":
                 features["reasoning"] = "failed"
             features["knowledge"] = "failed"

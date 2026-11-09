@@ -1,0 +1,50 @@
+{
+  "template_version": "human-source-annotation-v1",
+  "status": "not_started",
+  "paper": null,
+  "reviewer_kind": "human",
+  "reviewer": null,
+  "reviewed_at": null,
+  "rubric_version": null,
+  "source_checked": null,
+  "prior_output_exposure": null,
+  "prior_output_exposure_notes": null,
+  "lineage": {
+    "status": "not_started",
+    "predecessors": null,
+    "allowed_merges": null,
+    "unresolved_items": null
+  },
+  "reasoning": {
+    "status": "not_started",
+    "expected_steps": null,
+    "expected_edges": null,
+    "required_branches": null,
+    "unresolved_items": null
+  },
+  "knowledge": {
+    "status": "not_started",
+    "concepts": null,
+    "unresolved_items": null
+  },
+  "output_review": {
+    "status": "not_started",
+    "opened_after_source_labels_saved": null,
+    "snapshot_sha256": null,
+    "new_candidate_reviews": null,
+    "new_concept_reviews": null,
+    "graph_edge_reviews": null,
+    "reasoning_step_reviews": null,
+    "reasoning_edge_reviews": null,
+    "knowledge_reviews": null,
+    "critical_errors": null
+  },
+  "second_review": {
+    "required": null,
+    "reviewer": null,
+    "reviewed_at": null,
+    "disagreements": null,
+    "resolution": null
+  },
+  "notes": null
+}

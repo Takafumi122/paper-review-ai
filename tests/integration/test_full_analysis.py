@@ -34,8 +34,9 @@ EVIDENCE = [{"span_id": "section:p1:c0", "quote": QUOTE}]
 
 
 class ScriptedProvider:
-    def __init__(self):
+    def __init__(self, edge_decision="supported"):
         self.calls = Counter()
+        self.edge_decision = edge_decision
 
     async def generate(self, request):
         self.calls[request.task_type] += 1
@@ -87,6 +88,13 @@ class ScriptedProvider:
                     }
                 ],
             }
+        elif request.task_type == "lineage_edge_review":
+            task = json.loads(request.context_spans[-1]["text"])
+            output = {"edges": [{"edge_id": item["edge_id"], "claims": [{
+                "text": item["relationship"], "decision": self.edge_decision,
+                "evidence_span_ids": item["selected_source_ids"],
+                "reason": "固有の貢献を引用で支持",
+            }]} for item in task["edges"]]}
         elif request.task_type == "reasoning":
             output = {
                 "steps": [
@@ -176,7 +184,7 @@ class ScriptedProvider:
         return ProviderResponse(output=output, request_id="synthetic", returned_model=request.model)
 
 
-def prepare(engine):
+def prepare(engine, *, page_count=2):
     with Session(engine) as session:
         session.add(
             Paper(
@@ -195,7 +203,7 @@ def prepare(engine):
                 arxiv_version="v7",
                 content_hash="synthetic",
                 parser_version="test",
-                page_count=2,
+                page_count=page_count,
             )
         )
         session.flush()
@@ -232,9 +240,11 @@ def prepare(engine):
         return job.id
 
 
-@pytest.mark.parametrize("http_status", [200, 429])
+@pytest.mark.parametrize(("http_status", "edge_decision"), [
+    (200, "supported"), (429, "supported"), (200, "wrong_scope"),
+])
 def test_full_worker_success_and_s2_failure_preserve_independent_features(
-    engine, settings, monkeypatch, http_status
+    engine, settings, monkeypatch, http_status, edge_decision
 ):
     settings = settings.model_copy(
         update={"pipeline_mode": "full", "specter2_verified": True, "stage1_audited": True}
@@ -282,7 +292,7 @@ def test_full_worker_success_and_s2_failure_preserve_independent_features(
 
     monkeypatch.setattr(full_analysis, "SemanticScholarClient", client)
     jid = prepare(engine)
-    provider = ScriptedProvider()
+    provider = ScriptedProvider(edge_decision)
     worker = Worker(
         engine, settings, gateway=LLMGateway(engine, settings, provider), pipeline_mode="full"
     )
@@ -300,7 +310,16 @@ def test_full_worker_success_and_s2_failure_preserve_independent_features(
             assert audit["contexts"][0]["source_ids"] == ["section:p1:c0"]
             assert provider.calls["citation_classification"] == 1
         assert job.result["knowledge"]["items"][0]["necessity_score"] == 3
-        if http_status == 200:
+        if http_status == 200 and edge_decision == "wrong_scope":
+            assert job.feature_status["lineage"] == "insufficient_evidence"
+            assert job.result["lineage"]["edges"] == []
+            assert len(job.result["lineage"]["unverified_proposal"]["edges"]) == 1
+            assert provider.calls["lineage"] == provider.calls["lineage_edge_review"] == 1
+            with TestClient(create_app(settings, engine)) as api:
+                public = api.get(f"/analyses/{jid}").json()["result"]["lineage"]
+            assert public["edges"] == []
+            assert "unverified_proposal" not in public and "edge_review" not in public
+        elif http_status == 200:
             assert job.feature_status["lineage"] == "completed"
             assert job.result["lineage"]["edges"][0]["status"] == "supported"
             assert (
@@ -312,9 +331,12 @@ def test_full_worker_success_and_s2_failure_preserve_independent_features(
             assert provider.calls["lineage"] == 0
             assert len(calls) == 1  # stop S2 work immediately after the first 429
         stages = list(session.scalars(select(StageExecution).where(StageExecution.job_id == jid)))
-        assert len(stages) == 8 and all(s.checkpoint is not None for s in stages)
+        assert len(stages) == 9 and all(s.checkpoint is not None for s in stages)
+        knowledge_review = next(s for s in stages if s.name == "knowledge_evidence_review_0")
+        assert knowledge_review.checkpoint is not None
+        assert knowledge_review.checkpoint["supported"] is True
     with TestClient(create_app(settings, engine)) as api:
-        assert api.get("/health").json()["pipeline_version"] == "full-v35"
+        assert api.get("/health").json()["pipeline_version"] == "full-v44"
         assert api.get("/health").json()["stage1_selection_policy_version"] == "lower-bound-v1"
         assert api.get("/health").json()["models"]["contribution_extraction"] == "gpt-6.1-sol"
         assert api.get("/health").json()["models"]["contribution_review"] == "gpt-6.1-sol"
@@ -323,12 +345,64 @@ def test_full_worker_success_and_s2_failure_preserve_independent_features(
         assert api.get("/health").json()["models"]["knowledge_detail"] == "gpt-6.1-terra"
         assert api.get(f"/analyses/{jid}").json()["pipeline"] == "full"
         assert api.get(f"/analyses/{jid}/reasoning").status_code == 200
-        assert api.get(f"/analyses/{jid}/lineage").status_code == 200
+        lineage_response = api.get(f"/analyses/{jid}/lineage")
+        assert lineage_response.status_code == 200
+        if http_status == 200 and edge_decision == "supported":
+            assert len(lineage_response.json()["edges"]) == 1
+
+    if http_status == 200:
+        # Simulate interruption after durable stages but before terminal publication.
+        # Replaying the final cached stages must advance the Job to KNOWLEDGE.
+        before_calls = provider.calls.copy()
+        with Session(engine) as session:
+            job = session.get(AnalysisJob, jid)
+            assert job is not None
+            expected = job.result
+            job.status = JobStatus.LINEAGE
+            job.current_stage = "building_lineage"
+            job.result = None
+            job.finished_at = None
+            session.commit()
+        assert worker.run_once() == jid
+        with Session(engine) as session:
+            job = session.get(AnalysisJob, jid)
+            assert job is not None and job.status == JobStatus.COMPLETED
+            assert job.current_stage == "building_knowledge"
+            assert job.result == expected
+            assert job.owner is None
+        assert provider.calls == before_calls
+
+
+def test_legacy_graph_is_withheld_from_both_api_routes(engine, settings):
+    jid = prepare(engine)
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job is not None
+        job.status = JobStatus.COMPLETED
+        job.feature_status = {"lineage": "completed", "reasoning": "completed"}
+        job.result = {
+            "lineage": {
+                "status": "completed", "validation_version": "merge-grounding-v2",
+                "nodes": [{"id": CANDIDATE}],
+                "edges": [{"from_paper_id": CANDIDATE, "to_paper_id": TARGET}],
+            },
+            "reasoning": {"steps": [{"id": "a"}]},
+        }
+        session.commit()
+    with TestClient(create_app(settings, engine)) as api:
+        data = api.get(f"/analyses/{jid}").json()
+        assert data["feature_status"]["lineage"] == "insufficient_evidence"
+        assert data["result"]["lineage"]["edges"] == []
+        assert api.get(f"/analyses/{jid}/lineage").json()["edges"] == []
+        assert api.get(f"/analyses/{jid}/reasoning").json()["reasoning"]["steps"] == [{"id": "a"}]
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job and job.result and len(job.result["lineage"]["edges"]) == 1
 
 
 def test_detail_job_is_durable_deduplicated_and_separately_costed(engine, settings, monkeypatch):
     test_full_worker_success_and_s2_failure_preserve_independent_features(
-        engine, settings, monkeypatch, 429
+        engine, settings, monkeypatch, 429, "supported"
     )
     with Session(engine) as session:
         parent = session.scalar(select(AnalysisJob).where(AnalysisJob.fingerprint == "test-full"))
@@ -382,7 +456,7 @@ def test_reasoning_rejection_preserves_lineage_and_never_generates_knowledge(
     from paper_review.infrastructure.database.models import LLMExecution
 
     test_full_worker_success_and_s2_failure_preserve_independent_features(
-        engine, settings, monkeypatch, 200
+        engine, settings, monkeypatch, 200, "supported"
     )
     config = settings.model_copy(
         update={
@@ -520,7 +594,7 @@ def test_reader_explanation_is_reviewed_before_publication_or_knowledge(
     import json
 
     test_full_worker_success_and_s2_failure_preserve_independent_features(
-        engine, settings, monkeypatch, 200
+        engine, settings, monkeypatch, 200, "supported"
     )
     config = settings.model_copy(
         update={
@@ -649,7 +723,7 @@ def test_reader_explanation_is_reviewed_before_publication_or_knowledge(
 
 def test_semantic_detail_rejection_is_terminal_and_never_published(engine, settings, monkeypatch):
     test_full_worker_success_and_s2_failure_preserve_independent_features(
-        engine, settings, monkeypatch, 429
+        engine, settings, monkeypatch, 429, "supported"
     )
     with Session(engine) as session:
         parent = session.scalar(select(AnalysisJob).where(AnalysisJob.fingerprint == "test-full"))
@@ -755,7 +829,8 @@ def test_long_flow_knowledge_omits_duplicate_quotes_and_fits_real_guard(
     with Session(engine) as session:
         section = session.get(PaperSection, "section")
         assert section is not None
-        section.text = QUOTE * 20
+        # Keep multiple selectable reading windows after sentence-aware packing.
+        section.text = QUOTE * 60
         session.commit()
     provider = LongFlowProvider()
     worker = Worker(
@@ -781,3 +856,300 @@ def test_long_flow_knowledge_omits_duplicate_quotes_and_fits_real_guard(
     )
     assert all("evidence" not in step for step in task_data["flow"]["steps"])
     assert len(request.context_spans) > 1  # real source context remains, not just generated steps
+
+
+@pytest.mark.parametrize("page_count", [51, 68, 75, 76])
+def test_full_worker_enforces_appendix_inclusive_75_page_boundary(engine, settings, page_count):
+    config = settings.model_copy(update={"pipeline_mode": "full", "reading_only": True})
+    jid = prepare(engine, page_count=page_count)
+    provider = ScriptedProvider()
+    worker = Worker(engine, config, gateway=LLMGateway(engine, config, provider),
+                    pipeline_mode="full")
+    assert worker.run_once() == jid
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job is not None
+        if page_count <= 75:
+            assert job.status == JobStatus.PARTIAL
+            assert job.feature_status["reasoning"] == "completed"
+            assert job.feature_status["knowledge"] == "completed"
+            assert job.result is not None
+            assert job.result["paper"]["page_count"] == page_count
+        else:
+            assert job.status == JobStatus.FAILED
+            assert job.error_code == "ExecutionFailure"
+            assert job.current_stage == "parsing"
+            assert not provider.calls
+
+
+@pytest.mark.parametrize("backend", ["semantic_scholar", "openalex_local"])
+def test_reading_only_never_initializes_s2_or_runs_candidate_llm(
+    engine, settings, monkeypatch, backend,
+):
+    settings = settings.model_copy(update={
+        "pipeline_mode": "full", "reading_only": True, "academic_backend": backend,
+        "specter2_verified": True, "stage1_audited": True,
+    })
+
+    def forbidden(**kwargs):
+        raise AssertionError("reading-only must not initialize S2")
+
+    monkeypatch.setattr(full_analysis, "SemanticScholarClient", forbidden)
+    jid = prepare(engine)
+    provider = ScriptedProvider()
+    worker = Worker(engine, settings, gateway=LLMGateway(engine, settings, provider),
+                    pipeline_mode="full")
+    assert worker.run_once() == jid
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job is not None and job.result
+        assert job.status == JobStatus.PARTIAL
+        assert job.feature_status["reasoning"] == job.feature_status["knowledge"] == "completed"
+        assert job.result["lineage"] == {"status": "blocked", "reason": "reading_only_mode"}
+        assert job.result["candidate_ranking"]["status"] == "skipped"
+    assert not any(provider.calls[task] for task in (
+        "citation_classification", "contribution_extraction", "contribution_relevance", "lineage",
+    ))
+    with TestClient(create_app(settings, engine)) as api:
+        assert api.get("/health").json()["reading_only"] is True
+        assert api.get("/health").json()["candidate_retrieval"]["enabled"] is False
+        assert api.get(f"/analyses/{jid}/reasoning").status_code == 200
+
+
+def test_reading_mode_deduplication_is_separate_from_full_mode(engine, settings):
+    full = settings.model_copy(update={"provider": "openai", "pipeline_mode": "full"})
+    reading = full.model_copy(update={"reading_only": True})
+    body = {"arxiv_url": "https://arxiv.org/abs/2305.18290"}
+    with TestClient(create_app(full, engine)) as api:
+        first = api.post("/analyses", json=body)
+        assert first.status_code == 202
+    with TestClient(create_app(reading, engine)) as api:
+        second = api.post("/analyses", json=body)
+        assert second.status_code == 202
+        assert second.json()["job_id"] != first.json()["job_id"]
+        assert api.post("/analyses", json=body).json()["job_id"] == second.json()["job_id"]
+
+
+@pytest.mark.parametrize("http_status", [200, 429])
+def test_openalex_backend_never_uses_s2_and_preserves_reading(
+    engine, settings, monkeypatch, http_status,
+):
+    from paper_review.infrastructure.academic_api.openalex import OpenAlexClient
+
+    config = settings.model_copy(update={
+        "pipeline_mode": "full", "academic_backend": "openalex_local",
+        "specter2_verified": True, "stage1_audited": True,
+    })
+    monkeypatch.setattr(full_analysis, "ROOT", settings.database_path.parent)
+
+    def forbidden(**kwargs):
+        pytest.fail("the alternative must not initialize S2")
+
+    monkeypatch.setattr(full_analysis, "SemanticScholarClient", forbidden)
+    calls = []
+
+    def handler(request):
+        calls.append(request)
+        if http_status != 200:
+            return httpx.Response(http_status, json={})
+        is_target = "1706.03762" in request.url.params.get("filter", "")
+        return httpx.Response(200, json={"results": [{
+            "id": "https://openalex.org/W10" if is_target else "https://openalex.org/W1",
+            "title": "Target" if is_target else "Normalization method",
+            "publication_year": 2017 if is_target else 2016,
+            "authorships": [{"author": {"display_name": "A Author"}}],
+            "locations": [{"landing_page_url": "https://arxiv.org/abs/" + (
+                "1706.03762" if is_target else "1601.00001"
+            )}],
+            "referenced_works": ["https://openalex.org/W1"] if is_target else [],
+        }]})
+
+    def offline_openalex(**kwargs):
+        kwargs["verify_arxiv_dates"] = False
+        return OpenAlexClient(transport=httpx.MockTransport(handler), interval=0, **kwargs)
+
+    monkeypatch.setattr(full_analysis, "OpenAlexClient", offline_openalex)
+    jid = prepare(engine)
+    with Session(engine) as session:
+        session.add(StageExecution(
+            job_id=jid, name="retrieval_configuration", input_hash="test",
+            status="completed", checkpoint=config.retrieval_configuration(),
+        ))
+        session.commit()
+    provider = ScriptedProvider()
+    worker = Worker(
+        engine, config, gateway=LLMGateway(engine, config, provider), pipeline_mode="full",
+    )
+    assert worker.run_once() == jid
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job is not None and job.result
+        assert job.feature_status["reasoning"] == job.feature_status["knowledge"] == "completed"
+        assert job.result["lineage"]["reason"] == "openalex_local_contract_not_verified"
+        ranking = job.result["candidate_ranking"]
+        assert ranking["academic_backend"] == "openalex_local"
+        if http_status == 200:
+            assert ranking["top10"][0]["paper_id"] == "openalex:W1"
+            assert ranking["top10"][0]["score"]["semantic_similarity"] is None
+        else:
+            assert len(calls) == 1
+            assert ranking["top10"] == []
+        assert provider.calls["contribution_relevance"] == provider.calls["lineage"] == 0
+
+    with TestClient(create_app(config, engine)) as api:
+        health = api.get("/health").json()
+        assert health["candidate_retrieval"] == {"enabled": True, "backend": "openalex_local"}
+        assert health["openalex_local_readiness"] == {"verified": False, "stage1_audited": False}
+
+
+def test_backend_and_model_fingerprints_and_resumption_guard(engine, settings, monkeypatch):
+    config = settings.model_copy(update={"pipeline_mode": "full", "provider": "openai"})
+    alternative = config.model_copy(update={"academic_backend": "openalex_local"})
+    body = {"arxiv_url": "https://arxiv.org/abs/2305.18290"}
+    with TestClient(create_app(config, engine)) as api:
+        old = api.post("/analyses", json=body).json()["job_id"]
+    with TestClient(create_app(alternative, engine)) as api:
+        new = api.post("/analyses", json=body).json()["job_id"]
+        assert new != old
+        assert api.post("/analyses", json=body).json()["job_id"] == new
+        assert api.get("/health").json()["academic_backend"] == "openalex_local"
+    manifest = settings.database_path.parent / "manifest.json"
+    manifest.write_text("{}")
+    another_model = alternative.model_copy(update={"local_specter2_manifest": manifest})
+    assert (alternative.analysis_fingerprint("revision")
+            != another_model.analysis_fingerprint("revision"))
+    # The old queued S2 job cannot resume under an alternative Worker.
+    monkeypatch.setattr(
+        full_analysis, "load_parsed", lambda *args: pytest.fail("must refuse first"),
+    )
+    provider = ScriptedProvider()
+    worker = Worker(engine, alternative, gateway=LLMGateway(engine, alternative, provider),
+                    pipeline_mode="full")
+    assert worker.run_once() == old
+    assert not provider.calls
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, old)
+        assert job and job.status == JobStatus.FAILED
+
+
+@pytest.mark.parametrize("failure", ["unsupported", "uncertain", "wrong_scope", "budget"])
+def test_knowledge_review_failure_keeps_reasoning_and_lineage_but_withholds_knowledge(
+    engine, settings, monkeypatch, failure,
+):
+    from paper_review.llm.gateway import ExecutionFailure
+
+    test_full_worker_success_and_s2_failure_preserve_independent_features(
+        engine, settings, monkeypatch, 200, "supported",
+    )
+    config = settings.model_copy(update={"pipeline_mode": "full", "specter2_verified": True,
+                                         "stage1_audited": True})
+    with Session(engine) as session:
+        job = AnalysisJob(paper_id=TARGET, arxiv_revision="1706.03762v7",
+                          fingerprint=f"knowledge-reject-{failure}", pipeline_mode="full")
+        session.add(job)
+        session.commit()
+        jid = job.id
+
+    class Provider(ScriptedProvider):
+        async def generate(self, request):
+            if request.logical_call_id.startswith("knowledge-evidence-review-"):
+                self.calls["knowledge_selected_review"] += 1
+                data = json.loads(request.context_spans[-1]["text"])
+                return ProviderResponse(output={"items": [{
+                    "item_id": part["item_id"], "claims": [{
+                        "text": part["summary"], "decision": failure,
+                        "evidence_span_ids": [], "reason": "当該項目の選択引用では支持されない",
+                    }],
+                } for part in data["items"]]}, request_id="selected-source-negative",
+                    returned_model=request.model)
+            return await super().generate(request)
+
+    class Gateway(LLMGateway):
+        async def execute(self, **kwargs):
+            if failure == "budget" and kwargs["logical_call_id"].startswith(
+                "knowledge-evidence-review-",
+            ):
+                raise ExecutionFailure("budget_exceeded")
+            return await super().execute(**kwargs)
+
+    provider = Provider()
+    worker = Worker(engine, config, gateway=Gateway(engine, config, provider), pipeline_mode="full")
+    assert worker.run_once() == jid
+    assert provider.calls["short_knowledge"] == 1
+    assert provider.calls["knowledge_selected_review"] == (0 if failure == "budget" else 1)
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job is not None and job.result is not None
+        assert job.status == "partial_completed" and job.owner is None
+        assert job.feature_status == {"lineage": "completed", "reasoning": "completed",
+                                      "knowledge": "failed"}
+        assert "knowledge" not in job.result
+        if failure != "budget":
+            assert "knowledge_evidence_not_supported" in job.result["missing_reasons"]
+        check = session.scalar(select(StageExecution).where(
+            StageExecution.job_id == jid, StageExecution.name == "knowledge_evidence_review_0",
+        ))
+        assert check is not None
+        if failure == "budget":
+            assert check.status == "failed" and check.checkpoint is None
+        else:
+            assert check.status == "completed" and check.checkpoint is not None
+            assert check.checkpoint["supported"] is False
+    with TestClient(create_app(config, engine)) as api:
+        public = api.get(f"/analyses/{jid}").json()
+        assert public["status"] == "partial_completed"
+        assert public["result"].get("knowledge") is None
+        assert public["result"]["reasoning"] and public["result"]["lineage"]
+
+
+def test_cached_knowledge_generation_cannot_bypass_missing_source_review(
+    engine, settings, monkeypatch,
+):
+    test_full_worker_success_and_s2_failure_preserve_independent_features(
+        engine, settings, monkeypatch, 200, "supported",
+    )
+    config = settings.model_copy(update={"pipeline_mode": "full", "specter2_verified": True,
+                                         "stage1_audited": True})
+    with Session(engine) as session:
+        parent = session.scalar(select(AnalysisJob))
+        assert parent is not None
+        checkpoints = list(session.scalars(select(StageExecution).where(
+            StageExecution.job_id == parent.id,
+        )))
+        # New isolated Job with durable pre-review generation checkpoints only.
+        job = AnalysisJob(paper_id=TARGET, arxiv_revision="1706.03762v7",
+                          fingerprint="cached-knowledge-without-review", pipeline_mode="full",
+                          status="building_lineage", current_stage="building_lineage")
+        session.add(job)
+        session.flush()
+        jid = job.id
+        for checkpoint in checkpoints:
+            if not checkpoint.name.startswith("knowledge_evidence_review_"):
+                session.add(StageExecution(job_id=jid, name=checkpoint.name,
+                    input_hash=checkpoint.input_hash, status="completed",
+                    checkpoint=checkpoint.checkpoint))
+        session.commit()
+
+    class Provider(ScriptedProvider):
+        async def generate(self, request):
+            assert request.logical_call_id.startswith("knowledge-evidence-review-")
+            self.calls[request.task_type] += 1
+            task = json.loads(request.context_spans[-1]["text"])
+            return ProviderResponse(output={"items": [{
+                "item_id": p["item_id"], "claims": [{"text": p["summary"],
+                    "decision": "wrong_scope", "evidence_span_ids": [], "reason": "範囲不一致"}],
+            } for p in task["items"]]}, request_id="old-draft-rejected",
+                returned_model=request.model)
+
+    provider = Provider()
+    worker = Worker(
+        engine, config, gateway=LLMGateway(engine, config, provider), pipeline_mode="full",
+    )
+    assert worker.run_once() == jid
+    assert provider.calls == {"contribution_review": 1}
+    with Session(engine) as session:
+        job = session.get(AnalysisJob, jid)
+        assert job is not None and job.result and job.status == "partial_completed"
+        assert job.feature_status["reasoning"] == "completed"
+        assert job.feature_status["knowledge"] == "failed"
+        assert job.result.get("knowledge") is None

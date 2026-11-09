@@ -7,6 +7,7 @@ import pytest
 
 from paper_review.application import lora_stage2_verification as recorded
 from paper_review.application.full_analysis import generate_lineage
+from paper_review.application.lineage_edge_review import review_lineage_edges
 from paper_review.application.lineage_merge_review import review_lineage_merge
 from paper_review.application.stage1_shortlist import Stage1Analysis
 from paper_review.domain.models import CandidatePaper, CandidateSet, DateProvenance, Paper
@@ -306,6 +307,14 @@ def test_shared_generator_accepts_supported_review_or_abstains_without_regenerat
             ]})
         elif task == "lineage":
             value = schema.model_validate(proposal.model_dump())
+        elif task == "lineage_edge_review":
+            assert extra is not None
+            value = schema.model_validate({"edges": [
+                {"edge_id": item["edge_id"], "claims": [{
+                    "text": item["relationship"], "decision": "supported",
+                    "evidence_span_ids": item["selected_source_ids"], "reason": "原文で支持",
+                }]} for item in extra["edges"]
+            ]})
         else:
             assert task == "lineage_merge_review"
             value = verdict(schema, extra, decision)
@@ -314,10 +323,45 @@ def test_shared_generator_accepts_supported_review_or_abstains_without_regenerat
 
     result = asyncio.run(generate_lineage(target, analysis, list(sources.values()), "s", call,
                                           adjustment_policy="identity-v1"))
-    assert calls.count("lineage") == calls.count("lineage_merge_review") == 1
+    assert calls.count("lineage") == calls.count("lineage_edge_review") == 1
+    assert calls.count("lineage_merge_review") == 1
     if decision == "supported":
         assert result["status"] == "completed" and len(result["edges"]) == 2
         assert result["merge_review"]["supported"]
     else:
         assert result["status"] == "insufficient_evidence" and not result["edges"]
         assert len(result["unverified_proposal"]["edges"]) == 2
+
+
+@pytest.mark.parametrize(("fault", "error"), [
+    ("coverage", "lineage_edge_review_coverage_mismatch"),
+    ("foreign_quote", "reasoning_review_unselected_evidence"),
+    ("omitted_clause", "reasoning_review_incomplete_coverage"),
+    ("no_quote", "reasoning_review_missing_evidence"),
+])
+def test_edge_review_requires_exact_relationship_and_its_own_quotations(fault, error):
+    target, candidates, sources, _, proposal = fixture()
+
+    async def call(schema, stage_id, task, instruction, spans, extra, validator, **kwargs):
+        assert task == "lineage_edge_review" and kwargs["require_all_sources"]
+        items = extra["edges"]
+        rows = [
+            {"edge_id": item["edge_id"], "claims": [{
+                "text": item["relationship"], "decision": "supported",
+                "evidence_span_ids": item["selected_source_ids"], "reason": "原文で支持",
+            }]} for item in items
+        ]
+        if fault == "coverage":
+            rows.pop()
+        elif fault == "foreign_quote":
+            rows[0]["claims"][0]["evidence_span_ids"] = items[1]["selected_source_ids"]
+        elif fault == "omitted_clause":
+            rows[0]["claims"][0]["text"] += "別の文"
+        else:
+            rows[0]["claims"][0]["evidence_span_ids"] = []
+        value = schema.model_validate({"edges": rows})
+        validator(value)
+        return value
+
+    with pytest.raises(ValueError, match=error):
+        asyncio.run(review_lineage_edges(proposal, target, candidates, sources, "s", call))

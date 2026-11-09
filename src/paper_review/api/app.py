@@ -11,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, field_validator
 from sqlalchemy import Engine, func, select
 from sqlalchemy.orm import Session
 
-from paper_review.config import ROOT, Settings
+from paper_review.config import LINEAGE_VALIDATION_VERSION, ROOT, Settings
 from paper_review.domain.jobs import TERMINAL, arxiv_identity
 from paper_review.domain.stage1_scoring import DEFAULT_SELECTION_POLICY
 from paper_review.infrastructure.database.models import (
@@ -67,11 +67,22 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
             "status": "ok",
             "pipeline": config.pipeline_mode,
             "version": "0.2",
-            "pipeline_version": "full-v35" if config.pipeline_mode == "full" else "phase1-v1",
+            "pipeline_version": "full-v44" if config.pipeline_mode == "full" else "phase1-v1",
             "llm_diagnostics_version": "attempt-timing-v1",
             "s2_request_gate_version": "shared-file-v1",
             "stage1_selection_policy_version": DEFAULT_SELECTION_POLICY,
-            "lineage_validation_version": "merge-grounding-v2",
+            "lineage_validation_version": LINEAGE_VALIDATION_VERSION,
+            "reading_only": config.reading_only,
+            "candidate_retrieval": {
+                "enabled": config.pipeline_mode == "full" and not config.reading_only,
+                "backend": config.academic_backend,
+            },
+            "academic_backend": config.academic_backend,
+            "retrieval_configuration": config.retrieval_configuration(),
+            "openalex_local_readiness": {
+                "verified": config.openalex_local_verified,
+                "stage1_audited": config.openalex_local_audited,
+            },
             "limits": {"initial_analysis_budget_usd": config.initial_budget_usd},
             "lineage_readiness": {
                 "specter2_verified": config.specter2_verified,
@@ -88,6 +99,7 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
                             "contribution_review",
                             "contribution_relevance",
                             "lineage",
+                            "lineage_edge_review",
                             "lineage_merge_review",
                             "reasoning_review",
                             "short_knowledge",
@@ -104,16 +116,7 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
     @app.post("/analyses", status_code=202, response_model=AcceptedAnalysis, dependencies=protected)
     def submit(body: AnalysisInput) -> AcceptedAnalysis:
         paper_id, revision = arxiv_identity(body.arxiv_url)
-        version = (
-            "fake-pipeline-v1"
-            if config.pipeline_mode == "phase0_fake"
-            else (
-                f"{config.pipeline_mode}-pipeline-v35"
-                if config.pipeline_mode == "full"
-                else f"{config.pipeline_mode}-pipeline-v1"
-            )
-        )
-        fingerprint = hashlib.sha256(f"{revision}|{version}".encode()).hexdigest()
+        fingerprint = config.analysis_fingerprint(revision)
         with transaction(db) as session:
             existing = session.scalar(
                 select(AnalysisJob).where(
@@ -161,6 +164,11 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
             )
             session.add(job)
             session.flush()
+            if config.pipeline_mode == "full":
+                session.add(StageExecution(
+                    job_id=job.id, name="retrieval_configuration", input_hash=fingerprint,
+                    status="completed", checkpoint=config.retrieval_configuration(),
+                ))
             return AcceptedAnalysis(job_id=job.id, paper_id=paper_id)
 
     @app.get("/analyses/{job_id}", dependencies=protected)
@@ -176,13 +184,33 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
                 session.scalars(select(LLMExecution).where(LLMExecution.paper_id == job.paper_id))
             )
             end = job.finished_at or time.time()
+            result = job.result
+            features = job.feature_status
+            lineage = (result or {}).get("lineage")
+            if isinstance(lineage, dict):
+                # Keep archived proposals and verdicts in the DB for audit.
+                public_lineage = dict(lineage)
+                public_lineage.pop("unverified_proposal", None)
+                edge_review = public_lineage.pop("edge_review", None)
+                if lineage.get("edges") and (
+                    lineage.get("validation_version") != LINEAGE_VALIDATION_VERSION
+                    or not isinstance(edge_review, dict)
+                    or edge_review.get("supported") is not True
+                ):
+                    public_lineage.update(
+                        status="insufficient_evidence", nodes=[], edges=[], merge_reason=None,
+                        merge_support=None, merge_review=None,
+                        missing_reason="先行研究固有の貢献を確認する審査が必要です。",
+                    )
+                    features = {**features, "lineage": "insufficient_evidence"}
+                result = {**(result or {}), "lineage": public_lineage, "features": features}
             return {
                 "job_id": job.id,
                 "paper_id": job.paper_id,
                 "status": job.status,
                 "current_stage": job.current_stage,
-                "feature_status": job.feature_status,
-                "result": job.result,
+                "feature_status": features,
+                "result": result,
                 "error_code": job.error_code,
                 "pipeline": "fake" if job.pipeline_mode == "phase0_fake" else job.pipeline_mode,
                 "missing_reasons": ["phase0_fake_no_paper_retrieval"]
